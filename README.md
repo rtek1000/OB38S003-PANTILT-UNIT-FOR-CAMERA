@@ -68,7 +68,9 @@ I started to write a program for PIC16F648A, and tried to port it to OB38S003. B
 
 Note: To make the RESET pin work as GPIO: I used the Arduino serial monitor, and ran the command "setfuse 18 1" (after programming the MCU with my code).
 
+Reference:
 
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/0xF9.png)
 
 Unfortunately, the oscilloscope probe slipped between pin 1 (VCC 12V) and pin 2 (ENABLE) of IC U9, which caused pin P0.4 (pin 19) of the OB38S003 microcontroller to burn out. Despite this, other parts of the IC continue to function, but I am no longer confident in continuing the program with this board, and will return to work on the board with the uC PIC.
 
