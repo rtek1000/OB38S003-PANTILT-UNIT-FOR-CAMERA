@@ -30,7 +30,7 @@ And the camera that will be mounted with this unit can only send PELCO D data at
 
 I started to write a program for PIC16F648A, and tried to port it to OB38S003. But I had difficulties to activate the P1.5 pin (shared with RESET).
 
-Unfortunately, the oscilloscope probe slipped between pin 1 (VCC 12V) and pin 2 (ENABLE) of IC U9, which caused pin P0.4 (pin 19) of the OB38S003 microcontroller to burn out. Despite this, the IC continues to work, but I am no longer confident in continuing the program with this board, and I will go back to working on the board with the uC PIC.
+Unfortunately, the oscilloscope probe slipped between pin 1 (VCC 12V) and pin 2 (ENABLE) of IC U9, which caused pin P0.4 (pin 19) of the OB38S003 microcontroller to burn out. Despite this, other parts of the IC continue to function, but I am no longer confident in continuing the program with this board, and will return to work on the board with the UC PIC.
 
 The program is still unfinished and is missing the PRESET, EEPROM, MOTOR parts. What works is the TIMER, USART (to receive Pelco D commands).
 
