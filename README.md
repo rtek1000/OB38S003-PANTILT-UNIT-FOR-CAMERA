@@ -28,7 +28,6 @@ And the camera that will be mounted with this unit can only send PELCO D data at
 
 -----
 
-![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/SDCC/Schematic1.png)
 
 I started to write a program for PIC16F648A, and tried to port it to OB38S003. But I had difficulties to activate the P1.5 pin (shared with RESET).
 
