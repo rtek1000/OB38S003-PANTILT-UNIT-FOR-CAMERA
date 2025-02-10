@@ -2,6 +2,8 @@ This folder has two projects, one is the Pelco D protocol generator, the other i
 
 The main idea is to store all valid frames. It must start with 0xFF and be 7 bytes long. The time limit is 10ms, after which the frame is discarded. Considering the speed of 9600 bauds and it was the camera that generated this timing pattern. Other devices may generate different times.
 
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/1.png)
+
 In the VMS program (XMEye) the data is sent with speed from 1 to 8, but the camera I was testing could send PTZ speed data from 1 to 10.
 
 The interval between each byte is 1ms, and the interval between each frame is at least 19ms.
