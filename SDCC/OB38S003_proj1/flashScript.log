@@ -1,0 +1,2 @@
+2025-02-09 16:54:50,370 - INFO - Serial connection opened on /dev/ttyUSB0
+2025-02-09 16:54:50,372 - ERROR - State 2 failed. Returning to handshake state.
