@@ -1,6 +1,6 @@
 This folder has two projects, one is the Pelco D protocol generator, the other is the receiver, both with PIC16F648A, but the code is written in C for XC8, and can be easily adapted to other microcontroller models.
 
-The main idea is to store all valid frames. It must start with 0xFF and be 7 bytes long. The time limit is 10ms, after which the frame is discarded.
+The main idea is to store all valid frames. It must start with 0xFF and be 7 bytes long. The time limit is 10ms, after which the frame is discarded. Considering the speed of 9600 bauds and it was the camera that generated this timing pattern. Other devices may generate different times.
 
 In the VMS program (XMEye) the data is sent with speed from 1 to 8, but the camera I was testing could send PTZ speed data from 1 to 10.
 
