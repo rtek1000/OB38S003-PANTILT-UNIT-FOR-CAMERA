@@ -4,6 +4,10 @@ The main idea is to store all valid frames. It must start with 0xFF and be 7 byt
 
 In the VMS program (XMEye) the data is sent with speed from 1 to 8, but the camera I was testing could send PTZ speed data from 1 to 10.
 
+The interval between each byte is 1ms, and the interval between each frame is at least 19ms.
+
+
+
 -----
 
 Codes noted using the Hercules SETUP utility program:
