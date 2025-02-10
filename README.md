@@ -44,6 +44,8 @@ https://www.aliexpress.com/item/1005007667412447.html
 
 -----
 
+-----
+
 When I purchased this model of PAN TILT unit, it was not specified in the advertisement that the communication speed was only 2400 baud.
 
 After the device arrived, I went to research more details, and found other ads, some with 9600 baud models, others with 2400 baud models.
