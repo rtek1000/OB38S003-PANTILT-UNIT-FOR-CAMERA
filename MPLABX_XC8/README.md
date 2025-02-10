@@ -13,7 +13,7 @@ The interval between each byte is 1ms, and the interval between each frame is at
 
 -----
 
-Codes noted using the Hercules SETUP utility program:
+Codes noted using the[ Hercules SETUP utility ](https://www.hw-group.com/software/hercules-setup-utility)program:
 
 - Note that only the VMS program sent combined keys (diagonal).
 
