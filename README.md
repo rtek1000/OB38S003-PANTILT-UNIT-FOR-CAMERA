@@ -1,6 +1,6 @@
 # OB38S003-PANTILT-UNIT-FOR-CAMERA
 
-This PAN TILT positioner model may have a printed circuit board with the OB38S003W20 microcontroller. Apparently the chassis was created for a larger board, perhaps to use another type of microcontroller.
+This PAN TILT positioner model may have a printed circuit board with the OB38S003W20 microcontroller (On-Bright). Apparently the chassis was created for a larger board, perhaps to use another type of microcontroller.
 
 ![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/Ad3.jpg)
 
