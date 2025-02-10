@@ -67,6 +67,7 @@ And the camera that will be mounted with this unit can only send PELCO D data at
 I started to write a program for PIC16F648A, and tried to port it to OB38S003. But I had difficulties to activate the P1.5 pin (shared with RESET).
 
 Note: To make the RESET pin work as GPIO: I used the Arduino serial monitor, and ran the command "setfuse 18 1" (after programming the MCU with my code).
+- When the OnbrightFlasher programmer does the programming, the P1.5 pin is configured as RESET instead of GPIO, when setfuse 18 249 appears, with 249 being the value in decimal and 0xF9 being the value in hexadecimal.
 
 Reference:
 
