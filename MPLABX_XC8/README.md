@@ -6,6 +6,9 @@ In the VMS program (XMEye) the data is sent with speed from 1 to 8, but the came
 
 The interval between each byte is 1ms, and the interval between each frame is at least 19ms.
 
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/Space_1ms.png)
+
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/Space_19ms.png)
 
 
 -----
