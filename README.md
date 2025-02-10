@@ -39,7 +39,7 @@ published under GNU General Public License (GPL)
 - Eclipse IDE Version: 2024-12 (4.34.0) Build id: 20241128-0757
 
 ### Note 
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 - Please note that this code was adapted from an original code with predefined license.
 
