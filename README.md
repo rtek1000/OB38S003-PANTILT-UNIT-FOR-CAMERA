@@ -4,6 +4,8 @@ This PAN TILT positioner model may have a printed circuit board with the OB38S00
 
 - It may be important to check the speed of the device before purchasing, the standard is 9600, but some sellers sell 2400 baud devices without warning.
 
+- The connection is RS485, no response, only receiving commands.
+
 ![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/Ad3.jpg)
 
 -----
