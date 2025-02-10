@@ -26,6 +26,8 @@ And the camera that will be mounted with this unit can only send PELCO D data at
 
 -----
 
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/SDCC/Schematic1.png)
+
 I started to write a program for PIC16F648A, and tried to port it to OB38S003. But I had difficulties to activate the P1.5 pin (shared with RESET).
 
 Unfortunately, the oscilloscope probe slipped between pin 1 (VCC 12V) and pin 2 (ENABLE) of IC U9, which caused pin P0.4 (pin 19) of the OB38S003 microcontroller to burn out. Despite this, the IC continues to work, but I am no longer confident in continuing the program with this board, and I will go back to working on the board with the uC PIC.
