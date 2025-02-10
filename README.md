@@ -1,10 +1,10 @@
 # OB38S003-PANTILT-UNIT-FOR-CAMERA
 
+This PAN TILT positioner model may have a printed circuit board with the OB38S003W20 microcontroller. Apparently the chassis was created for a larger board, perhaps to use another type of microcontroller.
+
 ![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/Ad3.jpg)
 
 -----
-
-This PAN TILT positioner model may have a printed circuit board with the OB38S003W20 microcontroller. Apparently the chassis was created for a larger board, perhaps to use another type of microcontroller.
 
 I didn't find much information on the On-Bright manufacturer's website, I tried to contact them but I don't know if they will answer me.
 
