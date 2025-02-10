@@ -2,6 +2,8 @@
 
 This PAN TILT positioner model may have a printed circuit board with the OB38S003W20 microcontroller (On-Bright). Apparently the chassis was created for a larger board, perhaps to use another type of microcontroller.
 
+- It may be important to check the speed of the device before purchasing, the standard is 9600, but some sellers sell 2400 baud devices without warning.
+
 ![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/Ad3.jpg)
 
 -----
