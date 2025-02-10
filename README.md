@@ -28,7 +28,20 @@ On the other hand, I found two projects that allow you to develop a program and 
 
 - Chip Burner using NodeMCU:
 - - [OnbrightFlasher_OB38S003 ](https://github.com/rtek1000/OnbrightFlasher_OB38S003)
- 
+
+If you need sample codes, you can find them in the Codzard program:
+
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/Codzard.png)
+
+If it is necessary to modify the fuses, it may be necessary to use the MSM9066 programmer for greater ease:
+
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/SMAP%20AC.png)
+
+I found this ad from the programmer:
+https://www.aliexpress.com/item/1005007667412447.html
+
+![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/MSM9066_ad.png)
+
 -----
 
 When I purchased this model of PAN TILT unit, it was not specified in the advertisement that the communication speed was only 2400 baud.
