@@ -12,6 +12,15 @@ This PAN TILT positioner model may have a board with the OB38S003W20 microcontro
 
 I didn't find much information on the [On-Bright manufacturer's website](https://www.on-bright.com/en/index/product/detail/cid/126/id/375.shtml), I tried to contact them but I don't know if they will answer me.
 
+But I found this warning:
+> Note: Factory default settings
+>
+> RST/P1.5 is set as a normal bidirectional I/O (P1.5) pin at the factory. If the user needs to switch to a reset pin, this pin can be defined as the RESET pin during programming
+>
+> To avoid accidentally entering the ISP programming state (refer to Unit 18.4), make sure there is no continuous pulse signal on the RXD P1.1 pin and the P1.6 pin must be set high when powering on
+>
+> OSI_SDA/P1.3 and OCI_SCL/P1.2 are ICP programming function pins during reset, and switch to bidirectional I/O after reset is completed.
+
 On the other hand, I found two projects that allow you to develop a program and burn the chip.
 
 - Example program:
