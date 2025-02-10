@@ -73,7 +73,7 @@ Reference:
 
 ![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/0xF9.png)
 
-Unfortunately, while I was investigating why P1.5 pin was not working as GPIO, the oscilloscope probe slipped between pin 1 (VCC 12V) and pin 2 (ENABLE) of IC U9, which caused pin P0.4 (pin 19) of the OB38S003 microcontroller to burn out. Despite this, other parts of the IC continue to function, but I am no longer confident in continuing the program with this board, and will return to work on the board with the uC PIC.
+Unfortunately, when the reason for pin P1.5 not functioning as GPIO was being investigated, the oscilloscope probe slipped between pin 1 (VCC 12V) and pin 2 (ENABLE) of IC U9, which caused pin P0.4 (pin 19) of the OB38S003 microcontroller to burn out. Despite this, other parts of the IC continue to function, but I am no longer confident in continuing the program with this board, and will return to work on the board with the uC PIC.
 
 The program is still unfinished and is missing the PRESET, EEPROM, MOTOR parts. What works is the TIMER, UART (to receive Pelco D commands).
 
