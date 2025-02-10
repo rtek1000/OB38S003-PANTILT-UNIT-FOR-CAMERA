@@ -32,7 +32,7 @@ I started to write a program for PIC16F648A, and tried to port it to OB38S003. B
 
 Unfortunately, the oscilloscope probe slipped between pin 1 (VCC 12V) and pin 2 (ENABLE) of IC U9, which caused pin P0.4 (pin 19) of the OB38S003 microcontroller to burn out. Despite this, other parts of the IC continue to function, but I am no longer confident in continuing the program with this board, and will return to work on the board with the uC PIC.
 
-The program is still unfinished and is missing the PRESET, EEPROM, MOTOR parts. What works is the TIMER, USART (to receive Pelco D commands).
+The program is still unfinished and is missing the PRESET, EEPROM, MOTOR parts. What works is the TIMER, UART (to receive Pelco D commands).
 
 - sdcc --version
 SDCC : mcs51/z80/z180/r2k/r2ka/r3ka/sm83/tlcs90/ez80_z80/z80n/r800/ds390/pic16/pic14/TININative/ds400/hc08/s08/stm8/pdk13/pdk14/pdk15/mos6502/mos65c02/f8 TD- 4.5.0 #15242 (Linux)
