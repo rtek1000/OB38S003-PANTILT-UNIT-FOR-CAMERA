@@ -10,7 +10,7 @@ This PAN TILT positioner model may have a board with the OB38S003W20 microcontro
 
 -----
 
-I didn't find much information on the On-Bright manufacturer's website, I tried to contact them but I don't know if they will answer me.
+I didn't find much information on the [On-Bright manufacturer's website](https://www.on-bright.com/en/index/product/detail/cid/126/id/375.shtml), I tried to contact them but I don't know if they will answer me.
 
 On the other hand, I found two projects that allow you to develop a program and burn the chip.
 
