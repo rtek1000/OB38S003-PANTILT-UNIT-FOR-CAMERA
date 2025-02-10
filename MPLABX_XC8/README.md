@@ -1,5 +1,7 @@
 This folder has two projects, one is the Pelco D protocol generator, the other is the receiver, both with PIC16F648A, but the code is written in C for XC8, and can be easily adapted to other microcontroller models.
 
+- About the motor, there are two types, bipolar with 4 wires (which comes inside the unit mentioned here) and the 5 wire motor type (which usually comes inside low cost cameras with PAN TILT movements). The motors in this unit are similar to the Yoosee camera motor and those sold for use with Arduino, but the shaft is different. However, the body and gear are compatible. For the circuit version with PIC, I left the driver for 5 wires. (With the OB38S003 board, despite having the 5-pin connector, only 4 pins are used)
+
 The main idea is to store all valid frames. It must start with 0xFF and be 7 bytes long. The time limit is 10ms, after which the frame is discarded. Considering the speed of 9600 bauds and it was the camera that generated this timing pattern. Other devices may generate different times.
 
 ![img](https://raw.githubusercontent.com/rtek1000/OB38S003-PANTILT-UNIT-FOR-CAMERA/refs/heads/main/Img/1.png)
