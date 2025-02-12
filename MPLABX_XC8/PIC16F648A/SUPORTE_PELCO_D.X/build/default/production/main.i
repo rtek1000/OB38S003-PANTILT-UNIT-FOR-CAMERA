@@ -1174,8 +1174,11 @@ volatile uint8_t header_cnt = 0;
 
 volatile uint8_t timeout_receiv = 0;
 
-volatile _Bool preset_enabled = 0;
-volatile _Bool preset_enabled_old = 0;
+volatile _Bool preset_pan_enabled = 0;
+volatile _Bool preset_pan_enabled_old = 0;
+
+volatile _Bool preset_tilt_enabled = 0;
+volatile _Bool preset_tilt_enabled_old = 0;
 
 volatile _Bool pan_enabled = 0;
 volatile _Bool pan_direction = 0;
@@ -1239,7 +1242,7 @@ void SEND_resp_general(uint8_t cmd_cksm);
 void delay_wdt(uint16_t _ms);
 void MOTOR_Init(void);
 uint8_t SPEED_calc(uint8_t speed);
-void eeprom_update(uint8_t addr, uint16_t value);
+void eeprom_update(uint8_t addr, uint8_t value);
 void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt);
 void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt);
 void BAUDS_set(uint8_t index);
@@ -1250,7 +1253,7 @@ void __attribute__((picinterrupt(("")))) myISR() {
     if (PIR1bits.RCIF == 1) {
         data_receiv = RCREG;
 
-
+         PORTBbits.RB3 = !PORTBbits.RB3;
 
         if (is_init == 1) {
             return;
@@ -1306,30 +1309,7 @@ void __attribute__((picinterrupt(("")))) myISR() {
 
 
 
-
-
-
-
-            if ((pan_enabled == 1) || (preset_enabled == 1)) {
-
-                if (pan_speed_old != pan_speed) {
-                    pan_speed_old = pan_speed;
-
-                    timer1_pan_ref = SPEED_calc(pan_speed);
-                }
-
-                if ((preset_enabled == 1) && (preset_enabled_old == 0)) {
-                    preset_enabled_old = 1;
-
-                    if (pan_goto > pan_counter) {
-                        pan_direction = 0;
-                    } else if (pan_goto < pan_counter) {
-                        pan_direction = 1;
-                    }
-                } else if ((preset_enabled == 0) && (preset_enabled_old == 1)) {
-                    preset_enabled_old = 0;
-                }
-
+            if (pan_enabled == 1) {
                 if (pan_direction == 0) {
                     if (pan_counter < 12000) {
                         pan_counter++;
@@ -1353,7 +1333,11 @@ void __attribute__((picinterrupt(("")))) myISR() {
                 }
 
                 if (pan_goto == pan_counter) {
-                    preset_enabled = 0;
+                    if (preset_pan_enabled == 1) {
+                        preset_pan_enabled = 0;
+
+                        pan_enabled = 0;
+                    }
                 }
 
                 PORTAbits.RA0 = steps_1A[pan_step_phase];
@@ -1376,13 +1360,6 @@ void __attribute__((picinterrupt(("")))) myISR() {
             timer1_tilt = 0;
 
             if (tilt_enabled == 1) {
-
-                if (tilt_speed_old != tilt_speed) {
-                    tilt_speed_old = tilt_speed;
-
-                    timer1_tilt_ref = SPEED_calc(tilt_speed);
-                }
-
                 if (tilt_direction == 0) {
                     if (tilt_counter < 2800) {
                         tilt_counter++;
@@ -1402,6 +1379,14 @@ void __attribute__((picinterrupt(("")))) myISR() {
                         } else {
                             tilt_step_phase++;
                         }
+                    }
+                }
+
+                if (tilt_goto == tilt_counter) {
+                    if (preset_tilt_enabled == 1) {
+                        preset_tilt_enabled = 0;
+
+                        tilt_enabled = 0;
                     }
                 }
 
@@ -1526,7 +1511,8 @@ void main(void) {
                             pan_enabled = 0;
                             tilt_enabled = 0;
                             response_type = 0x01;
-                            preset_enabled = 0;
+                            preset_pan_enabled = 0;
+                            preset_tilt_enabled = 0;
                             UART_Write_Text("STOP (");
                             print_cnt(pan_counter, tilt_counter);
                             UART_Write_Text(")\r\n");
@@ -1581,9 +1567,48 @@ void main(void) {
                             pan_goto = pan_tmp;
                             tilt_goto = tilt_tmp;
 
-                            preset_enabled = 1;
+                            preset_pan_enabled = 1;
+                            preset_pan_enabled_old = 0;
+
                             pan_speed = 0x32;
+                            timer1_pan_ref = SPEED_calc(pan_speed);
+                            pan_enabled = 1;
+
+                            if (pan_goto < 12000) {
+                                if (pan_goto > pan_counter) {
+                                    pan_direction = 0;
+                                } else if (pan_goto < pan_counter) {
+                                    pan_direction = 1;
+                                } else {
+                                    preset_pan_enabled = 0;
+                                    pan_enabled = 0;
+                                }
+                            } else {
+                                preset_pan_enabled = 0;
+                                pan_enabled = 0;
+                            }
+
+                            preset_tilt_enabled = 1;
+                            preset_tilt_enabled_old = 0;
+
                             tilt_speed = 0x32;
+                            timer1_tilt_ref = SPEED_calc(tilt_speed);
+                            tilt_enabled = 1;
+
+                            if (tilt_goto < 2800) {
+                                if (tilt_goto > tilt_counter) {
+                                    tilt_direction = 0;
+                                } else if (tilt_goto < tilt_counter) {
+                                    tilt_direction = 1;
+                                } else {
+                                    preset_tilt_enabled = 0;
+                                    tilt_enabled = 0;
+                                }
+                            } else {
+                                preset_tilt_enabled = 0;
+                                tilt_enabled = 0;
+                            }
+
                             response_type = 0x01;
 
                             uint8_t preset_id_10 = preset_id / 10;
@@ -1601,9 +1626,11 @@ void main(void) {
                         } else {
                             if ((P_cmd2 & 0x04) == 0x04) {
                                 pan_speed = P_dat1;
+                                timer1_pan_ref = SPEED_calc(pan_speed);
                                 pan_direction = 0;
                                 pan_enabled = 1;
-                                preset_enabled = 0;
+                                preset_pan_enabled = 0;
+                                preset_tilt_enabled = 0;
                                 response_type = 0x01;
                                 is_reboot = 0;
                                 UART_Write_Text("LEFT (");
@@ -1611,9 +1638,11 @@ void main(void) {
                                 UART_Write_Text(")\r\n");
                             } else if ((P_cmd2 & 0x02) == 0x02) {
                                 pan_speed = P_dat1;
+                                timer1_pan_ref = SPEED_calc(pan_speed);
                                 pan_direction = 1;
                                 pan_enabled = 1;
-                                preset_enabled = 0;
+                                preset_pan_enabled = 0;
+                                preset_tilt_enabled = 0;
                                 response_type = 0x01;
                                 is_reboot = 0;
                                 UART_Write_Text("RIGHT (");
@@ -1623,9 +1652,11 @@ void main(void) {
 
                             if ((P_cmd2 & 0x10) == 0x10) {
                                 tilt_speed = P_dat2;
+                                timer1_tilt_ref = SPEED_calc(tilt_speed);
                                 tilt_direction = 0;
                                 tilt_enabled = 1;
-                                preset_enabled = 0;
+                                preset_pan_enabled = 0;
+                                preset_tilt_enabled = 0;
                                 response_type = 0x01;
                                 is_reboot = 0;
                                 UART_Write_Text("DOWN (");
@@ -1633,9 +1664,11 @@ void main(void) {
                                 UART_Write_Text(")\r\n");
                             } else if ((P_cmd2 & 0x08) == 0x08) {
                                 tilt_speed = P_dat2;
+                                timer1_tilt_ref = SPEED_calc(tilt_speed);
                                 tilt_direction = 1;
                                 tilt_enabled = 1;
-                                preset_enabled = 0;
+                                preset_pan_enabled = 0;
+                                preset_tilt_enabled = 0;
                                 response_type = 0x01;
                                 is_reboot = 0;
                                 UART_Write_Text("UP (");
@@ -1658,9 +1691,8 @@ void main(void) {
                 frame_index = 0;
             }
 
-            PORTBbits.RB3 = !PORTBbits.RB3;
+
         }
-# 592 "main.c"
     }
 
     return;
@@ -1689,11 +1721,11 @@ void UC_Init(void) {
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-# 628 "main.c"
+# 634 "main.c"
     TRISA = 0b00000000;
-# 638 "main.c"
+# 644 "main.c"
     TRISB = 0b00000010;
-# 647 "main.c"
+# 653 "main.c"
 }
 
 void TIMER1_Init(void) {
@@ -1711,7 +1743,7 @@ void TIMER1_Init(void) {
     PIR1bits.TMR1IF = 0;
     PIE1bits.TMR1IE = 1;
 }
-# 708 "main.c"
+# 714 "main.c"
 void delay_wdt(uint16_t _ms) {
     __asm("clrwdt");
 
@@ -1805,7 +1837,7 @@ uint8_t SPEED_calc(uint8_t speed) {
     return sp_calc;
 }
 
-void eeprom_update(uint8_t addr, uint16_t value) {
+void eeprom_update(uint8_t addr, uint8_t value) {
     if (value != eeprom_read(addr)) {
         eeprom_write(addr, value);
     }

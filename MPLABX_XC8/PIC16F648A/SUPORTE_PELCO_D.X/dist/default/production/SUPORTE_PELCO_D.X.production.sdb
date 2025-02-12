@@ -25,31 +25,31 @@
 [v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
 "6 /opt/microchip/xc8/v2.36/pic/sources/c90/pic/__eewrite.c
 [v _eeprom_write eeprom_write `(v  1 e 1 0 ]
-"151 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+"154 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _myISR myISR `II(v  1 e 1 0 ]
-"326
+"311
 [v _main main `(v  1 e 1 0 ]
-"597
+"603
 [v _UC_Init UC_Init `(v  1 e 1 0 ]
-"649
+"655
 [v _TIMER1_Init TIMER1_Init `(v  1 e 1 0 ]
-"708
+"714
 [v _delay_wdt delay_wdt `(v  1 e 1 0 ]
-"718
+"724
 [v _MOTOR_Init MOTOR_Init `(v  1 e 1 0 ]
-"776
+"782
 [v _SPEED_calc SPEED_calc `(uc  1 e 1 0 ]
-"801
-[v _eeprom_update eeprom_update `(v  1 e 1 0 ]
 "807
+[v _eeprom_update eeprom_update `(v  1 e 1 0 ]
+"813
 [v _PRESET_save PRESET_save `(v  1 e 1 0 ]
-"820
+"826
 [v _PRESET_load PRESET_load `(v  1 e 1 0 ]
-"833
+"839
 [v _BAUDS_set BAUDS_set `(v  1 e 1 0 ]
-"838
+"844
 [v _BAUDS_get BAUDS_get `(uc  1 e 1 0 ]
-"843
+"849
 [v _print_cnt print_cnt `(v  1 e 1 0 ]
 "12 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/usart.c
 [v _UART_Init UART_Init `(v  1 e 1 0 ]
@@ -57,7 +57,7 @@
 [v _UART_Write UART_Write `(v  1 e 1 0 ]
 "73
 [v _UART_Write_Text UART_Write_Text `(v  1 e 1 0 ]
-[s S552 . 1 `uc 1 C 1 0 :1:0 
+[s S554 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
 `uc 1 nPD 1 0 :1:3 
@@ -66,19 +66,19 @@
 `uc 1 IRP 1 0 :1:7 
 ]
 "99 /home/rh/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8/pic/include/proc/pic16f648a.h
-[s S560 . 1 `uc 1 . 1 0 :5:0 
+[s S562 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RP0 1 0 :1:5 
 `uc 1 RP1 1 0 :1:6 
 ]
-[s S564 . 1 `uc 1 CARRY 1 0 :1:0 
+[s S566 . 1 `uc 1 CARRY 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ZERO 1 0 :1:2 
 ]
-[u S568 . 1 `S552 1 . 1 0 `S560 1 . 1 0 `S564 1 . 1 0 ]
-[v _STATUSbits STATUSbits `VES568  1 e 1 @3 ]
+[u S570 . 1 `S554 1 . 1 0 `S562 1 . 1 0 `S566 1 . 1 0 ]
+[v _STATUSbits STATUSbits `VES570  1 e 1 @3 ]
 "166
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
-[s S72 . 1 `uc 1 RA0 1 0 :1:0 
+[s S88 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -88,11 +88,11 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "183
-[u S81 . 1 `S72 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES81  1 e 1 @5 ]
+[u S97 . 1 `S88 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES97  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S93 . 1 `uc 1 RB0 1 0 :1:0 
+[s S44 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -102,8 +102,8 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S102 . 1 `S93 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES102  1 e 1 @6 ]
+[u S53 . 1 `S44 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES53  1 e 1 @6 ]
 [s S222 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
@@ -174,7 +174,7 @@
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "969
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S44 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S65 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -184,8 +184,8 @@
 `uc 1 EEIE 1 0 :1:7 
 ]
 "1048
-[u S53 . 1 `S44 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES53  1 e 1 @140 ]
+[u S74 . 1 `S65 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES74  1 e 1 @140 ]
 [s S170 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
@@ -206,14 +206,14 @@
 [v _EEADR EEADR `VEuc  1 e 1 @155 ]
 "1222
 [v _EECON1 EECON1 `VEuc  1 e 1 @156 ]
-[s S536 . 1 `uc 1 RD 1 0 :1:0 
+[s S538 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
 ]
 "1235
-[u S541 . 1 `S536 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES541  1 e 1 @156 ]
+[u S543 . 1 `S538 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES543  1 e 1 @156 ]
 "1260
 [v _EECON2 EECON2 `VEuc  1 e 1 @157 ]
 "1348
@@ -251,155 +251,159 @@
 "77
 [v _timeout_receiv timeout_receiv `VEuc  1 e 1 0 ]
 "79
-[v _preset_enabled preset_enabled `VEa  1 e 1 0 ]
+[v _preset_pan_enabled preset_pan_enabled `VEa  1 e 1 0 ]
 "80
-[v _preset_enabled_old preset_enabled_old `VEa  1 e 1 0 ]
+[v _preset_pan_enabled_old preset_pan_enabled_old `VEa  1 e 1 0 ]
 "82
-[v _pan_enabled pan_enabled `VEa  1 e 1 0 ]
+[v _preset_tilt_enabled preset_tilt_enabled `VEa  1 e 1 0 ]
 "83
-[v _pan_direction pan_direction `VEa  1 e 1 0 ]
-"84
-[v _pan_speed pan_speed `VEuc  1 e 1 0 ]
+[v _preset_tilt_enabled_old preset_tilt_enabled_old `VEa  1 e 1 0 ]
 "85
-[v _pan_speed_old pan_speed_old `VEuc  1 e 1 0 ]
+[v _pan_enabled pan_enabled `VEa  1 e 1 0 ]
 "86
-[v _pan_counter pan_counter `VEui  1 e 2 0 ]
+[v _pan_direction pan_direction `VEa  1 e 1 0 ]
+"87
+[v _pan_speed pan_speed `VEuc  1 e 1 0 ]
 "88
-[v _tilt_enabled tilt_enabled `VEa  1 e 1 0 ]
+[v _pan_speed_old pan_speed_old `VEuc  1 e 1 0 ]
 "89
-[v _tilt_direction tilt_direction `VEa  1 e 1 0 ]
-"90
-[v _tilt_speed tilt_speed `VEuc  1 e 1 0 ]
+[v _pan_counter pan_counter `VEui  1 e 2 0 ]
 "91
-[v _tilt_speed_old tilt_speed_old `VEuc  1 e 1 0 ]
+[v _tilt_enabled tilt_enabled `VEa  1 e 1 0 ]
 "92
-[v _tilt_counter tilt_counter `VEui  1 e 2 0 ]
+[v _tilt_direction tilt_direction `VEa  1 e 1 0 ]
+"93
+[v _tilt_speed tilt_speed `VEuc  1 e 1 0 ]
 "94
-[v _pan_step_phase pan_step_phase `VEuc  1 e 1 0 ]
+[v _tilt_speed_old tilt_speed_old `VEuc  1 e 1 0 ]
 "95
-[v _tilt_step_phase tilt_step_phase `VEuc  1 e 1 0 ]
+[v _tilt_counter tilt_counter `VEui  1 e 2 0 ]
 "97
-[v _timer1_pan timer1_pan `VEuc  1 e 1 0 ]
+[v _pan_step_phase pan_step_phase `VEuc  1 e 1 0 ]
 "98
-[v _timer1_tilt timer1_tilt `VEuc  1 e 1 0 ]
-"99
-[v _timer1_pan_ref timer1_pan_ref `VEuc  1 e 1 0 ]
+[v _tilt_step_phase tilt_step_phase `VEuc  1 e 1 0 ]
 "100
-[v _timer1_tilt_ref timer1_tilt_ref `VEuc  1 e 1 0 ]
+[v _timer1_pan timer1_pan `VEuc  1 e 1 0 ]
+"101
+[v _timer1_tilt timer1_tilt `VEuc  1 e 1 0 ]
 "102
-[v _pan_goto pan_goto `VEui  1 e 2 0 ]
+[v _timer1_pan_ref timer1_pan_ref `VEuc  1 e 1 0 ]
 "103
-[v _tilt_goto tilt_goto `VEui  1 e 2 0 ]
+[v _timer1_tilt_ref timer1_tilt_ref `VEuc  1 e 1 0 ]
 "105
-[v _frame_index frame_index `uc  1 e 1 0 ]
+[v _pan_goto pan_goto `VEui  1 e 2 0 ]
 "106
+[v _tilt_goto tilt_goto `VEui  1 e 2 0 ]
+"108
+[v _frame_index frame_index `uc  1 e 1 0 ]
+"109
 [v _frame_data frame_data `[7]uc  1 e 7 0 ]
-"111
-[v _response_type response_type `uc  1 e 1 0 ]
-"113
-[v _P_addr P_addr `uc  1 e 1 0 ]
 "114
-[v _P_cmd1 P_cmd1 `uc  1 e 1 0 ]
-"115
-[v _P_cmd2 P_cmd2 `uc  1 e 1 0 ]
+[v _response_type response_type `uc  1 e 1 0 ]
 "116
-[v _P_dat1 P_dat1 `uc  1 e 1 0 ]
+[v _P_addr P_addr `uc  1 e 1 0 ]
 "117
-[v _P_dat2 P_dat2 `uc  1 e 1 0 ]
+[v _P_cmd1 P_cmd1 `uc  1 e 1 0 ]
 "118
-[v _P_chksum P_chksum `uc  1 e 1 0 ]
+[v _P_cmd2 P_cmd2 `uc  1 e 1 0 ]
+"119
+[v _P_dat1 P_dat1 `uc  1 e 1 0 ]
 "120
+[v _P_dat2 P_dat2 `uc  1 e 1 0 ]
+"121
+[v _P_chksum P_chksum `uc  1 e 1 0 ]
+"123
 [v _preset_id preset_id `uc  1 e 1 0 ]
-"124
+"127
 [v _is_reboot is_reboot `a  1 e 1 0 ]
-"126
-[v _is_init is_init `a  1 e 1 0 ]
-"128
-[v _steps_1A steps_1A `DC[8]a  1 e 8 0 ]
 "129
-[v _steps_1B steps_1B `DC[8]a  1 e 8 0 ]
-"130
-[v _steps_2A steps_2A `DC[8]a  1 e 8 0 ]
+[v _is_init is_init `a  1 e 1 0 ]
 "131
+[v _steps_1A steps_1A `DC[8]a  1 e 8 0 ]
+"132
+[v _steps_1B steps_1B `DC[8]a  1 e 8 0 ]
+"133
+[v _steps_2A steps_2A `DC[8]a  1 e 8 0 ]
+"134
 [v _steps_2B steps_2B `DC[8]a  1 e 8 0 ]
-"326
+"311
 [v _main main `(v  1 e 1 0 ]
 {
-"481
-[v main@tilt_tmp_420 tilt_tmp `ui  1 a 2 13 ]
-"480
-[v main@pan_tmp_419 pan_tmp `ui  1 a 2 11 ]
-"491
-[v main@preset_id_10_421 preset_id_10 `uc  1 a 1 6 ]
-"492
-[v main@preset_id_1_422 preset_id_1 `uc  1 a 1 3 ]
-"458
-[v main@tilt_tmp tilt_tmp `ui  1 a 2 9 ]
-"457
-[v main@pan_tmp pan_tmp `ui  1 a 2 7 ]
-"465
-[v main@preset_id_10_414 preset_id_10 `uc  1 a 1 5 ]
+"467
+[v main@tilt_tmp_422 tilt_tmp `ui  1 a 2 13 ]
 "466
-[v main@preset_id_1_415 preset_id_1 `uc  1 a 1 2 ]
-"441
+[v main@pan_tmp_421 pan_tmp `ui  1 a 2 11 ]
+"516
+[v main@preset_id_10_423 preset_id_10 `uc  1 a 1 6 ]
+"517
+[v main@preset_id_1_424 preset_id_1 `uc  1 a 1 3 ]
+"444
+[v main@tilt_tmp tilt_tmp `ui  1 a 2 9 ]
+"443
+[v main@pan_tmp pan_tmp `ui  1 a 2 7 ]
+"451
+[v main@preset_id_10_416 preset_id_10 `uc  1 a 1 5 ]
+"452
+[v main@preset_id_1_417 preset_id_1 `uc  1 a 1 2 ]
+"427
 [v main@preset_id_10 preset_id_10 `uc  1 a 1 4 ]
-"442
+"428
 [v main@preset_id_1 preset_id_1 `uc  1 a 1 1 ]
-"370
+"355
 [v main@m m `uc  1 a 1 15 ]
-"368
+"353
 [v main@chksum_calc chksum_calc `uc  1 a 1 0 ]
-"351
+"336
 [v main@i i `uc  1 a 1 16 ]
-"595
+"601
 } 0
-"843
+"849
 [v _print_cnt print_cnt `(v  1 e 1 0 ]
 {
-"844
-[v print_cnt@val10000 val10000 `ui  1 a 2 33 ]
-"845
-[v print_cnt@val1000 val1000 `ui  1 a 2 31 ]
-"846
-[v print_cnt@val100 val100 `ui  1 a 2 29 ]
-"847
-[v print_cnt@val10 val10 `ui  1 a 2 27 ]
-"848
-[v print_cnt@val1 val1 `ui  1 a 2 25 ]
-"843
-[v print_cnt@_pan _pan `ui  1 p 2 21 ]
-[v print_cnt@_tilt _tilt `ui  1 p 2 23 ]
-"925
+"850
+[v print_cnt@val10000 val10000 `ui  1 a 2 28 ]
+"851
+[v print_cnt@val1000 val1000 `ui  1 a 2 26 ]
+"852
+[v print_cnt@val100 val100 `ui  1 a 2 24 ]
+"853
+[v print_cnt@val10 val10 `ui  1 a 2 22 ]
+"854
+[v print_cnt@val1 val1 `ui  1 a 2 20 ]
+"849
+[v print_cnt@_pan _pan `ui  1 p 2 16 ]
+[v print_cnt@_tilt _tilt `ui  1 p 2 18 ]
+"931
 } 0
 "15 /opt/microchip/xc8/v2.36/pic/sources/c90/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 9 ]
+[v ___wmul@product product `ui  1 a 2 4 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 5 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 7 ]
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
 "5 /opt/microchip/xc8/v2.36/pic/sources/c90/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwdiv@quotient quotient `ui  1 a 2 11 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 6 ]
 "11
-[v ___lwdiv@counter counter `uc  1 a 1 10 ]
+[v ___lwdiv@counter counter `uc  1 a 1 5 ]
 "5
-[v ___lwdiv@divisor divisor `ui  1 p 2 5 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 7 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "30
 } 0
 "73 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/usart.c
 [v _UART_Write_Text UART_Write_Text `(v  1 e 1 0 ]
 {
 "74
-[v UART_Write_Text@i i `i  1 a 2 19 ]
+[v UART_Write_Text@i i `i  1 a 2 14 ]
 "73
-[v UART_Write_Text@text text `*.25uc  1 p 2 14 ]
+[v UART_Write_Text@text text `*.25uc  1 p 2 9 ]
 "77
 } 0
 "59
@@ -407,10 +411,10 @@
 {
 [v UART_Write@data data `uc  1 a 1 wreg ]
 "60
-[v UART_Write@timeout timeout `ul  1 a 4 10 ]
+[v UART_Write@timeout timeout `ul  1 a 4 5 ]
 "59
 [v UART_Write@data data `uc  1 a 1 wreg ]
-[v UART_Write@data data `uc  1 a 1 9 ]
+[v UART_Write@data data `uc  1 a 1 4 ]
 "71
 } 0
 "4 /opt/microchip/xc8/v2.36/pic/sources/c90/common/lbdiv.c
@@ -418,14 +422,14 @@
 {
 [v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
 "6
-[v ___lbdiv@quotient quotient `uc  1 a 1 9 ]
+[v ___lbdiv@quotient quotient `uc  1 a 1 4 ]
 "7
-[v ___lbdiv@counter counter `uc  1 a 1 8 ]
+[v ___lbdiv@counter counter `uc  1 a 1 3 ]
 "4
 [v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
-[v ___lbdiv@divisor divisor `uc  1 p 1 5 ]
+[v ___lbdiv@divisor divisor `uc  1 p 1 0 ]
 "9
-[v ___lbdiv@dividend dividend `uc  1 a 1 7 ]
+[v ___lbdiv@dividend dividend `uc  1 a 1 2 ]
 "26
 } 0
 "4 /opt/microchip/xc8/v2.36/pic/sources/c90/common/Umul8.c
@@ -433,124 +437,46 @@
 {
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
 "6
-[v ___bmul@product product `uc  1 a 1 7 ]
+[v ___bmul@product product `uc  1 a 1 2 ]
 "4
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
-[v ___bmul@multiplicand multiplicand `uc  1 p 1 5 ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
 "6
-[v ___bmul@multiplier multiplier `uc  1 a 1 8 ]
+[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
 "51
 } 0
-"597 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+"603 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _UC_Init UC_Init `(v  1 e 1 0 ]
 {
-"647
+"653
 } 0
 "12 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/usart.c
 [v _UART_Init UART_Init `(v  1 e 1 0 ]
 {
 "16
-[v UART_Init@bauds_index bauds_index `uc  1 a 1 9 ]
+[v UART_Init@bauds_index bauds_index `uc  1 a 1 4 ]
 "57
 } 0
-"838 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+"844 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _BAUDS_get BAUDS_get `(uc  1 e 1 0 ]
 {
-"841
+"847
 } 0
-"649
+"655
 [v _TIMER1_Init TIMER1_Init `(v  1 e 1 0 ]
 {
-"663
+"669
 } 0
-"807
-[v _PRESET_save PRESET_save `(v  1 e 1 0 ]
-{
-[v PRESET_save@id id `uc  1 a 1 wreg ]
-"808
-[v PRESET_save@_addr _addr `uc  1 a 1 20 ]
-"807
-[v PRESET_save@id id `uc  1 a 1 wreg ]
-[v PRESET_save@pan pan `ui  1 p 2 13 ]
-[v PRESET_save@tilt tilt `ui  1 p 2 15 ]
-[v PRESET_save@id id `uc  1 a 1 19 ]
-"818
-} 0
-"820
-[v _PRESET_load PRESET_load `(v  1 e 1 0 ]
-{
-[v PRESET_load@id id `uc  1 a 1 wreg ]
-"821
-[v PRESET_load@_addr _addr `uc  1 a 1 12 ]
-"820
-[v PRESET_load@id id `uc  1 a 1 wreg ]
-[v PRESET_load@pan pan `*.4ui  1 p 1 7 ]
-[v PRESET_load@tilt tilt `*.4ui  1 p 1 8 ]
-[v PRESET_load@id id `uc  1 a 1 11 ]
-"831
-} 0
-"718
-[v _MOTOR_Init MOTOR_Init `(v  1 e 1 0 ]
-{
-"774
-} 0
-"708
-[v _delay_wdt delay_wdt `(v  1 e 1 0 ]
-{
-[v delay_wdt@_ms _ms `ui  1 p 2 5 ]
-"716
-} 0
-"833
-[v _BAUDS_set BAUDS_set `(v  1 e 1 0 ]
-{
-[v BAUDS_set@index index `uc  1 a 1 wreg ]
-[v BAUDS_set@index index `uc  1 a 1 wreg ]
-"835
-[v BAUDS_set@index index `uc  1 a 1 15 ]
-"836
-} 0
-"801
-[v _eeprom_update eeprom_update `(v  1 e 1 0 ]
-{
-[v eeprom_update@addr addr `uc  1 a 1 wreg ]
-[v eeprom_update@addr addr `uc  1 a 1 wreg ]
-[v eeprom_update@value value `ui  1 p 2 8 ]
-[v eeprom_update@addr addr `uc  1 a 1 12 ]
-"805
-} 0
-"6 /opt/microchip/xc8/v2.36/pic/sources/c90/pic/__eewrite.c
-[v _eeprom_write eeprom_write `(v  1 e 1 0 ]
-{
-[v eeprom_write@addr addr `uc  1 a 1 wreg ]
-[v eeprom_write@addr addr `uc  1 a 1 wreg ]
-[v eeprom_write@value value `uc  1 p 1 5 ]
-[v eeprom_write@addr addr `uc  1 a 1 7 ]
-"9
-} 0
-"6 /opt/microchip/xc8/v2.36/pic/sources/c90/pic/__eeread.c
-[v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
-{
-[v eeprom_read@addr addr `uc  1 a 1 wreg ]
-[v eeprom_read@addr addr `uc  1 a 1 wreg ]
-"9
-[v eeprom_read@addr addr `uc  1 a 1 6 ]
-"19
-} 0
-"151 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
-[v _myISR myISR `II(v  1 e 1 0 ]
-{
-"324
-} 0
-"776
+"782
 [v _SPEED_calc SPEED_calc `(uc  1 e 1 0 ]
 {
 [v SPEED_calc@speed speed `uc  1 a 1 wreg ]
-"777
+"783
 [v SPEED_calc@sp_calc sp_calc `uc  1 a 1 12 ]
-"776
+"782
 [v SPEED_calc@speed speed `uc  1 a 1 wreg ]
 [v SPEED_calc@speed speed `uc  1 a 1 11 ]
-"799
+"805
 } 0
 "5 /opt/microchip/xc8/v2.36/pic/sources/c90/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -564,4 +490,82 @@
 [v ___awdiv@divisor divisor `i  1 p 2 0 ]
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
+} 0
+"813 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+[v _PRESET_save PRESET_save `(v  1 e 1 0 ]
+{
+[v PRESET_save@id id `uc  1 a 1 wreg ]
+"814
+[v PRESET_save@_addr _addr `uc  1 a 1 13 ]
+"813
+[v PRESET_save@id id `uc  1 a 1 wreg ]
+[v PRESET_save@pan pan `ui  1 p 2 6 ]
+[v PRESET_save@tilt tilt `ui  1 p 2 8 ]
+[v PRESET_save@id id `uc  1 a 1 12 ]
+"824
+} 0
+"826
+[v _PRESET_load PRESET_load `(v  1 e 1 0 ]
+{
+[v PRESET_load@id id `uc  1 a 1 wreg ]
+"827
+[v PRESET_load@_addr _addr `uc  1 a 1 7 ]
+"826
+[v PRESET_load@id id `uc  1 a 1 wreg ]
+[v PRESET_load@pan pan `*.4ui  1 p 1 2 ]
+[v PRESET_load@tilt tilt `*.4ui  1 p 1 3 ]
+[v PRESET_load@id id `uc  1 a 1 6 ]
+"837
+} 0
+"724
+[v _MOTOR_Init MOTOR_Init `(v  1 e 1 0 ]
+{
+"780
+} 0
+"714
+[v _delay_wdt delay_wdt `(v  1 e 1 0 ]
+{
+[v delay_wdt@_ms _ms `ui  1 p 2 0 ]
+"722
+} 0
+"839
+[v _BAUDS_set BAUDS_set `(v  1 e 1 0 ]
+{
+[v BAUDS_set@index index `uc  1 a 1 wreg ]
+[v BAUDS_set@index index `uc  1 a 1 wreg ]
+"841
+[v BAUDS_set@index index `uc  1 a 1 7 ]
+"842
+} 0
+"807
+[v _eeprom_update eeprom_update `(v  1 e 1 0 ]
+{
+[v eeprom_update@addr addr `uc  1 a 1 wreg ]
+[v eeprom_update@addr addr `uc  1 a 1 wreg ]
+[v eeprom_update@value value `uc  1 p 1 3 ]
+[v eeprom_update@addr addr `uc  1 a 1 5 ]
+"811
+} 0
+"6 /opt/microchip/xc8/v2.36/pic/sources/c90/pic/__eewrite.c
+[v _eeprom_write eeprom_write `(v  1 e 1 0 ]
+{
+[v eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v eeprom_write@value value `uc  1 p 1 0 ]
+[v eeprom_write@addr addr `uc  1 a 1 2 ]
+"9
+} 0
+"6 /opt/microchip/xc8/v2.36/pic/sources/c90/pic/__eeread.c
+[v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
+{
+[v eeprom_read@addr addr `uc  1 a 1 wreg ]
+[v eeprom_read@addr addr `uc  1 a 1 wreg ]
+"9
+[v eeprom_read@addr addr `uc  1 a 1 1 ]
+"19
+} 0
+"154 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+[v _myISR myISR `II(v  1 e 1 0 ]
+{
+"309
 } 0
