@@ -9,12 +9,14 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 3h		(dist/default/production/SUPORTE_PELCO_D.X.production.hex)
-  8h - FFDh		(dist/default/production/SUPORTE_PELCO_D.X.production.hex)
-  1AECh - 1FFFh		(dist/default/production/SUPORTE_PELCO_D.X.production.hex)
+  8h - 9F9h		(dist/default/production/SUPORTE_PELCO_D.X.production.hex)
+  A00h - FFDh		(dist/default/production/SUPORTE_PELCO_D.X.production.hex)
+  1ADEh - 1FFFh		(dist/default/production/SUPORTE_PELCO_D.X.production.hex)
   400Eh - 400Fh		(dist/default/production/SUPORTE_PELCO_D.X.production.hex)
  Unused ranges:
   4h - 7h
-  FFEh - 1AEBh
+  9FAh - 9FFh
+  FFEh - 1ADDh
   2000h - 400Dh
 
 ### Hex Memory Map ###
@@ -183,7 +185,7 @@
 000009C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000009D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000009E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000009F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000009F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- --
 00000A00 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000A10 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000A20 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
@@ -281,7 +283,8 @@
 00000FE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000FF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- --
 ----------------------------------------------------------
-00001AE0 | -- -- -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1
+00001AD0 | -- -- -- -- -- -- -- -- -- -- -- -- -- -- H1 H1
+00001AE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001AF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001B00 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001B10 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

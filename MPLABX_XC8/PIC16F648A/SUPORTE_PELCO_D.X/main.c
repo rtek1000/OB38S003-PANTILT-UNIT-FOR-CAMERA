@@ -61,8 +61,8 @@
 #define SPEED_MAX_TMR 1  // 0-1  (2)
 #define SPEED_MIN_TMR 19 // 0-19 (20)
 
-#define PAN_STROKE_LIMIT_STEPS 12000 // Mechanical stroke limit
-#define TILT_STROKE_LIMIT_STEPS 2800 // Mechanical stroke limit
+#define PAN_STROKE_LIMIT_STEPS 11700 // Mechanical stroke limit
+#define TILT_STROKE_LIMIT_STEPS 2300 // Mechanical stroke limit
 
 volatile uint8_t data_receiv = 0;
 volatile uint8_t buffer_index1 = 0;
@@ -222,11 +222,9 @@ void __interrupt() myISR() {
         } else {
             timer1_pan = 0;
 
-            // UC_LED = 1;
-
             if (pan_enabled == MOTOR_ENABLED) {
                 if (pan_direction == MOVE_CC) {
-                    if (pan_counter < PAN_STROKE_LIMIT_STEPS) {
+                    if (pan_counter < (PAN_STROKE_LIMIT_STEPS - 1)) {
                         pan_counter++;
 
                         if ((pan_step_phase == 0) || (pan_step_phase > 7)) {
@@ -276,7 +274,7 @@ void __interrupt() myISR() {
 
             if (tilt_enabled == MOTOR_ENABLED) {
                 if (tilt_direction == MOVE_CC) {
-                    if (tilt_counter < TILT_STROKE_LIMIT_STEPS) {
+                    if (tilt_counter < (TILT_STROKE_LIMIT_STEPS - 1)) {
                         tilt_counter++;
 
                         if ((tilt_step_phase == 0) || (tilt_step_phase > 7)) {
@@ -985,6 +983,7 @@ void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text) {
     UART_Write(preset_id_1);
     UART_Write_Text(" (");
     print_cnt(pan, tilt);
+    UART_Write_Text_CRLF(")");
 }
 
 void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt) {

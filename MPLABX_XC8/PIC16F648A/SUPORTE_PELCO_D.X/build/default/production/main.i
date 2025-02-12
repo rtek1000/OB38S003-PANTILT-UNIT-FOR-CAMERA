@@ -1320,11 +1320,9 @@ void __attribute__((picinterrupt(("")))) myISR() {
         } else {
             timer1_pan = 0;
 
-
-
             if (pan_enabled == 1) {
                 if (pan_direction == 0) {
-                    if (pan_counter < 12000) {
+                    if (pan_counter < (11700 - 1)) {
                         pan_counter++;
 
                         if ((pan_step_phase == 0) || (pan_step_phase > 7)) {
@@ -1374,7 +1372,7 @@ void __attribute__((picinterrupt(("")))) myISR() {
 
             if (tilt_enabled == 1) {
                 if (tilt_direction == 0) {
-                    if (tilt_counter < 2800) {
+                    if (tilt_counter < (2300 - 1)) {
                         tilt_counter++;
 
                         if ((tilt_step_phase == 0) || (tilt_step_phase > 7)) {
@@ -1567,7 +1565,7 @@ void main(void) {
                             timer1_pan_ref = SPEED_calc(pan_speed);
                             pan_enabled = 1;
 
-                            if (pan_goto < 12000) {
+                            if (pan_goto < 11700) {
                                 if (pan_goto > pan_counter) {
                                     pan_direction = 0;
                                 } else if (pan_goto < pan_counter) {
@@ -1588,7 +1586,7 @@ void main(void) {
                             timer1_tilt_ref = SPEED_calc(tilt_speed);
                             tilt_enabled = 1;
 
-                            if (tilt_goto < 2800) {
+                            if (tilt_goto < 2300) {
                                 if (tilt_goto > tilt_counter) {
                                     tilt_direction = 0;
                                 } else if (tilt_goto < tilt_counter) {
@@ -1707,11 +1705,11 @@ void UC_Init(void) {
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-# 620 "main.c"
+# 618 "main.c"
     TRISA = 0b00000000;
-# 630 "main.c"
+# 628 "main.c"
     TRISB = 0b00000010;
-# 639 "main.c"
+# 637 "main.c"
 }
 
 void TIMER1_Init(void) {
@@ -1729,7 +1727,7 @@ void TIMER1_Init(void) {
     PIR1bits.TMR1IF = 0;
     PIE1bits.TMR1IE = 1;
 }
-# 700 "main.c"
+# 698 "main.c"
 void delay_wdt(uint16_t _ms) {
     __asm("clrwdt");
 
@@ -1742,7 +1740,7 @@ void delay_wdt(uint16_t _ms) {
 
 void MOTOR_Init(void) {
     is_init = 1;
-# 764 "main.c"
+# 762 "main.c"
     pan_speed = 0x32;
     pan_direction = 1;
     pan_enabled = 1;
@@ -1792,7 +1790,7 @@ void MOTOR_Init(void) {
     pan_enabled = 0;
 
     pan_counter = 0;
-# 833 "main.c"
+# 831 "main.c"
     pan_speed = 0x32;
     pan_direction = 0;
     pan_enabled = 1;
@@ -1948,6 +1946,7 @@ void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text) {
     UART_Write(preset_id_1);
     UART_Write_Text(" (");
     print_cnt(pan, tilt);
+    UART_Write_Text_CRLF(")");
 }
 
 void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt) {

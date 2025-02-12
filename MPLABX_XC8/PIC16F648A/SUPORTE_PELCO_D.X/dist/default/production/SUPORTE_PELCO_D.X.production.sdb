@@ -27,35 +27,35 @@
 [v _eeprom_write eeprom_write `(v  1 e 1 0 ]
 "158 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _myISR myISR `II(v  1 e 1 0 ]
-"324
+"322
 [v _main main `(v  1 e 1 0 ]
-"589
+"587
 [v _UC_Init UC_Init `(v  1 e 1 0 ]
-"641
+"639
 [v _TIMER1_Init TIMER1_Init `(v  1 e 1 0 ]
-"700
+"698
 [v _delay_wdt delay_wdt `(v  1 e 1 0 ]
-"710
+"708
 [v _MOTOR_Init MOTOR_Init `(v  1 e 1 0 ]
-"856
+"854
 [v _SPEED_calc SPEED_calc `(uc  1 e 1 0 ]
-"881
+"879
 [v _eeprom_update eeprom_update `(v  1 e 1 0 ]
-"887
+"885
 [v _PRESET_save PRESET_save `(v  1 e 1 0 ]
-"900
+"898
 [v _PRESET_load PRESET_load `(v  1 e 1 0 ]
-"913
+"911
 [v _BAUDS_set BAUDS_set `(v  1 e 1 0 ]
-"918
+"916
 [v _BAUDS_get BAUDS_get `(uc  1 e 1 0 ]
-"923
+"921
 [v _print_cnt print_cnt `(v  1 e 1 0 ]
-"931
+"929
 [v _print_val print_val `(v  1 e 1 0 ]
-"976
+"974
 [v _print_preset print_preset `(v  1 e 1 0 ]
-"990
+"989
 [v _print_cmd_mov print_cmd_mov `(v  1 e 1 0 ]
 "12 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/usart.c
 [v _UART_Init UART_Init `(v  1 e 1 0 ]
@@ -65,7 +65,7 @@
 [v _UART_Write_Text UART_Write_Text `(v  1 e 1 0 ]
 "79
 [v _UART_Write_Text_CRLF UART_Write_Text_CRLF `(v  1 e 1 0 ]
-[s S583 . 1 `uc 1 C 1 0 :1:0 
+[s S584 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
 `uc 1 nPD 1 0 :1:3 
@@ -74,16 +74,16 @@
 `uc 1 IRP 1 0 :1:7 
 ]
 "99 /home/rh/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8/pic/include/proc/pic16f648a.h
-[s S591 . 1 `uc 1 . 1 0 :5:0 
+[s S592 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RP0 1 0 :1:5 
 `uc 1 RP1 1 0 :1:6 
 ]
-[s S595 . 1 `uc 1 CARRY 1 0 :1:0 
+[s S596 . 1 `uc 1 CARRY 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ZERO 1 0 :1:2 
 ]
-[u S599 . 1 `S583 1 . 1 0 `S591 1 . 1 0 `S595 1 . 1 0 ]
-[v _STATUSbits STATUSbits `VES599  1 e 1 @3 ]
+[u S600 . 1 `S584 1 . 1 0 `S592 1 . 1 0 `S596 1 . 1 0 ]
+[v _STATUSbits STATUSbits `VES600  1 e 1 @3 ]
 "166
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 [s S88 . 1 `uc 1 RA0 1 0 :1:0 
@@ -214,14 +214,14 @@
 [v _EEADR EEADR `VEuc  1 e 1 @155 ]
 "1222
 [v _EECON1 EECON1 `VEuc  1 e 1 @156 ]
-[s S567 . 1 `uc 1 RD 1 0 :1:0 
+[s S568 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
 ]
 "1235
-[u S572 . 1 `S567 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES572  1 e 1 @156 ]
+[u S573 . 1 `S568 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES573  1 e 1 @156 ]
 "1260
 [v _EECON2 EECON2 `VEuc  1 e 1 @157 ]
 "1348
@@ -334,40 +334,40 @@
 [v _steps_2A steps_2A `DC[8]a  1 e 8 0 ]
 "135
 [v _steps_2B steps_2B `DC[8]a  1 e 8 0 ]
-"324
+"322
 [v _main main `(v  1 e 1 0 ]
 {
-"460
+"458
 [v main@tilt_tmp_440 tilt_tmp `ui  1 a 2 44 ]
-"459
+"457
 [v main@pan_tmp_439 pan_tmp `ui  1 a 2 42 ]
-"448
+"446
 [v main@tilt_tmp tilt_tmp `ui  1 a 2 40 ]
-"447
+"445
 [v main@pan_tmp pan_tmp `ui  1 a 2 38 ]
-"368
-[v main@m m `uc  1 a 1 46 ]
 "366
+[v main@m m `uc  1 a 1 46 ]
+"364
 [v main@chksum_calc chksum_calc `uc  1 a 1 37 ]
-"349
+"347
 [v main@i i `uc  1 a 1 47 ]
-"587
+"585
 } 0
-"976
+"974
 [v _print_preset print_preset `(v  1 e 1 0 ]
 {
 [v print_preset@id id `uc  1 a 1 wreg ]
-"977
+"975
 [v print_preset@preset_id_10 preset_id_10 `uc  1 a 1 34 ]
-"978
-[v print_preset@preset_id_1 preset_id_1 `uc  1 a 1 32 ]
 "976
+[v print_preset@preset_id_1 preset_id_1 `uc  1 a 1 32 ]
+"974
 [v print_preset@id id `uc  1 a 1 wreg ]
 [v print_preset@pan pan `ui  1 p 2 25 ]
 [v print_preset@tilt tilt `ui  1 p 2 27 ]
 [v print_preset@text text `*.24uc  1 p 1 29 ]
 [v print_preset@id id `uc  1 a 1 33 ]
-"988
+"987
 } 0
 "4 /opt/microchip/xc8/v2.36/pic/sources/c90/common/lbdiv.c
 [v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
@@ -397,7 +397,7 @@
 [v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
 "51
 } 0
-"990 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+"989 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _print_cmd_mov print_cmd_mov `(v  1 e 1 0 ]
 {
 [v print_cmd_mov@text text `*.24uc  1 a 1 wreg ]
@@ -405,31 +405,31 @@
 [v print_cmd_mov@pan pan `ui  1 p 2 25 ]
 [v print_cmd_mov@tilt tilt `ui  1 p 2 27 ]
 [v print_cmd_mov@text text `*.24uc  1 a 1 29 ]
-"995
+"994
 } 0
-"923
+"921
 [v _print_cnt print_cnt `(v  1 e 1 0 ]
 {
 [v print_cnt@_pan _pan `ui  1 p 2 21 ]
 [v print_cnt@_tilt _tilt `ui  1 p 2 23 ]
-"929
+"927
 } 0
-"931
+"929
 [v _print_val print_val `(v  1 e 1 0 ]
 {
-"932
+"930
 [v print_val@val10000 val10000 `ui  1 a 2 19 ]
-"933
-[v print_val@val1000 val1000 `ui  1 a 2 17 ]
-"934
-[v print_val@val100 val100 `ui  1 a 2 15 ]
-"935
-[v print_val@val10 val10 `ui  1 a 2 13 ]
-"936
-[v print_val@val1 val1 `ui  1 a 2 11 ]
 "931
+[v print_val@val1000 val1000 `ui  1 a 2 17 ]
+"932
+[v print_val@val100 val100 `ui  1 a 2 15 ]
+"933
+[v print_val@val10 val10 `ui  1 a 2 13 ]
+"934
+[v print_val@val1 val1 `ui  1 a 2 11 ]
+"929
 [v print_val@value value `ui  1 p 2 9 ]
-"974
+"972
 } 0
 "15 /opt/microchip/xc8/v2.36/pic/sources/c90/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -488,10 +488,10 @@
 [v UART_Write@data data `uc  1 a 1 4 ]
 "71
 } 0
-"589 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+"587 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _UC_Init UC_Init `(v  1 e 1 0 ]
 {
-"639
+"637
 } 0
 "12 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/usart.c
 [v _UART_Init UART_Init `(v  1 e 1 0 ]
@@ -500,26 +500,26 @@
 [v UART_Init@bauds_index bauds_index `uc  1 a 1 4 ]
 "57
 } 0
-"918 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+"916 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _BAUDS_get BAUDS_get `(uc  1 e 1 0 ]
 {
-"921
+"919
 } 0
-"641
+"639
 [v _TIMER1_Init TIMER1_Init `(v  1 e 1 0 ]
 {
-"655
+"653
 } 0
-"856
+"854
 [v _SPEED_calc SPEED_calc `(uc  1 e 1 0 ]
 {
 [v SPEED_calc@speed speed `uc  1 a 1 wreg ]
-"857
+"855
 [v SPEED_calc@sp_calc sp_calc `uc  1 a 1 12 ]
-"856
+"854
 [v SPEED_calc@speed speed `uc  1 a 1 wreg ]
 [v SPEED_calc@speed speed `uc  1 a 1 11 ]
-"879
+"877
 } 0
 "5 /opt/microchip/xc8/v2.36/pic/sources/c90/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -534,60 +534,60 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"887 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
+"885 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _PRESET_save PRESET_save `(v  1 e 1 0 ]
 {
 [v PRESET_save@id id `uc  1 a 1 wreg ]
-"888
+"886
 [v PRESET_save@_addr _addr `uc  1 a 1 13 ]
-"887
+"885
 [v PRESET_save@id id `uc  1 a 1 wreg ]
 [v PRESET_save@pan pan `ui  1 p 2 6 ]
 [v PRESET_save@tilt tilt `ui  1 p 2 8 ]
 [v PRESET_save@id id `uc  1 a 1 12 ]
-"898
+"896
 } 0
-"900
+"898
 [v _PRESET_load PRESET_load `(v  1 e 1 0 ]
 {
 [v PRESET_load@id id `uc  1 a 1 wreg ]
-"901
+"899
 [v PRESET_load@_addr _addr `uc  1 a 1 7 ]
-"900
+"898
 [v PRESET_load@id id `uc  1 a 1 wreg ]
 [v PRESET_load@pan pan `*.4ui  1 p 1 2 ]
 [v PRESET_load@tilt tilt `*.4ui  1 p 1 3 ]
 [v PRESET_load@id id `uc  1 a 1 6 ]
-"911
+"909
 } 0
-"710
+"708
 [v _MOTOR_Init MOTOR_Init `(v  1 e 1 0 ]
 {
-"854
+"852
 } 0
-"700
+"698
 [v _delay_wdt delay_wdt `(v  1 e 1 0 ]
 {
 [v delay_wdt@_ms _ms `ui  1 p 2 0 ]
-"708
+"706
 } 0
-"913
+"911
 [v _BAUDS_set BAUDS_set `(v  1 e 1 0 ]
 {
 [v BAUDS_set@index index `uc  1 a 1 wreg ]
 [v BAUDS_set@index index `uc  1 a 1 wreg ]
-"915
+"913
 [v BAUDS_set@index index `uc  1 a 1 7 ]
-"916
+"914
 } 0
-"881
+"879
 [v _eeprom_update eeprom_update `(v  1 e 1 0 ]
 {
 [v eeprom_update@addr addr `uc  1 a 1 wreg ]
 [v eeprom_update@addr addr `uc  1 a 1 wreg ]
 [v eeprom_update@value value `uc  1 p 1 3 ]
 [v eeprom_update@addr addr `uc  1 a 1 5 ]
-"885
+"883
 } 0
 "6 /opt/microchip/xc8/v2.36/pic/sources/c90/pic/__eewrite.c
 [v _eeprom_write eeprom_write `(v  1 e 1 0 ]
@@ -610,5 +610,5 @@
 "158 /media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 [v _myISR myISR `II(v  1 e 1 0 ]
 {
-"322
+"320
 } 0
