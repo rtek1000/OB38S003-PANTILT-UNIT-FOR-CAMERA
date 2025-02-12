@@ -55,42 +55,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;/home/rh/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8/pic/include/proc/pic16f648a.h: 183: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x005)));
 [v _PORTAbits `VS5 ~T0 @X0 0 e@5 ]
 [p mainexit ]
-"140 main.c
-[; ;main.c: 140: void UC_Init(void);
+"141 main.c
+[; ;main.c: 141: void UC_Init(void);
 [v _UC_Init `(v ~T0 @X0 0 ef ]
 "15 ./usart.h
 [; ;./usart.h: 15: void UART_Init(void);
 [v _UART_Init `(v ~T0 @X0 0 ef ]
-"141 main.c
-[; ;main.c: 141: void TIMER1_Init(void);
+"142 main.c
+[; ;main.c: 142: void TIMER1_Init(void);
 [v _TIMER1_Init `(v ~T0 @X0 0 ef ]
-"144
-[; ;main.c: 144: void delay_wdt(uint16_t _ms);
+"145
+[; ;main.c: 145: void delay_wdt(uint16_t _ms);
 [v _delay_wdt `(v ~T0 @X0 0 ef1`ui ]
+"18 ./usart.h
+[; ;./usart.h: 18: void UART_Write_Text_CRLF(char *text);
+[v _UART_Write_Text_CRLF `(v ~T0 @X0 0 ef1`*uc ]
+"146 main.c
+[; ;main.c: 146: void MOTOR_Init(void);
+[v _MOTOR_Init `(v ~T0 @X0 0 ef ]
+"151
+[; ;main.c: 151: void BAUDS_set(uint8_t index);
+[v _BAUDS_set `(v ~T0 @X0 0 ef1`uc ]
 "17 ./usart.h
 [; ;./usart.h: 17: void UART_Write_Text(char *text);
 [v _UART_Write_Text `(v ~T0 @X0 0 ef1`*uc ]
-"145 main.c
-[; ;main.c: 145: void MOTOR_Init(void);
-[v _MOTOR_Init `(v ~T0 @X0 0 ef ]
-"150
-[; ;main.c: 150: void BAUDS_set(uint8_t index);
-[v _BAUDS_set `(v ~T0 @X0 0 ef1`uc ]
-"152
-[; ;main.c: 152: void print_cnt(uint16_t _pan, uint16_t _tilt);
+"153 main.c
+[; ;main.c: 153: void print_cnt(uint16_t _pan, uint16_t _tilt);
 [v _print_cnt `(v ~T0 @X0 0 ef2`ui`ui ]
-"148
-[; ;main.c: 148: void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt);
+"149
+[; ;main.c: 149: void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt);
 [v _PRESET_save `(v ~T0 @X0 0 ef3`uc`ui`ui ]
-"16 ./usart.h
-[; ;./usart.h: 16: void UART_Write(char data);
-[v _UART_Write `(v ~T0 @X0 0 ef1`uc ]
-"149 main.c
-[; ;main.c: 149: void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt);
+"155
+[; ;main.c: 155: void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text);
+[v _print_preset `(v ~T0 @X0 0 ef4`uc`ui`ui`*uc ]
+"150
+[; ;main.c: 150: void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt);
 [v _PRESET_load `(v ~T0 @X0 0 ef3`uc`*ui`*ui ]
-"146
-[; ;main.c: 146: uint8_t SPEED_calc(uint8_t speed);
+"147
+[; ;main.c: 147: uint8_t SPEED_calc(uint8_t speed);
 [v _SPEED_calc `(uc ~T0 @X0 0 ef1`uc ]
+"156
+[; ;main.c: 156: void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt);
+[v _print_cmd_mov `(v ~T0 @X0 0 ef3`*uc`ui`ui ]
 "1094 /home/rh/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8/pic/include/proc/pic16f648a.h
 [; ;/home/rh/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8/pic/include/proc/pic16f648a.h: 1094:     struct {
 [s S41 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -180,6 +186,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "114
 [; ;/opt/microchip/xc8/v2.36/pic/include/eeprom_routines.h: 114: extern void eeprom_write(unsigned char addr, unsigned char value);
 [v _eeprom_write `(v ~T0 @X0 0 ef2`uc`uc ]
+"154 main.c
+[; ;main.c: 154: void print_val(uint16_t value);
+[v _print_val `(v ~T0 @X0 0 ef1`ui ]
+"16 ./usart.h
+[; ;./usart.h: 16: void UART_Write(char data);
+[v _UART_Write `(v ~T0 @X0 0 ef1`uc ]
 "39 ./main.h
 [p x FOSC  =  INTOSCIO   ]
 "40
@@ -307,304 +319,304 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1269
 [; ;/home/rh/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8/pic/include/proc/pic16f648a.h: 1269: __asm("VRCON equ 09Fh");
 [; <" VRCON equ 09Fh ;# ">
-"66 main.c
-[; ;main.c: 66: volatile uint8_t data_receiv = 0;
+"67 main.c
+[; ;main.c: 67: volatile uint8_t data_receiv = 0;
 [v _data_receiv `Vuc ~T0 @X0 1 e ]
 [i _data_receiv
 -> -> 0 `i `uc
 ]
-"67
-[; ;main.c: 67: volatile uint8_t buffer_index1 = 0;
+"68
+[; ;main.c: 68: volatile uint8_t buffer_index1 = 0;
 [v _buffer_index1 `Vuc ~T0 @X0 1 e ]
 [i _buffer_index1
 -> -> 0 `i `uc
 ]
-"68
-[; ;main.c: 68: volatile uint8_t buffer_index2 = 0;
+"69
+[; ;main.c: 69: volatile uint8_t buffer_index2 = 0;
 [v _buffer_index2 `Vuc ~T0 @X0 1 e ]
 [i _buffer_index2
 -> -> 0 `i `uc
 ]
-"69
-[; ;main.c: 69: volatile uint8_t buffer_data0[7] = {0};
+"70
+[; ;main.c: 70: volatile uint8_t buffer_data0[7] = {0};
 [v _buffer_data0 `Vuc ~T0 @X0 -> 7 `i e ]
 [i _buffer_data0
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"70
-[; ;main.c: 70: volatile uint8_t buffer_data1[7] = {0};
+"71
+[; ;main.c: 71: volatile uint8_t buffer_data1[7] = {0};
 [v _buffer_data1 `Vuc ~T0 @X0 -> 7 `i e ]
 [i _buffer_data1
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"71
-[; ;main.c: 71: volatile uint8_t buffer_data2[7] = {0};
+"72
+[; ;main.c: 72: volatile uint8_t buffer_data2[7] = {0};
 [v _buffer_data2 `Vuc ~T0 @X0 -> 7 `i e ]
 [i _buffer_data2
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"72
-[; ;main.c: 72: volatile uint8_t buffer_data3[7] = {0};
+"73
+[; ;main.c: 73: volatile uint8_t buffer_data3[7] = {0};
 [v _buffer_data3 `Vuc ~T0 @X0 -> 7 `i e ]
 [i _buffer_data3
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"73
-[; ;main.c: 73: volatile uint8_t buffer_data4[7] = {0};
+"74
+[; ;main.c: 74: volatile uint8_t buffer_data4[7] = {0};
 [v _buffer_data4 `Vuc ~T0 @X0 -> 7 `i e ]
 [i _buffer_data4
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"74
-[; ;main.c: 74: volatile _Bool buffer_ready[5] = {0};
+"75
+[; ;main.c: 75: volatile _Bool buffer_ready[5] = {0};
 [v _buffer_ready `Va ~T0 @X0 -> 5 `i e ]
 [i _buffer_ready
 :U ..
 -> -> 0 `i `a
 ..
 ]
-"75
-[; ;main.c: 75: volatile uint8_t header_cnt = 0;
+"76
+[; ;main.c: 76: volatile uint8_t header_cnt = 0;
 [v _header_cnt `Vuc ~T0 @X0 1 e ]
 [i _header_cnt
 -> -> 0 `i `uc
 ]
-"77
-[; ;main.c: 77: volatile uint8_t timeout_receiv = 0;
+"78
+[; ;main.c: 78: volatile uint8_t timeout_receiv = 0;
 [v _timeout_receiv `Vuc ~T0 @X0 1 e ]
 [i _timeout_receiv
 -> -> 0 `i `uc
 ]
-"79
-[; ;main.c: 79: volatile _Bool preset_pan_enabled = 0;
+"80
+[; ;main.c: 80: volatile _Bool preset_pan_enabled = 0;
 [v _preset_pan_enabled `Va ~T0 @X0 1 e ]
 [i _preset_pan_enabled
 -> -> 0 `i `a
 ]
-"80
-[; ;main.c: 80: volatile _Bool preset_pan_enabled_old = 0;
+"81
+[; ;main.c: 81: volatile _Bool preset_pan_enabled_old = 0;
 [v _preset_pan_enabled_old `Va ~T0 @X0 1 e ]
 [i _preset_pan_enabled_old
 -> -> 0 `i `a
 ]
-"82
-[; ;main.c: 82: volatile _Bool preset_tilt_enabled = 0;
+"83
+[; ;main.c: 83: volatile _Bool preset_tilt_enabled = 0;
 [v _preset_tilt_enabled `Va ~T0 @X0 1 e ]
 [i _preset_tilt_enabled
 -> -> 0 `i `a
 ]
-"83
-[; ;main.c: 83: volatile _Bool preset_tilt_enabled_old = 0;
+"84
+[; ;main.c: 84: volatile _Bool preset_tilt_enabled_old = 0;
 [v _preset_tilt_enabled_old `Va ~T0 @X0 1 e ]
 [i _preset_tilt_enabled_old
 -> -> 0 `i `a
 ]
-"85
-[; ;main.c: 85: volatile _Bool pan_enabled = 0;
+"86
+[; ;main.c: 86: volatile _Bool pan_enabled = 0;
 [v _pan_enabled `Va ~T0 @X0 1 e ]
 [i _pan_enabled
 -> -> 0 `i `a
 ]
-"86
-[; ;main.c: 86: volatile _Bool pan_direction = 0;
+"87
+[; ;main.c: 87: volatile _Bool pan_direction = 0;
 [v _pan_direction `Va ~T0 @X0 1 e ]
 [i _pan_direction
 -> -> 0 `i `a
 ]
-"87
-[; ;main.c: 87: volatile uint8_t pan_speed = 0;
+"88
+[; ;main.c: 88: volatile uint8_t pan_speed = 0;
 [v _pan_speed `Vuc ~T0 @X0 1 e ]
 [i _pan_speed
 -> -> 0 `i `uc
 ]
-"88
-[; ;main.c: 88: volatile uint8_t pan_speed_old = 0;
+"89
+[; ;main.c: 89: volatile uint8_t pan_speed_old = 0;
 [v _pan_speed_old `Vuc ~T0 @X0 1 e ]
 [i _pan_speed_old
 -> -> 0 `i `uc
 ]
-"89
-[; ;main.c: 89: volatile uint16_t pan_counter = 0;
+"90
+[; ;main.c: 90: volatile uint16_t pan_counter = 0;
 [v _pan_counter `Vui ~T0 @X0 1 e ]
 [i _pan_counter
 -> -> 0 `i `ui
 ]
-"91
-[; ;main.c: 91: volatile _Bool tilt_enabled = 0;
+"92
+[; ;main.c: 92: volatile _Bool tilt_enabled = 0;
 [v _tilt_enabled `Va ~T0 @X0 1 e ]
 [i _tilt_enabled
 -> -> 0 `i `a
 ]
-"92
-[; ;main.c: 92: volatile _Bool tilt_direction = 0;
+"93
+[; ;main.c: 93: volatile _Bool tilt_direction = 0;
 [v _tilt_direction `Va ~T0 @X0 1 e ]
 [i _tilt_direction
 -> -> 0 `i `a
 ]
-"93
-[; ;main.c: 93: volatile uint8_t tilt_speed = 0;
+"94
+[; ;main.c: 94: volatile uint8_t tilt_speed = 0;
 [v _tilt_speed `Vuc ~T0 @X0 1 e ]
 [i _tilt_speed
 -> -> 0 `i `uc
 ]
-"94
-[; ;main.c: 94: volatile uint8_t tilt_speed_old = 0;
+"95
+[; ;main.c: 95: volatile uint8_t tilt_speed_old = 0;
 [v _tilt_speed_old `Vuc ~T0 @X0 1 e ]
 [i _tilt_speed_old
 -> -> 0 `i `uc
 ]
-"95
-[; ;main.c: 95: volatile uint16_t tilt_counter = 0;
+"96
+[; ;main.c: 96: volatile uint16_t tilt_counter = 0;
 [v _tilt_counter `Vui ~T0 @X0 1 e ]
 [i _tilt_counter
 -> -> 0 `i `ui
 ]
-"97
-[; ;main.c: 97: volatile uint8_t pan_step_phase = 0;
+"98
+[; ;main.c: 98: volatile uint8_t pan_step_phase = 0;
 [v _pan_step_phase `Vuc ~T0 @X0 1 e ]
 [i _pan_step_phase
 -> -> 0 `i `uc
 ]
-"98
-[; ;main.c: 98: volatile uint8_t tilt_step_phase = 0;
+"99
+[; ;main.c: 99: volatile uint8_t tilt_step_phase = 0;
 [v _tilt_step_phase `Vuc ~T0 @X0 1 e ]
 [i _tilt_step_phase
 -> -> 0 `i `uc
 ]
-"100
-[; ;main.c: 100: volatile uint8_t timer1_pan = 0;
+"101
+[; ;main.c: 101: volatile uint8_t timer1_pan = 0;
 [v _timer1_pan `Vuc ~T0 @X0 1 e ]
 [i _timer1_pan
 -> -> 0 `i `uc
 ]
-"101
-[; ;main.c: 101: volatile uint8_t timer1_tilt = 0;
+"102
+[; ;main.c: 102: volatile uint8_t timer1_tilt = 0;
 [v _timer1_tilt `Vuc ~T0 @X0 1 e ]
 [i _timer1_tilt
 -> -> 0 `i `uc
 ]
-"102
-[; ;main.c: 102: volatile uint8_t timer1_pan_ref = 0;
+"103
+[; ;main.c: 103: volatile uint8_t timer1_pan_ref = 0;
 [v _timer1_pan_ref `Vuc ~T0 @X0 1 e ]
 [i _timer1_pan_ref
 -> -> 0 `i `uc
 ]
-"103
-[; ;main.c: 103: volatile uint8_t timer1_tilt_ref = 0;
+"104
+[; ;main.c: 104: volatile uint8_t timer1_tilt_ref = 0;
 [v _timer1_tilt_ref `Vuc ~T0 @X0 1 e ]
 [i _timer1_tilt_ref
 -> -> 0 `i `uc
 ]
-"105
-[; ;main.c: 105: volatile uint16_t pan_goto = 0;
+"106
+[; ;main.c: 106: volatile uint16_t pan_goto = 0;
 [v _pan_goto `Vui ~T0 @X0 1 e ]
 [i _pan_goto
 -> -> 0 `i `ui
 ]
-"106
-[; ;main.c: 106: volatile uint16_t tilt_goto = 0;
+"107
+[; ;main.c: 107: volatile uint16_t tilt_goto = 0;
 [v _tilt_goto `Vui ~T0 @X0 1 e ]
 [i _tilt_goto
 -> -> 0 `i `ui
 ]
-"108
-[; ;main.c: 108: uint8_t frame_index = 0;
+"109
+[; ;main.c: 109: uint8_t frame_index = 0;
 [v _frame_index `uc ~T0 @X0 1 e ]
 [i _frame_index
 -> -> 0 `i `uc
 ]
-"109
-[; ;main.c: 109: uint8_t frame_data[7] = {0};
+"110
+[; ;main.c: 110: uint8_t frame_data[7] = {0};
 [v _frame_data `uc ~T0 @X0 -> 7 `i e ]
 [i _frame_data
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"111
-[; ;main.c: 111: uint8_t header_pos = 0;
+"112
+[; ;main.c: 112: uint8_t header_pos = 0;
 [v _header_pos `uc ~T0 @X0 1 e ]
 [i _header_pos
 -> -> 0 `i `uc
 ]
-"114
-[; ;main.c: 114: uint8_t response_type = 0x00;
+"115
+[; ;main.c: 115: uint8_t response_type = 0x00;
 [v _response_type `uc ~T0 @X0 1 e ]
 [i _response_type
 -> -> 0 `i `uc
 ]
-"116
-[; ;main.c: 116: uint8_t P_addr = 0;
+"117
+[; ;main.c: 117: uint8_t P_addr = 0;
 [v _P_addr `uc ~T0 @X0 1 e ]
 [i _P_addr
 -> -> 0 `i `uc
 ]
-"117
-[; ;main.c: 117: uint8_t P_cmd1 = 0;
+"118
+[; ;main.c: 118: uint8_t P_cmd1 = 0;
 [v _P_cmd1 `uc ~T0 @X0 1 e ]
 [i _P_cmd1
 -> -> 0 `i `uc
 ]
-"118
-[; ;main.c: 118: uint8_t P_cmd2 = 0;
+"119
+[; ;main.c: 119: uint8_t P_cmd2 = 0;
 [v _P_cmd2 `uc ~T0 @X0 1 e ]
 [i _P_cmd2
 -> -> 0 `i `uc
 ]
-"119
-[; ;main.c: 119: uint8_t P_dat1 = 0;
+"120
+[; ;main.c: 120: uint8_t P_dat1 = 0;
 [v _P_dat1 `uc ~T0 @X0 1 e ]
 [i _P_dat1
 -> -> 0 `i `uc
 ]
-"120
-[; ;main.c: 120: uint8_t P_dat2 = 0;
+"121
+[; ;main.c: 121: uint8_t P_dat2 = 0;
 [v _P_dat2 `uc ~T0 @X0 1 e ]
 [i _P_dat2
 -> -> 0 `i `uc
 ]
-"121
-[; ;main.c: 121: uint8_t P_chksum = 0;
+"122
+[; ;main.c: 122: uint8_t P_chksum = 0;
 [v _P_chksum `uc ~T0 @X0 1 e ]
 [i _P_chksum
 -> -> 0 `i `uc
 ]
-"123
-[; ;main.c: 123: uint8_t preset_id = 0;
+"124
+[; ;main.c: 124: uint8_t preset_id = 0;
 [v _preset_id `uc ~T0 @X0 1 e ]
 [i _preset_id
 -> -> 0 `i `uc
 ]
-"125
-[; ;main.c: 125: uint8_t alarms_data = 0;
+"126
+[; ;main.c: 126: uint8_t alarms_data = 0;
 [v _alarms_data `uc ~T0 @X0 1 e ]
 [i _alarms_data
 -> -> 0 `i `uc
 ]
-"127
-[; ;main.c: 127: _Bool is_reboot = 0;
+"128
+[; ;main.c: 128: _Bool is_reboot = 0;
 [v _is_reboot `a ~T0 @X0 1 e ]
 [i _is_reboot
 -> -> 0 `i `a
 ]
-"129
-[; ;main.c: 129: _Bool is_init = 0;
+"130
+[; ;main.c: 130: _Bool is_init = 0;
 [v _is_init `a ~T0 @X0 1 e ]
 [i _is_init
 -> -> 0 `i `a
 ]
-"131
-[; ;main.c: 131: const _Bool steps_1A[8] = {1, 1, 0, 0, 0, 0, 0, 1};
+"132
+[; ;main.c: 132: const _Bool steps_1A[8] = {1, 1, 0, 0, 0, 0, 0, 1};
 [v _steps_1A `Ca ~T0 @X0 -> 8 `i e ]
 [i _steps_1A
 :U ..
@@ -618,8 +630,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 1 `i `a
 ..
 ]
-"132
-[; ;main.c: 132: const _Bool steps_1B[8] = {0, 1, 1, 1, 0, 0, 0, 0};
+"133
+[; ;main.c: 133: const _Bool steps_1B[8] = {0, 1, 1, 1, 0, 0, 0, 0};
 [v _steps_1B `Ca ~T0 @X0 -> 8 `i e ]
 [i _steps_1B
 :U ..
@@ -633,8 +645,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `a
 ..
 ]
-"133
-[; ;main.c: 133: const _Bool steps_2A[8] = {0, 0, 0, 1, 1, 1, 0, 0};
+"134
+[; ;main.c: 134: const _Bool steps_2A[8] = {0, 0, 0, 1, 1, 1, 0, 0};
 [v _steps_2A `Ca ~T0 @X0 -> 8 `i e ]
 [i _steps_2A
 :U ..
@@ -648,8 +660,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `a
 ..
 ]
-"134
-[; ;main.c: 134: const _Bool steps_2B[8] = {0, 0, 0, 0, 0, 1, 1, 1};
+"135
+[; ;main.c: 135: const _Bool steps_2B[8] = {0, 0, 0, 0, 0, 1, 1, 1};
 [v _steps_2B `Ca ~T0 @X0 -> 8 `i e ]
 [i _steps_2B
 :U ..
@@ -663,8 +675,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 1 `i `a
 ..
 ]
-"136
-[; ;main.c: 136: const uint8_t speed_ref[8] = {0x06, 0x0C, 0x12, 0x19, 0x1F, 0x25, 0x2C, 0x32};
+"137
+[; ;main.c: 137: const uint8_t speed_ref[8] = {0x06, 0x0C, 0x12, 0x19, 0x1F, 0x25, 0x2C, 0x32};
 [v _speed_ref `Cuc ~T0 @X0 -> 8 `i e ]
 [i _speed_ref
 :U ..
@@ -679,1206 +691,1170 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v $root$_myISR `(v ~T0 @X0 0 e ]
-"154
-[; ;main.c: 154: void __attribute__((picinterrupt(("")))) myISR() {
+"158
+[; ;main.c: 158: void __attribute__((picinterrupt(("")))) myISR() {
 [v _myISR `(v ~T2 @X0 1 ef ]
 {
 [e :U _myISR ]
 [f ]
-"155
-[; ;main.c: 155:     if (PIR1bits.RCIF == 1) {
+"159
+[; ;main.c: 159:     if (PIR1bits.RCIF == 1) {
 [e $ ! == -> . . _PIR1bits 0 5 `i -> 1 `i 52  ]
 {
-"156
-[; ;main.c: 156:         data_receiv = RCREG;
-[e = _data_receiv _RCREG ]
-"158
-[; ;main.c: 158:         PORTBbits.RB3 = !PORTBbits.RB3;
-[e = . . _PORTBbits 0 3 -> -> ! != -> . . _PORTBbits 0 3 `i -> 0 `i `i `uc ]
 "160
-[; ;main.c: 160:         if (is_init == 1) {
+[; ;main.c: 160:         data_receiv = RCREG;
+[e = _data_receiv _RCREG ]
+"162
+[; ;main.c: 162:         PORTBbits.RB3 = !PORTBbits.RB3;
+[e = . . _PORTBbits 0 3 -> -> ! != -> . . _PORTBbits 0 3 `i -> 0 `i `i `uc ]
+"164
+[; ;main.c: 164:         if (is_init == 1) {
 [e $ ! == -> _is_init `i -> 1 `i 53  ]
 {
-"161
-[; ;main.c: 161:             return;
-[e $UE 51  ]
-"162
-[; ;main.c: 162:         }
-}
-[e :U 53 ]
-"164
-[; ;main.c: 164:         if (data_receiv == 0xFF) {
-[e $ ! == -> _data_receiv `i -> 255 `i 54  ]
-{
 "165
-[; ;main.c: 165:             timeout_receiv = 0;
-[e = _timeout_receiv -> -> 0 `i `uc ]
+[; ;main.c: 165:             return;
+[e $UE 51  ]
 "166
 [; ;main.c: 166:         }
 }
-[e :U 54 ]
+[e :U 53 ]
 "168
-[; ;main.c: 168:         if ((buffer_index2 <= 6) || ((buffer_index2 == 0) && (data_receiv == 0xFF))) {
-[e $ ! || <= -> _buffer_index2 `i -> 6 `i && == -> _buffer_index2 `i -> 0 `i == -> _data_receiv `i -> 255 `i 55  ]
+[; ;main.c: 168:         if (data_receiv == 0xFF) {
+[e $ ! == -> _data_receiv `i -> 255 `i 54  ]
 {
 "169
-[; ;main.c: 169:             if (buffer_index1 == 0) {
-[e $ ! == -> _buffer_index1 `i -> 0 `i 56  ]
-{
+[; ;main.c: 169:             timeout_receiv = 0;
+[e = _timeout_receiv -> -> 0 `i `uc ]
 "170
-[; ;main.c: 170:                 buffer_data0[buffer_index2++] = data_receiv;
-[e = *U + &U _buffer_data0 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data0 `ui `ux _data_receiv ]
-"171
-[; ;main.c: 171:             } else if (buffer_index1 == 1) {
+[; ;main.c: 170:         }
 }
-[e $U 57  ]
-[e :U 56 ]
-[e $ ! == -> _buffer_index1 `i -> 1 `i 58  ]
-{
+[e :U 54 ]
 "172
-[; ;main.c: 172:                 buffer_data1[buffer_index2++] = data_receiv;
-[e = *U + &U _buffer_data1 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data1 `ui `ux _data_receiv ]
+[; ;main.c: 172:         if ((buffer_index2 <= 6) || ((buffer_index2 == 0) && (data_receiv == 0xFF))) {
+[e $ ! || <= -> _buffer_index2 `i -> 6 `i && == -> _buffer_index2 `i -> 0 `i == -> _data_receiv `i -> 255 `i 55  ]
+{
 "173
-[; ;main.c: 173:             } else if (buffer_index1 == 2) {
-}
-[e $U 59  ]
-[e :U 58 ]
-[e $ ! == -> _buffer_index1 `i -> 2 `i 60  ]
+[; ;main.c: 173:             switch (buffer_index1) {
+[e $U 57  ]
 {
 "174
-[; ;main.c: 174:                 buffer_data2[buffer_index2++] = data_receiv;
-[e = *U + &U _buffer_data2 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data2 `ui `ux _data_receiv ]
+[; ;main.c: 174:                 case 0:
+[e :U 58 ]
 "175
-[; ;main.c: 175:             } else if (buffer_index1 == 3) {
-}
-[e $U 61  ]
-[e :U 60 ]
-[e $ ! == -> _buffer_index1 `i -> 3 `i 62  ]
-{
+[; ;main.c: 175:                     buffer_data0[buffer_index2++] = data_receiv;
+[e = *U + &U _buffer_data0 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data0 `ui `ux _data_receiv ]
 "176
-[; ;main.c: 176:                 buffer_data3[buffer_index2++] = data_receiv;
-[e = *U + &U _buffer_data3 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data3 `ui `ux _data_receiv ]
+[; ;main.c: 176:                     break;
+[e $U 56  ]
 "177
-[; ;main.c: 177:             } else if (buffer_index1 == 4) {
-}
-[e $U 63  ]
-[e :U 62 ]
-[e $ ! == -> _buffer_index1 `i -> 4 `i 64  ]
-{
-"178
-[; ;main.c: 178:                 buffer_data4[buffer_index2++] = data_receiv;
-[e = *U + &U _buffer_data4 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data4 `ui `ux _data_receiv ]
-"179
-[; ;main.c: 179:             }
-}
-[e :U 64 ]
-[e :U 63 ]
-[e :U 61 ]
+[; ;main.c: 177:                 case 1:
 [e :U 59 ]
-[e :U 57 ]
+"178
+[; ;main.c: 178:                     buffer_data1[buffer_index2++] = data_receiv;
+[e = *U + &U _buffer_data1 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data1 `ui `ux _data_receiv ]
+"179
+[; ;main.c: 179:                     break;
+[e $U 56  ]
 "180
-[; ;main.c: 180:         }
+[; ;main.c: 180:                 case 2:
+[e :U 60 ]
+"181
+[; ;main.c: 181:                     buffer_data2[buffer_index2++] = data_receiv;
+[e = *U + &U _buffer_data2 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data2 `ui `ux _data_receiv ]
+"182
+[; ;main.c: 182:                     break;
+[e $U 56  ]
+"183
+[; ;main.c: 183:                 case 3:
+[e :U 61 ]
+"184
+[; ;main.c: 184:                     buffer_data3[buffer_index2++] = data_receiv;
+[e = *U + &U _buffer_data3 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data3 `ui `ux _data_receiv ]
+"185
+[; ;main.c: 185:                     break;
+[e $U 56  ]
+"186
+[; ;main.c: 186:                 case 4:
+[e :U 62 ]
+"187
+[; ;main.c: 187:                     buffer_data4[buffer_index2++] = data_receiv;
+[e = *U + &U _buffer_data4 * -> ++ _buffer_index2 -> -> 1 `i `Vuc `ux -> -> # *U &U _buffer_data4 `ui `ux _data_receiv ]
+"188
+[; ;main.c: 188:                     break;
+[e $U 56  ]
+"189
+[; ;main.c: 189:                 default:
+[e :U 63 ]
+"191
+[; ;main.c: 191:                     break;
+[e $U 56  ]
+"192
+[; ;main.c: 192:             }
+}
+[e $U 56  ]
+[e :U 57 ]
+[e [\ -> _buffer_index1 `i , $ -> 0 `i 58
+ , $ -> 1 `i 59
+ , $ -> 2 `i 60
+ , $ -> 3 `i 61
+ , $ -> 4 `i 62
+ 63 ]
+[e :U 56 ]
+"193
+[; ;main.c: 193:         }
 }
 [e :U 55 ]
-"182
-[; ;main.c: 182:         if (buffer_index2 == 7) {
-[e $ ! == -> _buffer_index2 `i -> 7 `i 65  ]
-{
-"183
-[; ;main.c: 183:             buffer_index2 = 0;
-[e = _buffer_index2 -> -> 0 `i `uc ]
-"185
-[; ;main.c: 185:             buffer_ready[buffer_index1] = 1;
-[e = *U + &U _buffer_ready * -> _buffer_index1 `ux -> -> # *U &U _buffer_ready `ui `ux -> -> 1 `i `a ]
-"187
-[; ;main.c: 187:             if (buffer_index1 < 4) {
-[e $ ! < -> _buffer_index1 `i -> 4 `i 66  ]
-{
-"188
-[; ;main.c: 188:                 buffer_index1++;
-[e ++ _buffer_index1 -> -> 1 `i `Vuc ]
-"189
-[; ;main.c: 189:             } else {
-}
-[e $U 67  ]
-[e :U 66 ]
-{
-"190
-[; ;main.c: 190:                 buffer_index1 = 0;
-[e = _buffer_index1 -> -> 0 `i `uc ]
-"191
-[; ;main.c: 191:             }
-}
-[e :U 67 ]
-"192
-[; ;main.c: 192:         }
-}
-[e :U 65 ]
-"194
-[; ;main.c: 194:         PIR1bits.RCIF = 0;
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
 "195
-[; ;main.c: 195:     } else if (PIR1bits.TMR1IF == 1) {
-}
-[e $U 68  ]
-[e :U 52 ]
-[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 69  ]
+[; ;main.c: 195:         if (buffer_index2 == 7) {
+[e $ ! == -> _buffer_index2 `i -> 7 `i 64  ]
 {
-"197
-[; ;main.c: 197:         PIE1bits.TMR1IE = 1;
-[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-"198
-[; ;main.c: 198:         TMR1H = 255;
-[e = _TMR1H -> -> 255 `i `uc ]
-"199
-[; ;main.c: 199:         TMR1L = 131;
-[e = _TMR1L -> -> 131 `i `uc ]
-"201
-[; ;main.c: 201:         if (timeout_receiv < 15) {
-[e $ ! < -> _timeout_receiv `i -> 15 `i 70  ]
-{
-"202
-[; ;main.c: 202:             timeout_receiv++;
-[e ++ _timeout_receiv -> -> 1 `i `Vuc ]
-"203
-[; ;main.c: 203:         } else if (buffer_index2 > 0) {
-}
-[e $U 71  ]
-[e :U 70 ]
-[e $ ! > -> _buffer_index2 `i -> 0 `i 72  ]
-{
-"204
-[; ;main.c: 204:             buffer_index2 = 0;
+"196
+[; ;main.c: 196:             buffer_index2 = 0;
 [e = _buffer_index2 -> -> 0 `i `uc ]
+"198
+[; ;main.c: 198:             buffer_ready[buffer_index1] = 1;
+[e = *U + &U _buffer_ready * -> _buffer_index1 `ux -> -> # *U &U _buffer_ready `ui `ux -> -> 1 `i `a ]
+"200
+[; ;main.c: 200:             if (buffer_index1 < 4) {
+[e $ ! < -> _buffer_index1 `i -> 4 `i 65  ]
+{
+"201
+[; ;main.c: 201:                 buffer_index1++;
+[e ++ _buffer_index1 -> -> 1 `i `Vuc ]
+"202
+[; ;main.c: 202:             } else {
+}
+[e $U 66  ]
+[e :U 65 ]
+{
+"203
+[; ;main.c: 203:                 buffer_index1 = 0;
+[e = _buffer_index1 -> -> 0 `i `uc ]
+"204
+[; ;main.c: 204:             }
+}
+[e :U 66 ]
 "205
 [; ;main.c: 205:         }
 }
-[e :U 72 ]
-[e :U 71 ]
+[e :U 64 ]
 "207
-[; ;main.c: 207:         if (timer1_pan < timer1_pan_ref) {
-[e $ ! < -> _timer1_pan `i -> _timer1_pan_ref `i 73  ]
-{
+[; ;main.c: 207:         PIR1bits.RCIF = 0;
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
 "208
-[; ;main.c: 208:             timer1_pan++;
-[e ++ _timer1_pan -> -> 1 `i `Vuc ]
-"209
-[; ;main.c: 209:         } else {
+[; ;main.c: 208:     } else if (PIR1bits.TMR1IF == 1) {
 }
-[e $U 74  ]
-[e :U 73 ]
+[e $U 67  ]
+[e :U 52 ]
+[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 68  ]
 {
 "210
-[; ;main.c: 210:             timer1_pan = 0;
-[e = _timer1_pan -> -> 0 `i `uc ]
+[; ;main.c: 210:         PIE1bits.TMR1IE = 1;
+[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
+"211
+[; ;main.c: 211:         TMR1H = 255;
+[e = _TMR1H -> -> 255 `i `uc ]
+"212
+[; ;main.c: 212:         TMR1L = 131;
+[e = _TMR1L -> -> 131 `i `uc ]
 "214
-[; ;main.c: 214:             if (pan_enabled == 1) {
-[e $ ! == -> _pan_enabled `i -> 1 `i 75  ]
+[; ;main.c: 214:         if (timeout_receiv < 15) {
+[e $ ! < -> _timeout_receiv `i -> 15 `i 69  ]
 {
 "215
-[; ;main.c: 215:                 if (pan_direction == 0) {
-[e $ ! == -> _pan_direction `i -> 0 `i 76  ]
-{
+[; ;main.c: 215:             timeout_receiv++;
+[e ++ _timeout_receiv -> -> 1 `i `Vuc ]
 "216
-[; ;main.c: 216:                     if (pan_counter < 12000) {
-[e $ ! < _pan_counter -> -> 12000 `i `ui 77  ]
+[; ;main.c: 216:         } else if (buffer_index2 > 0) {
+}
+[e $U 70  ]
+[e :U 69 ]
+[e $ ! > -> _buffer_index2 `i -> 0 `i 71  ]
 {
 "217
-[; ;main.c: 217:                         pan_counter++;
-[e ++ _pan_counter -> -> 1 `i `Vui ]
-"219
-[; ;main.c: 219:                         if ((pan_step_phase == 0) || (pan_step_phase > 7)) {
-[e $ ! || == -> _pan_step_phase `i -> 0 `i > -> _pan_step_phase `i -> 7 `i 78  ]
-{
+[; ;main.c: 217:             buffer_index2 = 0;
+[e = _buffer_index2 -> -> 0 `i `uc ]
+"218
+[; ;main.c: 218:         }
+}
+[e :U 71 ]
+[e :U 70 ]
 "220
-[; ;main.c: 220:                             pan_step_phase = 7;
-[e = _pan_step_phase -> -> 7 `i `uc ]
+[; ;main.c: 220:         if (timer1_pan < timer1_pan_ref) {
+[e $ ! < -> _timer1_pan `i -> _timer1_pan_ref `i 72  ]
+{
 "221
-[; ;main.c: 221:                         } else {
-}
-[e $U 79  ]
-[e :U 78 ]
-{
+[; ;main.c: 221:             timer1_pan++;
+[e ++ _timer1_pan -> -> 1 `i `Vuc ]
 "222
-[; ;main.c: 222:                             pan_step_phase--;
-[e -- _pan_step_phase -> -> 1 `i `Vuc ]
+[; ;main.c: 222:         } else {
+}
+[e $U 73  ]
+[e :U 72 ]
+{
 "223
-[; ;main.c: 223:                         }
-}
-[e :U 79 ]
-"224
-[; ;main.c: 224:                     }
-}
-[e :U 77 ]
-"225
-[; ;main.c: 225:                 } else {
-}
-[e $U 80  ]
-[e :U 76 ]
-{
-"226
-[; ;main.c: 226:                     if ((pan_counter > 0) || (is_init == 1)) {
-[e $ ! || > _pan_counter -> -> 0 `i `ui == -> _is_init `i -> 1 `i 81  ]
-{
+[; ;main.c: 223:             timer1_pan = 0;
+[e = _timer1_pan -> -> 0 `i `uc ]
 "227
-[; ;main.c: 227:                         pan_counter--;
-[e -- _pan_counter -> -> 1 `i `Vui ]
+[; ;main.c: 227:             if (pan_enabled == 1) {
+[e $ ! == -> _pan_enabled `i -> 1 `i 74  ]
+{
+"228
+[; ;main.c: 228:                 if (pan_direction == 0) {
+[e $ ! == -> _pan_direction `i -> 0 `i 75  ]
+{
 "229
-[; ;main.c: 229:                         if (pan_step_phase >= 7) {
-[e $ ! >= -> _pan_step_phase `i -> 7 `i 82  ]
+[; ;main.c: 229:                     if (pan_counter < 12000) {
+[e $ ! < _pan_counter -> -> 12000 `i `ui 76  ]
 {
 "230
-[; ;main.c: 230:                             pan_step_phase = 0;
-[e = _pan_step_phase -> -> 0 `i `uc ]
-"231
-[; ;main.c: 231:                         } else {
-}
-[e $U 83  ]
-[e :U 82 ]
-{
+[; ;main.c: 230:                         pan_counter++;
+[e ++ _pan_counter -> -> 1 `i `Vui ]
 "232
-[; ;main.c: 232:                             pan_step_phase++;
-[e ++ _pan_step_phase -> -> 1 `i `Vuc ]
+[; ;main.c: 232:                         if ((pan_step_phase == 0) || (pan_step_phase > 7)) {
+[e $ ! || == -> _pan_step_phase `i -> 0 `i > -> _pan_step_phase `i -> 7 `i 77  ]
+{
 "233
-[; ;main.c: 233:                         }
-}
-[e :U 83 ]
+[; ;main.c: 233:                             pan_step_phase = 7;
+[e = _pan_step_phase -> -> 7 `i `uc ]
 "234
-[; ;main.c: 234:                     }
+[; ;main.c: 234:                         } else {
 }
-[e :U 81 ]
+[e $U 78  ]
+[e :U 77 ]
+{
 "235
-[; ;main.c: 235:                 }
+[; ;main.c: 235:                             pan_step_phase--;
+[e -- _pan_step_phase -> -> 1 `i `Vuc ]
+"236
+[; ;main.c: 236:                         }
 }
-[e :U 80 ]
+[e :U 78 ]
 "237
-[; ;main.c: 237:                 if (pan_goto == pan_counter) {
-[e $ ! == _pan_goto _pan_counter 84  ]
-{
+[; ;main.c: 237:                     }
+}
+[e :U 76 ]
 "238
-[; ;main.c: 238:                     if (preset_pan_enabled == 1) {
-[e $ ! == -> _preset_pan_enabled `i -> 1 `i 85  ]
-{
-"239
-[; ;main.c: 239:                         preset_pan_enabled = 0;
-[e = _preset_pan_enabled -> -> 0 `i `a ]
-"241
-[; ;main.c: 241:                         pan_enabled = 0;
-[e = _pan_enabled -> -> 0 `i `a ]
-"242
-[; ;main.c: 242:                     }
+[; ;main.c: 238:                 } else {
 }
-[e :U 85 ]
-"243
-[; ;main.c: 243:                 }
-}
-[e :U 84 ]
-"245
-[; ;main.c: 245:                 PORTAbits.RA0 = steps_1A[pan_step_phase];
-[e = . . _PORTAbits 0 0 -> *U + &U _steps_1A * -> _pan_step_phase `ux -> -> # *U &U _steps_1A `ui `ux `uc ]
-"246
-[; ;main.c: 246:                 PORTAbits.RA7 = steps_1B[pan_step_phase];
-[e = . . _PORTAbits 0 7 -> *U + &U _steps_1B * -> _pan_step_phase `ux -> -> # *U &U _steps_1B `ui `ux `uc ]
-"247
-[; ;main.c: 247:                 PORTAbits.RA6 = steps_2A[pan_step_phase];
-[e = . . _PORTAbits 0 6 -> *U + &U _steps_2A * -> _pan_step_phase `ux -> -> # *U &U _steps_2A `ui `ux `uc ]
-"248
-[; ;main.c: 248:                 PORTAbits.RA1 = steps_2B[pan_step_phase];
-[e = . . _PORTAbits 0 1 -> *U + &U _steps_2B * -> _pan_step_phase `ux -> -> # *U &U _steps_2B `ui `ux `uc ]
-"249
-[; ;main.c: 249:             } else {
-}
-[e $U 86  ]
+[e $U 79  ]
 [e :U 75 ]
 {
+"239
+[; ;main.c: 239:                     if ((pan_counter > 0) || (is_init == 1)) {
+[e $ ! || > _pan_counter -> -> 0 `i `ui == -> _is_init `i -> 1 `i 80  ]
+{
+"240
+[; ;main.c: 240:                         pan_counter--;
+[e -- _pan_counter -> -> 1 `i `Vui ]
+"242
+[; ;main.c: 242:                         if (pan_step_phase >= 7) {
+[e $ ! >= -> _pan_step_phase `i -> 7 `i 81  ]
+{
+"243
+[; ;main.c: 243:                             pan_step_phase = 0;
+[e = _pan_step_phase -> -> 0 `i `uc ]
+"244
+[; ;main.c: 244:                         } else {
+}
+[e $U 82  ]
+[e :U 81 ]
+{
+"245
+[; ;main.c: 245:                             pan_step_phase++;
+[e ++ _pan_step_phase -> -> 1 `i `Vuc ]
+"246
+[; ;main.c: 246:                         }
+}
+[e :U 82 ]
+"247
+[; ;main.c: 247:                     }
+}
+[e :U 80 ]
+"248
+[; ;main.c: 248:                 }
+}
+[e :U 79 ]
 "250
-[; ;main.c: 250:                 PORTAbits.RA0 = 0;
-[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 250:                 if (pan_goto == pan_counter) {
+[e $ ! == _pan_goto _pan_counter 83  ]
+{
 "251
-[; ;main.c: 251:                 PORTAbits.RA7 = 0;
-[e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
+[; ;main.c: 251:                     if (preset_pan_enabled == 1) {
+[e $ ! == -> _preset_pan_enabled `i -> 1 `i 84  ]
+{
 "252
-[; ;main.c: 252:                 PORTAbits.RA6 = 0;
-[e = . . _PORTAbits 0 6 -> -> 0 `i `uc ]
-"253
-[; ;main.c: 253:                 PORTAbits.RA1 = 0;
-[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 252:                         preset_pan_enabled = 0;
+[e = _preset_pan_enabled -> -> 0 `i `a ]
 "254
-[; ;main.c: 254:             }
+[; ;main.c: 254:                         pan_enabled = 0;
+[e = _pan_enabled -> -> 0 `i `a ]
+"255
+[; ;main.c: 255:                     }
 }
-[e :U 86 ]
-"257
-[; ;main.c: 257:         }
+[e :U 84 ]
+"256
+[; ;main.c: 256:                 }
 }
-[e :U 74 ]
+[e :U 83 ]
+"258
+[; ;main.c: 258:                 PORTAbits.RA0 = steps_1A[pan_step_phase];
+[e = . . _PORTAbits 0 0 -> *U + &U _steps_1A * -> _pan_step_phase `ux -> -> # *U &U _steps_1A `ui `ux `uc ]
 "259
-[; ;main.c: 259:         if (timer1_tilt < timer1_tilt_ref) {
-[e $ ! < -> _timer1_tilt `i -> _timer1_tilt_ref `i 87  ]
-{
+[; ;main.c: 259:                 PORTAbits.RA7 = steps_1B[pan_step_phase];
+[e = . . _PORTAbits 0 7 -> *U + &U _steps_1B * -> _pan_step_phase `ux -> -> # *U &U _steps_1B `ui `ux `uc ]
 "260
-[; ;main.c: 260:             timer1_tilt++;
-[e ++ _timer1_tilt -> -> 1 `i `Vuc ]
+[; ;main.c: 260:                 PORTAbits.RA6 = steps_2A[pan_step_phase];
+[e = . . _PORTAbits 0 6 -> *U + &U _steps_2A * -> _pan_step_phase `ux -> -> # *U &U _steps_2A `ui `ux `uc ]
 "261
-[; ;main.c: 261:         } else {
-}
-[e $U 88  ]
-[e :U 87 ]
-{
+[; ;main.c: 261:                 PORTAbits.RA1 = steps_2B[pan_step_phase];
+[e = . . _PORTAbits 0 1 -> *U + &U _steps_2B * -> _pan_step_phase `ux -> -> # *U &U _steps_2B `ui `ux `uc ]
 "262
-[; ;main.c: 262:             timer1_tilt = 0;
-[e = _timer1_tilt -> -> 0 `i `uc ]
+[; ;main.c: 262:             } else {
+}
+[e $U 85  ]
+[e :U 74 ]
+{
+"263
+[; ;main.c: 263:                 PORTAbits.RA0 = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
 "264
-[; ;main.c: 264:             if (tilt_enabled == 1) {
-[e $ ! == -> _tilt_enabled `i -> 1 `i 89  ]
-{
+[; ;main.c: 264:                 PORTAbits.RA7 = 0;
+[e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
 "265
-[; ;main.c: 265:                 if (tilt_direction == 0) {
-[e $ ! == -> _tilt_direction `i -> 0 `i 90  ]
-{
+[; ;main.c: 265:                 PORTAbits.RA6 = 0;
+[e = . . _PORTAbits 0 6 -> -> 0 `i `uc ]
 "266
-[; ;main.c: 266:                     if (tilt_counter < 2800) {
-[e $ ! < _tilt_counter -> -> 2800 `i `ui 91  ]
-{
+[; ;main.c: 266:                 PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
 "267
-[; ;main.c: 267:                         tilt_counter++;
-[e ++ _tilt_counter -> -> 1 `i `Vui ]
-"269
-[; ;main.c: 269:                         if ((tilt_step_phase == 0) || (tilt_step_phase > 7)) {
-[e $ ! || == -> _tilt_step_phase `i -> 0 `i > -> _tilt_step_phase `i -> 7 `i 92  ]
-{
+[; ;main.c: 267:             }
+}
+[e :U 85 ]
 "270
-[; ;main.c: 270:                             tilt_step_phase = 7;
-[e = _tilt_step_phase -> -> 7 `i `uc ]
-"271
-[; ;main.c: 271:                         } else {
+[; ;main.c: 270:         }
 }
-[e $U 93  ]
-[e :U 92 ]
-{
+[e :U 73 ]
 "272
-[; ;main.c: 272:                             tilt_step_phase--;
-[e -- _tilt_step_phase -> -> 1 `i `Vuc ]
+[; ;main.c: 272:         if (timer1_tilt < timer1_tilt_ref) {
+[e $ ! < -> _timer1_tilt `i -> _timer1_tilt_ref `i 86  ]
+{
 "273
-[; ;main.c: 273:                         }
-}
-[e :U 93 ]
+[; ;main.c: 273:             timer1_tilt++;
+[e ++ _timer1_tilt -> -> 1 `i `Vuc ]
 "274
-[; ;main.c: 274:                     }
+[; ;main.c: 274:         } else {
 }
-[e :U 91 ]
+[e $U 87  ]
+[e :U 86 ]
+{
 "275
-[; ;main.c: 275:                 } else {
-}
-[e $U 94  ]
-[e :U 90 ]
-{
-"276
-[; ;main.c: 276:                     if ((tilt_counter > 0) || (is_init == 1)) {
-[e $ ! || > _tilt_counter -> -> 0 `i `ui == -> _is_init `i -> 1 `i 95  ]
-{
+[; ;main.c: 275:             timer1_tilt = 0;
+[e = _timer1_tilt -> -> 0 `i `uc ]
 "277
-[; ;main.c: 277:                         tilt_counter--;
-[e -- _tilt_counter -> -> 1 `i `Vui ]
+[; ;main.c: 277:             if (tilt_enabled == 1) {
+[e $ ! == -> _tilt_enabled `i -> 1 `i 88  ]
+{
+"278
+[; ;main.c: 278:                 if (tilt_direction == 0) {
+[e $ ! == -> _tilt_direction `i -> 0 `i 89  ]
+{
 "279
-[; ;main.c: 279:                         if (tilt_step_phase >= 7) {
-[e $ ! >= -> _tilt_step_phase `i -> 7 `i 96  ]
+[; ;main.c: 279:                     if (tilt_counter < 2800) {
+[e $ ! < _tilt_counter -> -> 2800 `i `ui 90  ]
 {
 "280
-[; ;main.c: 280:                             tilt_step_phase = 0;
-[e = _tilt_step_phase -> -> 0 `i `uc ]
-"281
-[; ;main.c: 281:                         } else {
-}
-[e $U 97  ]
-[e :U 96 ]
-{
+[; ;main.c: 280:                         tilt_counter++;
+[e ++ _tilt_counter -> -> 1 `i `Vui ]
 "282
-[; ;main.c: 282:                             tilt_step_phase++;
-[e ++ _tilt_step_phase -> -> 1 `i `Vuc ]
+[; ;main.c: 282:                         if ((tilt_step_phase == 0) || (tilt_step_phase > 7)) {
+[e $ ! || == -> _tilt_step_phase `i -> 0 `i > -> _tilt_step_phase `i -> 7 `i 91  ]
+{
 "283
-[; ;main.c: 283:                         }
-}
-[e :U 97 ]
+[; ;main.c: 283:                             tilt_step_phase = 7;
+[e = _tilt_step_phase -> -> 7 `i `uc ]
 "284
-[; ;main.c: 284:                     }
+[; ;main.c: 284:                         } else {
 }
-[e :U 95 ]
+[e $U 92  ]
+[e :U 91 ]
+{
 "285
-[; ;main.c: 285:                 }
+[; ;main.c: 285:                             tilt_step_phase--;
+[e -- _tilt_step_phase -> -> 1 `i `Vuc ]
+"286
+[; ;main.c: 286:                         }
 }
-[e :U 94 ]
+[e :U 92 ]
 "287
-[; ;main.c: 287:                 if (tilt_goto == tilt_counter) {
-[e $ ! == _tilt_goto _tilt_counter 98  ]
-{
+[; ;main.c: 287:                     }
+}
+[e :U 90 ]
 "288
-[; ;main.c: 288:                     if (preset_tilt_enabled == 1) {
-[e $ ! == -> _preset_tilt_enabled `i -> 1 `i 99  ]
-{
-"289
-[; ;main.c: 289:                         preset_tilt_enabled = 0;
-[e = _preset_tilt_enabled -> -> 0 `i `a ]
-"291
-[; ;main.c: 291:                         tilt_enabled = 0;
-[e = _tilt_enabled -> -> 0 `i `a ]
-"292
-[; ;main.c: 292:                     }
+[; ;main.c: 288:                 } else {
 }
-[e :U 99 ]
-"293
-[; ;main.c: 293:                 }
-}
-[e :U 98 ]
-"295
-[; ;main.c: 295:                 PORTBbits.RB4 = steps_1A[tilt_step_phase];
-[e = . . _PORTBbits 0 4 -> *U + &U _steps_1A * -> _tilt_step_phase `ux -> -> # *U &U _steps_1A `ui `ux `uc ]
-"296
-[; ;main.c: 296:                 PORTBbits.RB5 = steps_1B[tilt_step_phase];
-[e = . . _PORTBbits 0 5 -> *U + &U _steps_1B * -> _tilt_step_phase `ux -> -> # *U &U _steps_1B `ui `ux `uc ]
-"297
-[; ;main.c: 297:                 PORTBbits.RB6 = steps_2A[tilt_step_phase];
-[e = . . _PORTBbits 0 6 -> *U + &U _steps_2A * -> _tilt_step_phase `ux -> -> # *U &U _steps_2A `ui `ux `uc ]
-"298
-[; ;main.c: 298:                 PORTBbits.RB7 = steps_2B[tilt_step_phase];
-[e = . . _PORTBbits 0 7 -> *U + &U _steps_2B * -> _tilt_step_phase `ux -> -> # *U &U _steps_2B `ui `ux `uc ]
-"299
-[; ;main.c: 299:             } else {
-}
-[e $U 100  ]
+[e $U 93  ]
 [e :U 89 ]
 {
+"289
+[; ;main.c: 289:                     if ((tilt_counter > 0) || (is_init == 1)) {
+[e $ ! || > _tilt_counter -> -> 0 `i `ui == -> _is_init `i -> 1 `i 94  ]
+{
+"290
+[; ;main.c: 290:                         tilt_counter--;
+[e -- _tilt_counter -> -> 1 `i `Vui ]
+"292
+[; ;main.c: 292:                         if (tilt_step_phase >= 7) {
+[e $ ! >= -> _tilt_step_phase `i -> 7 `i 95  ]
+{
+"293
+[; ;main.c: 293:                             tilt_step_phase = 0;
+[e = _tilt_step_phase -> -> 0 `i `uc ]
+"294
+[; ;main.c: 294:                         } else {
+}
+[e $U 96  ]
+[e :U 95 ]
+{
+"295
+[; ;main.c: 295:                             tilt_step_phase++;
+[e ++ _tilt_step_phase -> -> 1 `i `Vuc ]
+"296
+[; ;main.c: 296:                         }
+}
+[e :U 96 ]
+"297
+[; ;main.c: 297:                     }
+}
+[e :U 94 ]
+"298
+[; ;main.c: 298:                 }
+}
+[e :U 93 ]
 "300
-[; ;main.c: 300:                 PORTBbits.RB4 = 0;
-[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 300:                 if (tilt_goto == tilt_counter) {
+[e $ ! == _tilt_goto _tilt_counter 97  ]
+{
 "301
-[; ;main.c: 301:                 PORTBbits.RB5 = 0;
-[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 301:                     if (preset_tilt_enabled == 1) {
+[e $ ! == -> _preset_tilt_enabled `i -> 1 `i 98  ]
+{
 "302
-[; ;main.c: 302:                 PORTBbits.RB6 = 0;
-[e = . . _PORTBbits 0 6 -> -> 0 `i `uc ]
-"303
-[; ;main.c: 303:                 PORTBbits.RB7 = 0;
-[e = . . _PORTBbits 0 7 -> -> 0 `i `uc ]
+[; ;main.c: 302:                         preset_tilt_enabled = 0;
+[e = _preset_tilt_enabled -> -> 0 `i `a ]
 "304
-[; ;main.c: 304:             }
-}
-[e :U 100 ]
+[; ;main.c: 304:                         tilt_enabled = 0;
+[e = _tilt_enabled -> -> 0 `i `a ]
 "305
-[; ;main.c: 305:         }
+[; ;main.c: 305:                     }
 }
-[e :U 88 ]
-"307
-[; ;main.c: 307:         PIR1bits.TMR1IF = 0;
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[e :U 98 ]
+"306
+[; ;main.c: 306:                 }
+}
+[e :U 97 ]
 "308
-[; ;main.c: 308:     }
-}
-[e :U 69 ]
-[e :U 68 ]
+[; ;main.c: 308:                 PORTBbits.RB4 = steps_1A[tilt_step_phase];
+[e = . . _PORTBbits 0 4 -> *U + &U _steps_1A * -> _tilt_step_phase `ux -> -> # *U &U _steps_1A `ui `ux `uc ]
 "309
-[; ;main.c: 309: }
+[; ;main.c: 309:                 PORTBbits.RB5 = steps_1B[tilt_step_phase];
+[e = . . _PORTBbits 0 5 -> *U + &U _steps_1B * -> _tilt_step_phase `ux -> -> # *U &U _steps_1B `ui `ux `uc ]
+"310
+[; ;main.c: 310:                 PORTBbits.RB6 = steps_2A[tilt_step_phase];
+[e = . . _PORTBbits 0 6 -> *U + &U _steps_2A * -> _tilt_step_phase `ux -> -> # *U &U _steps_2A `ui `ux `uc ]
+"311
+[; ;main.c: 311:                 PORTBbits.RB7 = steps_2B[tilt_step_phase];
+[e = . . _PORTBbits 0 7 -> *U + &U _steps_2B * -> _tilt_step_phase `ux -> -> # *U &U _steps_2B `ui `ux `uc ]
+"312
+[; ;main.c: 312:             } else {
+}
+[e $U 99  ]
+[e :U 88 ]
+{
+"313
+[; ;main.c: 313:                 PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"314
+[; ;main.c: 314:                 PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"315
+[; ;main.c: 315:                 PORTBbits.RB6 = 0;
+[e = . . _PORTBbits 0 6 -> -> 0 `i `uc ]
+"316
+[; ;main.c: 316:                 PORTBbits.RB7 = 0;
+[e = . . _PORTBbits 0 7 -> -> 0 `i `uc ]
+"317
+[; ;main.c: 317:             }
+}
+[e :U 99 ]
+"318
+[; ;main.c: 318:         }
+}
+[e :U 87 ]
+"320
+[; ;main.c: 320:         PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"321
+[; ;main.c: 321:     }
+}
+[e :U 68 ]
+[e :U 67 ]
+"322
+[; ;main.c: 322: }
 [e :UE 51 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"311
-[; ;main.c: 311: void main(void) {
+"324
+[; ;main.c: 324: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"312
-[; ;main.c: 312:     UC_Init();
+"325
+[; ;main.c: 325:     UC_Init();
 [e ( _UC_Init ..  ]
-"314
-[; ;main.c: 314:     UART_Init();
+"327
+[; ;main.c: 327:     UART_Init();
 [e ( _UART_Init ..  ]
-"316
-[; ;main.c: 316:     TIMER1_Init();
+"329
+[; ;main.c: 329:     TIMER1_Init();
 [e ( _TIMER1_Init ..  ]
-"318
-[; ;main.c: 318:     delay_wdt(500);
-[e ( _delay_wdt (1 -> -> 500 `i `ui ]
-"320
-[; ;main.c: 320:     UART_Write_Text("\r\n\r\nStart\r\n");
-[e ( _UART_Write_Text (1 :s 1C ]
-"322
-[; ;main.c: 322:     UART_Write_Text("Goto PAN and TILT Home\r\n");
-[e ( _UART_Write_Text (1 :s 2C ]
-"324
-[; ;main.c: 324:     delay_wdt(50);
-[e ( _delay_wdt (1 -> -> 50 `i `ui ]
-"326
-[; ;main.c: 326:     MOTOR_Init();
-[e ( _MOTOR_Init ..  ]
-"328
-[; ;main.c: 328:     UART_Write_Text("Waiting for commands\r\n");
-[e ( _UART_Write_Text (1 :s 3C ]
-"330
-[; ;main.c: 330:     while (1) {
-[e :U 103 ]
-{
 "331
-[; ;main.c: 331:         __asm("clrwdt");
-[; <" clrwdt ;# ">
+[; ;main.c: 331:     delay_wdt(500);
+[e ( _delay_wdt (1 -> -> 500 `i `ui ]
 "333
-[; ;main.c: 333:         if (buffer_ready[frame_index] == 1) {
-[e $ ! == -> *U + &U _buffer_ready * -> _frame_index `ux -> -> # *U &U _buffer_ready `ui `ux `i -> 1 `i 105  ]
+[; ;main.c: 333:     UART_Write_Text_CRLF("\r\n\r\nStart");
+[e ( _UART_Write_Text_CRLF (1 :s 1C ]
+"335
+[; ;main.c: 335:     UART_Write_Text_CRLF("Goto PAN and TILT Home");
+[e ( _UART_Write_Text_CRLF (1 :s 2C ]
+"337
+[; ;main.c: 337:     delay_wdt(50);
+[e ( _delay_wdt (1 -> -> 50 `i `ui ]
+"339
+[; ;main.c: 339:     MOTOR_Init();
+[e ( _MOTOR_Init ..  ]
+"341
+[; ;main.c: 341:     UART_Write_Text_CRLF("Waiting for commands");
+[e ( _UART_Write_Text_CRLF (1 :s 3C ]
+"343
+[; ;main.c: 343:     while (1) {
+[e :U 102 ]
 {
-"334
-[; ;main.c: 334:             buffer_ready[frame_index] = 0;
+"344
+[; ;main.c: 344:         __asm("clrwdt");
+[; <" clrwdt ;# ">
+"346
+[; ;main.c: 346:         if (buffer_ready[frame_index] == 1) {
+[e $ ! == -> *U + &U _buffer_ready * -> _frame_index `ux -> -> # *U &U _buffer_ready `ui `ux `i -> 1 `i 104  ]
+{
+"347
+[; ;main.c: 347:             buffer_ready[frame_index] = 0;
 [e = *U + &U _buffer_ready * -> _frame_index `ux -> -> # *U &U _buffer_ready `ui `ux -> -> 0 `i `a ]
-"336
-[; ;main.c: 336:             for (uint8_t i = 0; i < 7; i++) {
+"349
+[; ;main.c: 349:             for (uint8_t i = 0; i < 7; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 7 `i 106  ]
-[e $U 107  ]
-[e :U 106 ]
+[e $ < -> _i `i -> 7 `i 105  ]
+[e $U 106  ]
+[e :U 105 ]
 {
-"337
-[; ;main.c: 337:                 if (frame_index == 0) {
-[e $ ! == -> _frame_index `i -> 0 `i 109  ]
-{
-"338
-[; ;main.c: 338:                     frame_data[i] = buffer_data0[i];
-[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data0 * -> _i `ux -> -> # *U &U _buffer_data0 `ui `ux ]
-"339
-[; ;main.c: 339:                 } else if (frame_index == 1) {
-}
-[e $U 110  ]
-[e :U 109 ]
-[e $ ! == -> _frame_index `i -> 1 `i 111  ]
-{
-"340
-[; ;main.c: 340:                     frame_data[i] = buffer_data1[i];
-[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data1 * -> _i `ux -> -> # *U &U _buffer_data1 `ui `ux ]
-"341
-[; ;main.c: 341:                 } else if (frame_index == 2) {
-}
-[e $U 112  ]
-[e :U 111 ]
-[e $ ! == -> _frame_index `i -> 2 `i 113  ]
-{
-"342
-[; ;main.c: 342:                     frame_data[i] = buffer_data2[i];
-[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data2 * -> _i `ux -> -> # *U &U _buffer_data2 `ui `ux ]
-"343
-[; ;main.c: 343:                 } else if (frame_index == 3) {
-}
-[e $U 114  ]
-[e :U 113 ]
-[e $ ! == -> _frame_index `i -> 3 `i 115  ]
-{
-"344
-[; ;main.c: 344:                     frame_data[i] = buffer_data3[i];
-[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data3 * -> _i `ux -> -> # *U &U _buffer_data3 `ui `ux ]
-"345
-[; ;main.c: 345:                 } else if (frame_index == 4) {
-}
-[e $U 116  ]
-[e :U 115 ]
-[e $ ! == -> _frame_index `i -> 4 `i 117  ]
-{
-"346
-[; ;main.c: 346:                     frame_data[i] = buffer_data4[i];
-[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data4 * -> _i `ux -> -> # *U &U _buffer_data4 `ui `ux ]
-"347
-[; ;main.c: 347:                 }
-}
-[e :U 117 ]
-[e :U 116 ]
-[e :U 114 ]
-[e :U 112 ]
-[e :U 110 ]
 "350
-[; ;main.c: 350:             }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 7 `i 106  ]
-[e :U 107 ]
-}
+[; ;main.c: 350:                 if (frame_index == 0) {
+[e $ ! == -> _frame_index `i -> 0 `i 108  ]
+{
+"351
+[; ;main.c: 351:                     frame_data[i] = buffer_data0[i];
+[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data0 * -> _i `ux -> -> # *U &U _buffer_data0 `ui `ux ]
 "352
-[; ;main.c: 352:             if (frame_data[0] == 0xFF) {
-[e $ ! == -> *U + &U _frame_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _frame_data `ui `ux `i -> 255 `i 118  ]
+[; ;main.c: 352:                 } else if (frame_index == 1) {
+}
+[e $U 109  ]
+[e :U 108 ]
+[e $ ! == -> _frame_index `i -> 1 `i 110  ]
 {
 "353
-[; ;main.c: 353:                 uint8_t chksum_calc = 0;
+[; ;main.c: 353:                     frame_data[i] = buffer_data1[i];
+[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data1 * -> _i `ux -> -> # *U &U _buffer_data1 `ui `ux ]
+"354
+[; ;main.c: 354:                 } else if (frame_index == 2) {
+}
+[e $U 111  ]
+[e :U 110 ]
+[e $ ! == -> _frame_index `i -> 2 `i 112  ]
+{
+"355
+[; ;main.c: 355:                     frame_data[i] = buffer_data2[i];
+[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data2 * -> _i `ux -> -> # *U &U _buffer_data2 `ui `ux ]
+"356
+[; ;main.c: 356:                 } else if (frame_index == 3) {
+}
+[e $U 113  ]
+[e :U 112 ]
+[e $ ! == -> _frame_index `i -> 3 `i 114  ]
+{
+"357
+[; ;main.c: 357:                     frame_data[i] = buffer_data3[i];
+[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data3 * -> _i `ux -> -> # *U &U _buffer_data3 `ui `ux ]
+"358
+[; ;main.c: 358:                 } else if (frame_index == 4) {
+}
+[e $U 115  ]
+[e :U 114 ]
+[e $ ! == -> _frame_index `i -> 4 `i 116  ]
+{
+"359
+[; ;main.c: 359:                     frame_data[i] = buffer_data4[i];
+[e = *U + &U _frame_data * -> _i `ux -> -> # *U &U _frame_data `ui `ux *U + &U _buffer_data4 * -> _i `ux -> -> # *U &U _buffer_data4 `ui `ux ]
+"360
+[; ;main.c: 360:                 }
+}
+[e :U 116 ]
+[e :U 115 ]
+[e :U 113 ]
+[e :U 111 ]
+[e :U 109 ]
+"363
+[; ;main.c: 363:             }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 7 `i 105  ]
+[e :U 106 ]
+}
+"365
+[; ;main.c: 365:             if (frame_data[0] == 0xFF) {
+[e $ ! == -> *U + &U _frame_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _frame_data `ui `ux `i -> 255 `i 117  ]
+{
+"366
+[; ;main.c: 366:                 uint8_t chksum_calc = 0;
 [v _chksum_calc `uc ~T0 @X0 1 a ]
 [e = _chksum_calc -> -> 0 `i `uc ]
-"355
-[; ;main.c: 355:                 for (uint8_t m = 1; m <= 5; m++) {
+"368
+[; ;main.c: 368:                 for (uint8_t m = 1; m <= 5; m++) {
 {
 [v _m `uc ~T0 @X0 1 a ]
 [e = _m -> -> 1 `i `uc ]
-[e $ <= -> _m `i -> 5 `i 119  ]
-[e $U 120  ]
-[e :U 119 ]
+[e $ <= -> _m `i -> 5 `i 118  ]
+[e $U 119  ]
+[e :U 118 ]
 {
-"356
-[; ;main.c: 356:                     chksum_calc += frame_data[m];
+"369
+[; ;main.c: 369:                     chksum_calc += frame_data[m];
 [e =+ _chksum_calc -> *U + &U _frame_data * -> _m `ux -> -> # *U &U _frame_data `ui `ux `uc ]
-"357
-[; ;main.c: 357:                 }
+"370
+[; ;main.c: 370:                 }
 }
 [e ++ _m -> -> 1 `i `uc ]
-[e $ <= -> _m `i -> 5 `i 119  ]
-[e :U 120 ]
+[e $ <= -> _m `i -> 5 `i 118  ]
+[e :U 119 ]
 }
-"359
-[; ;main.c: 359:                 if (chksum_calc == frame_data[6]) {
-[e $ ! == -> _chksum_calc `i -> *U + &U _frame_data * -> -> -> 6 `i `ui `ux -> -> # *U &U _frame_data `ui `ux `i 122  ]
-{
-"361
-[; ;main.c: 361:                     P_addr = frame_data[1];
-[e = _P_addr *U + &U _frame_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
-"362
-[; ;main.c: 362:                     P_cmd1 = frame_data[2];
-[e = _P_cmd1 *U + &U _frame_data * -> -> -> 2 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
-"363
-[; ;main.c: 363:                     P_cmd2 = frame_data[3];
-[e = _P_cmd2 *U + &U _frame_data * -> -> -> 3 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
-"364
-[; ;main.c: 364:                     P_dat1 = frame_data[4];
-[e = _P_dat1 *U + &U _frame_data * -> -> -> 4 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
-"365
-[; ;main.c: 365:                     P_dat2 = frame_data[5];
-[e = _P_dat2 *U + &U _frame_data * -> -> -> 5 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
-"366
-[; ;main.c: 366:                     P_chksum = frame_data[6];
-[e = _P_chksum *U + &U _frame_data * -> -> -> 6 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
-"368
-[; ;main.c: 368:                     response_type = 0x00;
-[e = _response_type -> -> 0 `i `uc ]
-"371
-[; ;main.c: 371:                     if (P_addr == 0x01) {
-[e $ ! == -> _P_addr `i -> 1 `i 123  ]
-{
 "372
-[; ;main.c: 372:                         if ((P_cmd1 == 0xF0) && (P_cmd2 == 0x83) && (P_dat1 == 0x00) && (P_dat2 == 0x01)) {
-[e $ ! && && && == -> _P_cmd1 `i -> 240 `i == -> _P_cmd2 `i -> 131 `i == -> _P_dat1 `i -> 0 `i == -> _P_dat2 `i -> 1 `i 124  ]
+[; ;main.c: 372:                 if (chksum_calc == frame_data[6]) {
+[e $ ! == -> _chksum_calc `i -> *U + &U _frame_data * -> -> -> 6 `i `ui `ux -> -> # *U &U _frame_data `ui `ux `i 121  ]
 {
-"373
-[; ;main.c: 373:                             UART_Write_Text("REBOOT\r\n");
-[e ( _UART_Write_Text (1 :s 4C ]
+"374
+[; ;main.c: 374:                     P_addr = frame_data[1];
+[e = _P_addr *U + &U _frame_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
 "375
-[; ;main.c: 375:                             while (1) {
-[e :U 126 ]
-{
+[; ;main.c: 375:                     P_cmd1 = frame_data[2];
+[e = _P_cmd1 *U + &U _frame_data * -> -> -> 2 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
+"376
+[; ;main.c: 376:                     P_cmd2 = frame_data[3];
+[e = _P_cmd2 *U + &U _frame_data * -> -> -> 3 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
 "377
-[; ;main.c: 377:                             }
-}
-[e :U 125 ]
-[e $U 126  ]
-[e :U 127 ]
+[; ;main.c: 377:                     P_dat1 = frame_data[4];
+[e = _P_dat1 *U + &U _frame_data * -> -> -> 4 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
 "378
-[; ;main.c: 378:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x67) && (P_dat1 == 0x00)) {
-}
-[e $U 128  ]
-[e :U 124 ]
-[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 103 `i == -> _P_dat1 `i -> 0 `i 129  ]
-{
-"380
-[; ;main.c: 380:                             if (is_reboot == 1) {
-[e $ ! == -> _is_reboot `i -> 1 `i 130  ]
-{
+[; ;main.c: 378:                     P_dat2 = frame_data[5];
+[e = _P_dat2 *U + &U _frame_data * -> -> -> 5 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
+"379
+[; ;main.c: 379:                     P_chksum = frame_data[6];
+[e = _P_chksum *U + &U _frame_data * -> -> -> 6 `i `ui `ux -> -> # *U &U _frame_data `ui `ux ]
 "381
-[; ;main.c: 381:                                 BAUDS_set(P_dat2);
-[e ( _BAUDS_set (1 _P_dat2 ]
-"383
-[; ;main.c: 383:                                 UART_Write_Text("SET BAUD RATE");
-[e ( _UART_Write_Text (1 :s 5C ]
-"385
-[; ;main.c: 385:                                 if (P_dat2 == 0x00) {
-[e $ ! == -> _P_dat2 `i -> 0 `i 131  ]
+[; ;main.c: 381:                     response_type = 0x00;
+[e = _response_type -> -> 0 `i `uc ]
+"384
+[; ;main.c: 384:                     if (P_addr == 0x01) {
+[e $ ! == -> _P_addr `i -> 1 `i 122  ]
 {
-"387
-[; ;main.c: 387:                                     UART_Write_Text("2400\r\n");
-[e ( _UART_Write_Text (1 :s 6C ]
+"385
+[; ;main.c: 385:                         if ((P_cmd1 == 0xF0) && (P_cmd2 == 0x83) && (P_dat1 == 0x00) && (P_dat2 == 0x01)) {
+[e $ ! && && && == -> _P_cmd1 `i -> 240 `i == -> _P_cmd2 `i -> 131 `i == -> _P_dat1 `i -> 0 `i == -> _P_dat2 `i -> 1 `i 123  ]
+{
+"386
+[; ;main.c: 386:                             UART_Write_Text_CRLF("REBOOT");
+[e ( _UART_Write_Text_CRLF (1 :s 4C ]
 "388
-[; ;main.c: 388:                                 } else if (P_dat2 == 0x01) {
-}
-[e $U 132  ]
-[e :U 131 ]
-[e $ ! == -> _P_dat2 `i -> 1 `i 133  ]
+[; ;main.c: 388:                             while (1) {
+[e :U 125 ]
 {
 "390
-[; ;main.c: 390:                                     UART_Write_Text("4800\r\n");
-[e ( _UART_Write_Text (1 :s 7C ]
-"394
-[; ;main.c: 394:                                 } else if (P_dat2 == 0x03) {
+[; ;main.c: 390:                             }
 }
-[e $U 134  ]
-[e :U 133 ]
-[e $ ! == -> _P_dat2 `i -> 3 `i 135  ]
+[e :U 124 ]
+[e $U 125  ]
+[e :U 126 ]
+"391
+[; ;main.c: 391:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x67) && (P_dat1 == 0x00)) {
+}
+[e $U 127  ]
+[e :U 123 ]
+[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 103 `i == -> _P_dat1 `i -> 0 `i 128  ]
 {
+"393
+[; ;main.c: 393:                             if (is_reboot == 1) {
+[e $ ! == -> _is_reboot `i -> 1 `i 129  ]
+{
+"394
+[; ;main.c: 394:                                 BAUDS_set(P_dat2);
+[e ( _BAUDS_set (1 _P_dat2 ]
 "396
-[; ;main.c: 396:                                     UART_Write_Text("19200\r\n");
-[e ( _UART_Write_Text (1 :s 8C ]
-"397
-[; ;main.c: 397:                                 } else if (P_dat2 == 0x04) {
-}
-[e $U 136  ]
-[e :U 135 ]
-[e $ ! == -> _P_dat2 `i -> 4 `i 137  ]
+[; ;main.c: 396:                                 UART_Write_Text("SET BAUD RATE");
+[e ( _UART_Write_Text (1 :s 5C ]
+"398
+[; ;main.c: 398:                                 switch (P_dat2) {
+[e $U 131  ]
 {
 "399
-[; ;main.c: 399:                                     UART_Write_Text("38400\r\n");
-[e ( _UART_Write_Text (1 :s 9C ]
+[; ;main.c: 399:                                     case 0x00:
+[e :U 132 ]
 "400
-[; ;main.c: 400:                                 } else if (P_dat2 == 0x05) {
+[; ;main.c: 400:                                         UART_Write_Text_CRLF("2400");
+[e ( _UART_Write_Text_CRLF (1 :s 6C ]
+"401
+[; ;main.c: 401:                                         break;
+[e $U 130  ]
+"402
+[; ;main.c: 402:                                     case 0x01:
+[e :U 133 ]
+"403
+[; ;main.c: 403:                                         UART_Write_Text_CRLF("4800");
+[e ( _UART_Write_Text_CRLF (1 :s 7C ]
+"404
+[; ;main.c: 404:                                         break;
+[e $U 130  ]
+"405
+[; ;main.c: 405:                                     case 0x03:
+[e :U 134 ]
+"406
+[; ;main.c: 406:                                         UART_Write_Text_CRLF("19200");
+[e ( _UART_Write_Text_CRLF (1 :s 8C ]
+"407
+[; ;main.c: 407:                                         break;
+[e $U 130  ]
+"408
+[; ;main.c: 408:                                     case 0x04:
+[e :U 135 ]
+"409
+[; ;main.c: 409:                                         UART_Write_Text_CRLF("38400");
+[e ( _UART_Write_Text_CRLF (1 :s 9C ]
+"410
+[; ;main.c: 410:                                         break;
+[e $U 130  ]
+"411
+[; ;main.c: 411:                                     case 0x05:
+[e :U 136 ]
+"412
+[; ;main.c: 412:                                         UART_Write_Text_CRLF("115200");
+[e ( _UART_Write_Text_CRLF (1 :s 10C ]
+"413
+[; ;main.c: 413:                                         break;
+[e $U 130  ]
+"414
+[; ;main.c: 414:                                     default:
+[e :U 137 ]
+"416
+[; ;main.c: 416:                                         UART_Write_Text_CRLF("9600");
+[e ( _UART_Write_Text_CRLF (1 :s 11C ]
+"417
+[; ;main.c: 417:                                         break;
+[e $U 130  ]
+"418
+[; ;main.c: 418:                                 }
+}
+[e $U 130  ]
+[e :U 131 ]
+[e [\ -> _P_dat2 `i , $ -> 0 `i 132
+ , $ -> 1 `i 133
+ , $ -> 3 `i 134
+ , $ -> 4 `i 135
+ , $ -> 5 `i 136
+ 137 ]
+[e :U 130 ]
+"420
+[; ;main.c: 420:                                 UART_Write_Text("\r\nPLEASE ");
+[e ( _UART_Write_Text (1 :s 12C ]
+"421
+[; ;main.c: 421:                             } else {
 }
 [e $U 138  ]
-[e :U 137 ]
-[e $ ! == -> _P_dat2 `i -> 5 `i 139  ]
+[e :U 129 ]
 {
-"402
-[; ;main.c: 402:                                     UART_Write_Text("115200\r\n");
-[e ( _UART_Write_Text (1 :s 10C ]
-"403
-[; ;main.c: 403:                                 } else {
+"422
+[; ;main.c: 422:                                 UART_Write_Text("\r\nNEED ");
+[e ( _UART_Write_Text (1 :s 13C ]
+"423
+[; ;main.c: 423:                             }
 }
-[e $U 140  ]
-[e :U 139 ]
-{
-"405
-[; ;main.c: 405:                                     UART_Write_Text("9600\r\n");
-[e ( _UART_Write_Text (1 :s 11C ]
-"406
-[; ;main.c: 406:                                 }
-}
-[e :U 140 ]
 [e :U 138 ]
-[e :U 136 ]
-[e :U 134 ]
-[e :U 132 ]
-"408
-[; ;main.c: 408:                                 UART_Write_Text("\r\nPLEASE REBOOT\r\n");
-[e ( _UART_Write_Text (1 :s 12C ]
-"409
-[; ;main.c: 409:                             } else {
+"425
+[; ;main.c: 425:                             UART_Write_Text_CRLF("REBOOT");
+[e ( _UART_Write_Text_CRLF (1 :s 14C ]
+"426
+[; ;main.c: 426:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x00) && (P_dat1 == 0x00) && (P_dat2 == 0x00)) {
+}
+[e $U 139  ]
+[e :U 128 ]
+[e $ ! && && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 0 `i == -> _P_dat1 `i -> 0 `i == -> _P_dat2 `i -> 0 `i 140  ]
+{
+"427
+[; ;main.c: 427:                             pan_enabled = 0;
+[e = _pan_enabled -> -> 0 `i `a ]
+"428
+[; ;main.c: 428:                             tilt_enabled = 0;
+[e = _tilt_enabled -> -> 0 `i `a ]
+"429
+[; ;main.c: 429:                             preset_pan_enabled = 0;
+[e = _preset_pan_enabled -> -> 0 `i `a ]
+"430
+[; ;main.c: 430:                             preset_tilt_enabled = 0;
+[e = _preset_tilt_enabled -> -> 0 `i `a ]
+"432
+[; ;main.c: 432:                             response_type = 0x01;
+[e = _response_type -> -> 1 `i `uc ]
+"433
+[; ;main.c: 433:                             UART_Write_Text("STOP (");
+[e ( _UART_Write_Text (1 :s 15C ]
+"434
+[; ;main.c: 434:                             print_cnt(pan_counter, tilt_counter);
+[e ( _print_cnt (2 , _pan_counter _tilt_counter ]
+"435
+[; ;main.c: 435:                             UART_Write_Text_CRLF(")");
+[e ( _UART_Write_Text_CRLF (1 :s 16C ]
+"437
+[; ;main.c: 437:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x03) && (P_dat1 == 0x00)) {
 }
 [e $U 141  ]
-[e :U 130 ]
+[e :U 140 ]
+[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 3 `i == -> _P_dat1 `i -> 0 `i 142  ]
 {
-"410
-[; ;main.c: 410:                                 UART_Write_Text("\r\nNEED REBOOT\r\n");
-[e ( _UART_Write_Text (1 :s 13C ]
-"411
-[; ;main.c: 411:                             }
-}
-[e :U 141 ]
-"412
-[; ;main.c: 412:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x00) && (P_dat1 == 0x00) && (P_dat2 == 0x00)) {
-}
-[e $U 142  ]
-[e :U 129 ]
-[e $ ! && && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 0 `i == -> _P_dat1 `i -> 0 `i == -> _P_dat2 `i -> 0 `i 143  ]
-{
-"413
-[; ;main.c: 413:                             pan_enabled = 0;
-[e = _pan_enabled -> -> 0 `i `a ]
-"414
-[; ;main.c: 414:                             tilt_enabled = 0;
-[e = _tilt_enabled -> -> 0 `i `a ]
-"415
-[; ;main.c: 415:                             preset_pan_enabled = 0;
-[e = _preset_pan_enabled -> -> 0 `i `a ]
-"416
-[; ;main.c: 416:                             preset_tilt_enabled = 0;
-[e = _preset_tilt_enabled -> -> 0 `i `a ]
-"417
-[; ;main.c: 417:                             response_type = 0x01;
-[e = _response_type -> -> 1 `i `uc ]
-"418
-[; ;main.c: 418:                             UART_Write_Text("STOP (");
-[e ( _UART_Write_Text (1 :s 14C ]
-"419
-[; ;main.c: 419:                             print_cnt(pan_counter, tilt_counter);
-[e ( _print_cnt (2 , _pan_counter _tilt_counter ]
-"420
-[; ;main.c: 420:                             UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 15C ]
-"422
-[; ;main.c: 422:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x03) && (P_dat1 == 0x00)) {
-}
-[e $U 144  ]
-[e :U 143 ]
-[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 3 `i == -> _P_dat1 `i -> 0 `i 145  ]
-{
-"423
-[; ;main.c: 423:                             preset_id = P_dat2;
-[e = _preset_id _P_dat2 ]
-"424
-[; ;main.c: 424:                             PRESET_save(preset_id, pan_counter, tilt_counter);
-[e ( _PRESET_save (3 , , _preset_id _pan_counter _tilt_counter ]
-"425
-[; ;main.c: 425:                             response_type = 0x01;
-[e = _response_type -> -> 1 `i `uc ]
-"427
-[; ;main.c: 427:                             uint8_t preset_id_10 = preset_id / 10;
-[v _preset_id_10 `uc ~T0 @X0 1 a ]
-[e = _preset_id_10 -> / -> _preset_id `i -> 10 `i `uc ]
-"428
-[; ;main.c: 428:                             uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-[v _preset_id_1 `uc ~T0 @X0 1 a ]
-[e = _preset_id_1 -> - -> _preset_id `i * -> _preset_id_10 `i -> 10 `i `uc ]
-"430
-[; ;main.c: 430:                             preset_id_10 += 48;
-[e =+ _preset_id_10 -> -> 48 `i `uc ]
-"431
-[; ;main.c: 431:                             preset_id_1 += 48;
-[e =+ _preset_id_1 -> -> 48 `i `uc ]
-"433
-[; ;main.c: 433:                             UART_Write_Text("SET PRESET ");
-[e ( _UART_Write_Text (1 :s 16C ]
-"434
-[; ;main.c: 434:                             UART_Write(preset_id_10);
-[e ( _UART_Write (1 -> _preset_id_10 `uc ]
-"435
-[; ;main.c: 435:                             UART_Write(preset_id_1);
-[e ( _UART_Write (1 -> _preset_id_1 `uc ]
-"436
-[; ;main.c: 436:                             UART_Write_Text(" (");
-[e ( _UART_Write_Text (1 :s 17C ]
-"437
-[; ;main.c: 437:                             print_cnt(pan_counter, tilt_counter);
-[e ( _print_cnt (2 , _pan_counter _tilt_counter ]
 "438
-[; ;main.c: 438:                             UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 18C ]
+[; ;main.c: 438:                             preset_id = P_dat2;
+[e = _preset_id _P_dat2 ]
 "439
-[; ;main.c: 439:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x05) && (P_dat1 == 0x00)) {
-}
-[e $U 146  ]
-[e :U 145 ]
-[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 5 `i == -> _P_dat1 `i -> 0 `i 147  ]
-{
+[; ;main.c: 439:                             PRESET_save(preset_id, pan_counter, tilt_counter);
+[e ( _PRESET_save (3 , , _preset_id _pan_counter _tilt_counter ]
 "440
-[; ;main.c: 440:                             preset_id = P_dat2;
-[e = _preset_id _P_dat2 ]
-"441
-[; ;main.c: 441:                             PRESET_save(preset_id, 0xFFFF, 0xFFFF);
-[e ( _PRESET_save (3 , , _preset_id -> 65535 `ui -> 65535 `ui ]
-"443
-[; ;main.c: 443:                             uint16_t pan_tmp = 0;
-[v _pan_tmp `ui ~T0 @X0 1 a ]
-[e = _pan_tmp -> -> 0 `i `ui ]
-"444
-[; ;main.c: 444:                             uint16_t tilt_tmp = 0;
-[v _tilt_tmp `ui ~T0 @X0 1 a ]
-[e = _tilt_tmp -> -> 0 `i `ui ]
-"445
-[; ;main.c: 445:                             PRESET_load(preset_id, &pan_tmp, &tilt_tmp);
-[e ( _PRESET_load (3 , , _preset_id &U _pan_tmp &U _tilt_tmp ]
-"446
-[; ;main.c: 446:                             pan_goto = pan_tmp;
-[e = _pan_goto _pan_tmp ]
-"447
-[; ;main.c: 447:                             tilt_goto = tilt_tmp;
-[e = _tilt_goto _tilt_tmp ]
-"449
-[; ;main.c: 449:                             response_type = 0x01;
+[; ;main.c: 440:                             response_type = 0x01;
 [e = _response_type -> -> 1 `i `uc ]
-"451
-[; ;main.c: 451:                             uint8_t preset_id_10 = preset_id / 10;
-[v _preset_id_10 `uc ~T0 @X0 1 a ]
-[e = _preset_id_10 -> / -> _preset_id `i -> 10 `i `uc ]
-"452
-[; ;main.c: 452:                             uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-[v _preset_id_1 `uc ~T0 @X0 1 a ]
-[e = _preset_id_1 -> - -> _preset_id `i * -> _preset_id_10 `i -> 10 `i `uc ]
-"454
-[; ;main.c: 454:                             preset_id_10 += 48;
-[e =+ _preset_id_10 -> -> 48 `i `uc ]
-"455
-[; ;main.c: 455:                             preset_id_1 += 48;
-[e =+ _preset_id_1 -> -> 48 `i `uc ]
-"457
-[; ;main.c: 457:                             UART_Write_Text("CLEAR PRESET ");
-[e ( _UART_Write_Text (1 :s 19C ]
-"458
-[; ;main.c: 458:                             UART_Write(preset_id_10);
-[e ( _UART_Write (1 -> _preset_id_10 `uc ]
-"459
-[; ;main.c: 459:                             UART_Write(preset_id_1);
-[e ( _UART_Write (1 -> _preset_id_1 `uc ]
-"460
-[; ;main.c: 460:                             UART_Write_Text(" (");
-[e ( _UART_Write_Text (1 :s 20C ]
-"461
-[; ;main.c: 461:                             print_cnt(pan_goto, tilt_goto);
-[e ( _print_cnt (2 , _pan_goto _tilt_goto ]
-"462
-[; ;main.c: 462:                             UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 21C ]
-"463
-[; ;main.c: 463:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x07) && (P_dat1 == 0x00)) {
+"442
+[; ;main.c: 442:                             print_preset(preset_id, pan_counter, tilt_counter, "SET PRESET ");
+[e ( _print_preset (4 , , , _preset_id _pan_counter _tilt_counter :s 17C ]
+"443
+[; ;main.c: 443:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x05) && (P_dat1 == 0x00)) {
 }
-[e $U 148  ]
-[e :U 147 ]
-[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 7 `i == -> _P_dat1 `i -> 0 `i 149  ]
+[e $U 143  ]
+[e :U 142 ]
+[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 5 `i == -> _P_dat1 `i -> 0 `i 144  ]
 {
-"464
-[; ;main.c: 464:                             preset_id = P_dat2;
+"444
+[; ;main.c: 444:                             preset_id = P_dat2;
 [e = _preset_id _P_dat2 ]
-"466
-[; ;main.c: 466:                             uint16_t pan_tmp = 0;
+"445
+[; ;main.c: 445:                             PRESET_save(preset_id, 0xFFFF, 0xFFFF);
+[e ( _PRESET_save (3 , , _preset_id -> 65535 `ui -> 65535 `ui ]
+"447
+[; ;main.c: 447:                             uint16_t pan_tmp = 0;
 [v _pan_tmp `ui ~T0 @X0 1 a ]
 [e = _pan_tmp -> -> 0 `i `ui ]
-"467
-[; ;main.c: 467:                             uint16_t tilt_tmp = 0;
+"448
+[; ;main.c: 448:                             uint16_t tilt_tmp = 0;
 [v _tilt_tmp `ui ~T0 @X0 1 a ]
 [e = _tilt_tmp -> -> 0 `i `ui ]
-"468
-[; ;main.c: 468:                             PRESET_load(preset_id, &pan_tmp, &tilt_tmp);
+"449
+[; ;main.c: 449:                             PRESET_load(preset_id, &pan_tmp, &tilt_tmp);
 [e ( _PRESET_load (3 , , _preset_id &U _pan_tmp &U _tilt_tmp ]
-"469
-[; ;main.c: 469:                             pan_goto = pan_tmp;
+"450
+[; ;main.c: 450:                             pan_goto = pan_tmp;
 [e = _pan_goto _pan_tmp ]
-"470
-[; ;main.c: 470:                             tilt_goto = tilt_tmp;
+"451
+[; ;main.c: 451:                             tilt_goto = tilt_tmp;
 [e = _tilt_goto _tilt_tmp ]
-"472
-[; ;main.c: 472:                             preset_pan_enabled = 1;
+"453
+[; ;main.c: 453:                             response_type = 0x01;
+[e = _response_type -> -> 1 `i `uc ]
+"455
+[; ;main.c: 455:                             print_preset(preset_id, pan_goto, tilt_goto, "CLEAR PRESET ");
+[e ( _print_preset (4 , , , _preset_id _pan_goto _tilt_goto :s 18C ]
+"456
+[; ;main.c: 456:                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x07) && (P_dat1 == 0x00)) {
+}
+[e $U 145  ]
+[e :U 144 ]
+[e $ ! && && == -> _P_cmd1 `i -> 0 `i == -> _P_cmd2 `i -> 7 `i == -> _P_dat1 `i -> 0 `i 146  ]
+{
+"457
+[; ;main.c: 457:                             preset_id = P_dat2;
+[e = _preset_id _P_dat2 ]
+"459
+[; ;main.c: 459:                             uint16_t pan_tmp = 0;
+[v _pan_tmp `ui ~T0 @X0 1 a ]
+[e = _pan_tmp -> -> 0 `i `ui ]
+"460
+[; ;main.c: 460:                             uint16_t tilt_tmp = 0;
+[v _tilt_tmp `ui ~T0 @X0 1 a ]
+[e = _tilt_tmp -> -> 0 `i `ui ]
+"461
+[; ;main.c: 461:                             PRESET_load(preset_id, &pan_tmp, &tilt_tmp);
+[e ( _PRESET_load (3 , , _preset_id &U _pan_tmp &U _tilt_tmp ]
+"462
+[; ;main.c: 462:                             pan_goto = pan_tmp;
+[e = _pan_goto _pan_tmp ]
+"463
+[; ;main.c: 463:                             tilt_goto = tilt_tmp;
+[e = _tilt_goto _tilt_tmp ]
+"465
+[; ;main.c: 465:                             preset_pan_enabled = 1;
 [e = _preset_pan_enabled -> -> 1 `i `a ]
-"473
-[; ;main.c: 473:                             preset_pan_enabled_old = 0;
+"466
+[; ;main.c: 466:                             preset_pan_enabled_old = 0;
 [e = _preset_pan_enabled_old -> -> 0 `i `a ]
-"475
-[; ;main.c: 475:                             pan_speed = 0x32;
+"468
+[; ;main.c: 468:                             pan_speed = 0x32;
 [e = _pan_speed -> -> 50 `i `uc ]
-"476
-[; ;main.c: 476:                             timer1_pan_ref = SPEED_calc(pan_speed);
+"469
+[; ;main.c: 469:                             timer1_pan_ref = SPEED_calc(pan_speed);
 [e = _timer1_pan_ref ( _SPEED_calc (1 _pan_speed ]
-"477
-[; ;main.c: 477:                             pan_enabled = 1;
+"470
+[; ;main.c: 470:                             pan_enabled = 1;
 [e = _pan_enabled -> -> 1 `i `a ]
-"479
-[; ;main.c: 479:                             if (pan_goto < 12000) {
-[e $ ! < _pan_goto -> -> 12000 `i `ui 150  ]
+"472
+[; ;main.c: 472:                             if (pan_goto < 12000) {
+[e $ ! < _pan_goto -> -> 12000 `i `ui 147  ]
 {
-"480
-[; ;main.c: 480:                                 if (pan_goto > pan_counter) {
-[e $ ! > _pan_goto _pan_counter 151  ]
+"473
+[; ;main.c: 473:                                 if (pan_goto > pan_counter) {
+[e $ ! > _pan_goto _pan_counter 148  ]
 {
-"481
-[; ;main.c: 481:                                     pan_direction = 0;
+"474
+[; ;main.c: 474:                                     pan_direction = 0;
 [e = _pan_direction -> -> 0 `i `a ]
-"482
-[; ;main.c: 482:                                 } else if (pan_goto < pan_counter) {
+"475
+[; ;main.c: 475:                                 } else if (pan_goto < pan_counter) {
 }
-[e $U 152  ]
-[e :U 151 ]
-[e $ ! < _pan_goto _pan_counter 153  ]
+[e $U 149  ]
+[e :U 148 ]
+[e $ ! < _pan_goto _pan_counter 150  ]
 {
-"483
-[; ;main.c: 483:                                     pan_direction = 1;
+"476
+[; ;main.c: 476:                                     pan_direction = 1;
 [e = _pan_direction -> -> 1 `i `a ]
-"484
-[; ;main.c: 484:                                 } else {
+"477
+[; ;main.c: 477:                                 } else {
 }
-[e $U 154  ]
-[e :U 153 ]
-{
-"485
-[; ;main.c: 485:                                     preset_pan_enabled = 0;
-[e = _preset_pan_enabled -> -> 0 `i `a ]
-"486
-[; ;main.c: 486:                                     pan_enabled = 0;
-[e = _pan_enabled -> -> 0 `i `a ]
-"487
-[; ;main.c: 487:                                 }
-}
-[e :U 154 ]
-[e :U 152 ]
-"488
-[; ;main.c: 488:                             } else {
-}
-[e $U 155  ]
+[e $U 151  ]
 [e :U 150 ]
 {
-"489
-[; ;main.c: 489:                                 preset_pan_enabled = 0;
+"478
+[; ;main.c: 478:                                     preset_pan_enabled = 0;
 [e = _preset_pan_enabled -> -> 0 `i `a ]
-"490
-[; ;main.c: 490:                                 pan_enabled = 0;
+"479
+[; ;main.c: 479:                                     pan_enabled = 0;
 [e = _pan_enabled -> -> 0 `i `a ]
-"491
-[; ;main.c: 491:                             }
+"480
+[; ;main.c: 480:                                 }
 }
-[e :U 155 ]
-"493
-[; ;main.c: 493:                             preset_tilt_enabled = 1;
+[e :U 151 ]
+[e :U 149 ]
+"481
+[; ;main.c: 481:                             } else {
+}
+[e $U 152  ]
+[e :U 147 ]
+{
+"482
+[; ;main.c: 482:                                 preset_pan_enabled = 0;
+[e = _preset_pan_enabled -> -> 0 `i `a ]
+"483
+[; ;main.c: 483:                                 pan_enabled = 0;
+[e = _pan_enabled -> -> 0 `i `a ]
+"484
+[; ;main.c: 484:                             }
+}
+[e :U 152 ]
+"486
+[; ;main.c: 486:                             preset_tilt_enabled = 1;
 [e = _preset_tilt_enabled -> -> 1 `i `a ]
-"494
-[; ;main.c: 494:                             preset_tilt_enabled_old = 0;
+"487
+[; ;main.c: 487:                             preset_tilt_enabled_old = 0;
 [e = _preset_tilt_enabled_old -> -> 0 `i `a ]
-"496
-[; ;main.c: 496:                             tilt_speed = 0x32;
+"489
+[; ;main.c: 489:                             tilt_speed = 0x32;
 [e = _tilt_speed -> -> 50 `i `uc ]
-"497
-[; ;main.c: 497:                             timer1_tilt_ref = SPEED_calc(tilt_speed);
+"490
+[; ;main.c: 490:                             timer1_tilt_ref = SPEED_calc(tilt_speed);
 [e = _timer1_tilt_ref ( _SPEED_calc (1 _tilt_speed ]
-"498
-[; ;main.c: 498:                             tilt_enabled = 1;
+"491
+[; ;main.c: 491:                             tilt_enabled = 1;
 [e = _tilt_enabled -> -> 1 `i `a ]
-"500
-[; ;main.c: 500:                             if (tilt_goto < 2800) {
-[e $ ! < _tilt_goto -> -> 2800 `i `ui 156  ]
+"493
+[; ;main.c: 493:                             if (tilt_goto < 2800) {
+[e $ ! < _tilt_goto -> -> 2800 `i `ui 153  ]
 {
-"501
-[; ;main.c: 501:                                 if (tilt_goto > tilt_counter) {
-[e $ ! > _tilt_goto _tilt_counter 157  ]
+"494
+[; ;main.c: 494:                                 if (tilt_goto > tilt_counter) {
+[e $ ! > _tilt_goto _tilt_counter 154  ]
 {
-"502
-[; ;main.c: 502:                                     tilt_direction = 0;
+"495
+[; ;main.c: 495:                                     tilt_direction = 0;
 [e = _tilt_direction -> -> 0 `i `a ]
-"503
-[; ;main.c: 503:                                 } else if (tilt_goto < tilt_counter) {
+"496
+[; ;main.c: 496:                                 } else if (tilt_goto < tilt_counter) {
 }
-[e $U 158  ]
-[e :U 157 ]
-[e $ ! < _tilt_goto _tilt_counter 159  ]
+[e $U 155  ]
+[e :U 154 ]
+[e $ ! < _tilt_goto _tilt_counter 156  ]
 {
-"504
-[; ;main.c: 504:                                     tilt_direction = 1;
+"497
+[; ;main.c: 497:                                     tilt_direction = 1;
 [e = _tilt_direction -> -> 1 `i `a ]
-"505
-[; ;main.c: 505:                                 } else {
+"498
+[; ;main.c: 498:                                 } else {
 }
-[e $U 160  ]
-[e :U 159 ]
-{
-"506
-[; ;main.c: 506:                                     preset_tilt_enabled = 0;
-[e = _preset_tilt_enabled -> -> 0 `i `a ]
-"507
-[; ;main.c: 507:                                     tilt_enabled = 0;
-[e = _tilt_enabled -> -> 0 `i `a ]
-"508
-[; ;main.c: 508:                                 }
-}
-[e :U 160 ]
-[e :U 158 ]
-"509
-[; ;main.c: 509:                             } else {
-}
-[e $U 161  ]
+[e $U 157  ]
 [e :U 156 ]
 {
-"510
-[; ;main.c: 510:                                 preset_tilt_enabled = 0;
+"499
+[; ;main.c: 499:                                     preset_tilt_enabled = 0;
 [e = _preset_tilt_enabled -> -> 0 `i `a ]
-"511
-[; ;main.c: 511:                                 tilt_enabled = 0;
+"500
+[; ;main.c: 500:                                     tilt_enabled = 0;
 [e = _tilt_enabled -> -> 0 `i `a ]
-"512
-[; ;main.c: 512:                             }
+"501
+[; ;main.c: 501:                                 }
 }
-[e :U 161 ]
-"514
-[; ;main.c: 514:                             response_type = 0x01;
-[e = _response_type -> -> 1 `i `uc ]
-"516
-[; ;main.c: 516:                             uint8_t preset_id_10 = preset_id / 10;
-[v _preset_id_10 `uc ~T0 @X0 1 a ]
-[e = _preset_id_10 -> / -> _preset_id `i -> 10 `i `uc ]
-"517
-[; ;main.c: 517:                             uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-[v _preset_id_1 `uc ~T0 @X0 1 a ]
-[e = _preset_id_1 -> - -> _preset_id `i * -> _preset_id_10 `i -> 10 `i `uc ]
-"519
-[; ;main.c: 519:                             preset_id_10 += 48;
-[e =+ _preset_id_10 -> -> 48 `i `uc ]
-"520
-[; ;main.c: 520:                             preset_id_1 += 48;
-[e =+ _preset_id_1 -> -> 48 `i `uc ]
-"522
-[; ;main.c: 522:                             UART_Write_Text("GOTO PRESET ");
-[e ( _UART_Write_Text (1 :s 22C ]
-"523
-[; ;main.c: 523:                             UART_Write(preset_id_10);
-[e ( _UART_Write (1 -> _preset_id_10 `uc ]
-"524
-[; ;main.c: 524:                             UART_Write(preset_id_1);
-[e ( _UART_Write (1 -> _preset_id_1 `uc ]
-"525
-[; ;main.c: 525:                             UART_Write_Text(" (");
-[e ( _UART_Write_Text (1 :s 23C ]
-"526
-[; ;main.c: 526:                             print_cnt(pan_goto, tilt_goto);
-[e ( _print_cnt (2 , _pan_goto _tilt_goto ]
-"527
-[; ;main.c: 527:                             UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 24C ]
-"528
-[; ;main.c: 528:                         } else {
+[e :U 157 ]
+[e :U 155 ]
+"502
+[; ;main.c: 502:                             } else {
 }
-[e $U 162  ]
-[e :U 149 ]
+[e $U 158  ]
+[e :U 153 ]
 {
-"529
-[; ;main.c: 529:                             if ((P_cmd2 & 0x04) == 0x04) {
-[e $ ! == & -> _P_cmd2 `i -> 4 `i -> 4 `i 163  ]
-{
-"530
-[; ;main.c: 530:                                 pan_speed = P_dat1;
-[e = _pan_speed _P_dat1 ]
-"531
-[; ;main.c: 531:                                 timer1_pan_ref = SPEED_calc(pan_speed);
-[e = _timer1_pan_ref ( _SPEED_calc (1 _pan_speed ]
-"532
-[; ;main.c: 532:                                 pan_direction = 0;
-[e = _pan_direction -> -> 0 `i `a ]
-"533
-[; ;main.c: 533:                                 pan_enabled = 1;
-[e = _pan_enabled -> -> 1 `i `a ]
-"534
-[; ;main.c: 534:                                 preset_pan_enabled = 0;
-[e = _preset_pan_enabled -> -> 0 `i `a ]
-"535
-[; ;main.c: 535:                                 preset_tilt_enabled = 0;
+"503
+[; ;main.c: 503:                                 preset_tilt_enabled = 0;
 [e = _preset_tilt_enabled -> -> 0 `i `a ]
-"536
-[; ;main.c: 536:                                 response_type = 0x01;
-[e = _response_type -> -> 1 `i `uc ]
-"537
-[; ;main.c: 537:                                 is_reboot = 0;
-[e = _is_reboot -> -> 0 `i `a ]
-"538
-[; ;main.c: 538:                                 UART_Write_Text("LEFT (");
-[e ( _UART_Write_Text (1 :s 25C ]
-"539
-[; ;main.c: 539:                                 print_cnt(pan_counter, tilt_counter);
-[e ( _print_cnt (2 , _pan_counter _tilt_counter ]
-"540
-[; ;main.c: 540:                                 UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 26C ]
-"541
-[; ;main.c: 541:                             } else if ((P_cmd2 & 0x02) == 0x02) {
+"504
+[; ;main.c: 504:                                 tilt_enabled = 0;
+[e = _tilt_enabled -> -> 0 `i `a ]
+"505
+[; ;main.c: 505:                             }
 }
-[e $U 164  ]
-[e :U 163 ]
-[e $ ! == & -> _P_cmd2 `i -> 2 `i -> 2 `i 165  ]
+[e :U 158 ]
+"507
+[; ;main.c: 507:                             response_type = 0x01;
+[e = _response_type -> -> 1 `i `uc ]
+"509
+[; ;main.c: 509:                             print_preset(preset_id, pan_goto, tilt_goto, "GOTO PRESET ");
+[e ( _print_preset (4 , , , _preset_id _pan_goto _tilt_goto :s 19C ]
+"510
+[; ;main.c: 510:                         } else {
+}
+[e $U 159  ]
+[e :U 146 ]
 {
-"542
-[; ;main.c: 542:                                 pan_speed = P_dat1;
+"511
+[; ;main.c: 511:                             if ((P_cmd2 & 0x04) == 0x04) {
+[e $ ! == & -> _P_cmd2 `i -> 4 `i -> 4 `i 160  ]
+{
+"512
+[; ;main.c: 512:                                 pan_speed = P_dat1;
 [e = _pan_speed _P_dat1 ]
-"543
-[; ;main.c: 543:                                 timer1_pan_ref = SPEED_calc(pan_speed);
+"513
+[; ;main.c: 513:                                 timer1_pan_ref = SPEED_calc(pan_speed);
 [e = _timer1_pan_ref ( _SPEED_calc (1 _pan_speed ]
-"544
-[; ;main.c: 544:                                 pan_direction = 1;
-[e = _pan_direction -> -> 1 `i `a ]
-"545
-[; ;main.c: 545:                                 pan_enabled = 1;
+"514
+[; ;main.c: 514:                                 pan_direction = 0;
+[e = _pan_direction -> -> 0 `i `a ]
+"515
+[; ;main.c: 515:                                 pan_enabled = 1;
 [e = _pan_enabled -> -> 1 `i `a ]
-"546
-[; ;main.c: 546:                                 preset_pan_enabled = 0;
+"517
+[; ;main.c: 517:                                 preset_pan_enabled = 0;
 [e = _preset_pan_enabled -> -> 0 `i `a ]
-"547
-[; ;main.c: 547:                                 preset_tilt_enabled = 0;
+"518
+[; ;main.c: 518:                                 preset_tilt_enabled = 0;
+[e = _preset_tilt_enabled -> -> 0 `i `a ]
+"520
+[; ;main.c: 520:                                 response_type = 0x01;
+[e = _response_type -> -> 1 `i `uc ]
+"521
+[; ;main.c: 521:                                 is_reboot = 0;
+[e = _is_reboot -> -> 0 `i `a ]
+"523
+[; ;main.c: 523:                                 print_cmd_mov("LEFT", pan_counter, tilt_counter);
+[e ( _print_cmd_mov (3 , , :s 20C _pan_counter _tilt_counter ]
+"524
+[; ;main.c: 524:                             } else if ((P_cmd2 & 0x02) == 0x02) {
+}
+[e $U 161  ]
+[e :U 160 ]
+[e $ ! == & -> _P_cmd2 `i -> 2 `i -> 2 `i 162  ]
+{
+"525
+[; ;main.c: 525:                                 pan_speed = P_dat1;
+[e = _pan_speed _P_dat1 ]
+"526
+[; ;main.c: 526:                                 timer1_pan_ref = SPEED_calc(pan_speed);
+[e = _timer1_pan_ref ( _SPEED_calc (1 _pan_speed ]
+"527
+[; ;main.c: 527:                                 pan_direction = 1;
+[e = _pan_direction -> -> 1 `i `a ]
+"528
+[; ;main.c: 528:                                 pan_enabled = 1;
+[e = _pan_enabled -> -> 1 `i `a ]
+"530
+[; ;main.c: 530:                                 preset_pan_enabled = 0;
+[e = _preset_pan_enabled -> -> 0 `i `a ]
+"531
+[; ;main.c: 531:                                 preset_tilt_enabled = 0;
+[e = _preset_tilt_enabled -> -> 0 `i `a ]
+"533
+[; ;main.c: 533:                                 response_type = 0x01;
+[e = _response_type -> -> 1 `i `uc ]
+"534
+[; ;main.c: 534:                                 is_reboot = 0;
+[e = _is_reboot -> -> 0 `i `a ]
+"536
+[; ;main.c: 536:                                 print_cmd_mov("RIGHT", pan_counter, tilt_counter);
+[e ( _print_cmd_mov (3 , , :s 21C _pan_counter _tilt_counter ]
+"537
+[; ;main.c: 537:                             }
+}
+[e :U 162 ]
+[e :U 161 ]
+"539
+[; ;main.c: 539:                             if ((P_cmd2 & 0x10) == 0x10) {
+[e $ ! == & -> _P_cmd2 `i -> 16 `i -> 16 `i 163  ]
+{
+"540
+[; ;main.c: 540:                                 tilt_speed = P_dat2;
+[e = _tilt_speed _P_dat2 ]
+"541
+[; ;main.c: 541:                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
+[e = _timer1_tilt_ref ( _SPEED_calc (1 _tilt_speed ]
+"542
+[; ;main.c: 542:                                 tilt_direction = 0;
+[e = _tilt_direction -> -> 0 `i `a ]
+"543
+[; ;main.c: 543:                                 tilt_enabled = 1;
+[e = _tilt_enabled -> -> 1 `i `a ]
+"545
+[; ;main.c: 545:                                 preset_pan_enabled = 0;
+[e = _preset_pan_enabled -> -> 0 `i `a ]
+"546
+[; ;main.c: 546:                                 preset_tilt_enabled = 0;
 [e = _preset_tilt_enabled -> -> 0 `i `a ]
 "548
 [; ;main.c: 548:                                 response_type = 0x01;
@@ -1886,522 +1862,462 @@ Version 4.0 HI-TECH Software Intermediate Code
 "549
 [; ;main.c: 549:                                 is_reboot = 0;
 [e = _is_reboot -> -> 0 `i `a ]
-"550
-[; ;main.c: 550:                                 UART_Write_Text("RIGHT (");
-[e ( _UART_Write_Text (1 :s 27C ]
 "551
-[; ;main.c: 551:                                 print_cnt(pan_counter, tilt_counter);
-[e ( _print_cnt (2 , _pan_counter _tilt_counter ]
+[; ;main.c: 551:                                 print_cmd_mov("DOWN", pan_counter, tilt_counter);
+[e ( _print_cmd_mov (3 , , :s 22C _pan_counter _tilt_counter ]
 "552
-[; ;main.c: 552:                                 UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 28C ]
+[; ;main.c: 552:                             } else if ((P_cmd2 & 0x08) == 0x08) {
+}
+[e $U 164  ]
+[e :U 163 ]
+[e $ ! == & -> _P_cmd2 `i -> 8 `i -> 8 `i 165  ]
+{
 "553
-[; ;main.c: 553:                             }
+[; ;main.c: 553:                                 tilt_speed = P_dat2;
+[e = _tilt_speed _P_dat2 ]
+"554
+[; ;main.c: 554:                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
+[e = _timer1_tilt_ref ( _SPEED_calc (1 _tilt_speed ]
+"555
+[; ;main.c: 555:                                 tilt_direction = 1;
+[e = _tilt_direction -> -> 1 `i `a ]
+"556
+[; ;main.c: 556:                                 tilt_enabled = 1;
+[e = _tilt_enabled -> -> 1 `i `a ]
+"558
+[; ;main.c: 558:                                 preset_pan_enabled = 0;
+[e = _preset_pan_enabled -> -> 0 `i `a ]
+"559
+[; ;main.c: 559:                                 preset_tilt_enabled = 0;
+[e = _preset_tilt_enabled -> -> 0 `i `a ]
+"561
+[; ;main.c: 561:                                 response_type = 0x01;
+[e = _response_type -> -> 1 `i `uc ]
+"562
+[; ;main.c: 562:                                 is_reboot = 0;
+[e = _is_reboot -> -> 0 `i `a ]
+"564
+[; ;main.c: 564:                                 print_cmd_mov("UP", pan_counter, tilt_counter);
+[e ( _print_cmd_mov (3 , , :s 23C _pan_counter _tilt_counter ]
+"565
+[; ;main.c: 565:                             }
 }
 [e :U 165 ]
 [e :U 164 ]
-"555
-[; ;main.c: 555:                             if ((P_cmd2 & 0x10) == 0x10) {
-[e $ ! == & -> _P_cmd2 `i -> 16 `i -> 16 `i 166  ]
-{
-"556
-[; ;main.c: 556:                                 tilt_speed = P_dat2;
-[e = _tilt_speed _P_dat2 ]
-"557
-[; ;main.c: 557:                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
-[e = _timer1_tilt_ref ( _SPEED_calc (1 _tilt_speed ]
-"558
-[; ;main.c: 558:                                 tilt_direction = 0;
-[e = _tilt_direction -> -> 0 `i `a ]
-"559
-[; ;main.c: 559:                                 tilt_enabled = 1;
-[e = _tilt_enabled -> -> 1 `i `a ]
-"560
-[; ;main.c: 560:                                 preset_pan_enabled = 0;
-[e = _preset_pan_enabled -> -> 0 `i `a ]
-"561
-[; ;main.c: 561:                                 preset_tilt_enabled = 0;
-[e = _preset_tilt_enabled -> -> 0 `i `a ]
-"562
-[; ;main.c: 562:                                 response_type = 0x01;
-[e = _response_type -> -> 1 `i `uc ]
-"563
-[; ;main.c: 563:                                 is_reboot = 0;
-[e = _is_reboot -> -> 0 `i `a ]
-"564
-[; ;main.c: 564:                                 UART_Write_Text("DOWN (");
-[e ( _UART_Write_Text (1 :s 29C ]
-"565
-[; ;main.c: 565:                                 print_cnt(pan_counter, tilt_counter);
-[e ( _print_cnt (2 , _pan_counter _tilt_counter ]
 "566
-[; ;main.c: 566:                                 UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 30C ]
+[; ;main.c: 566:                         }
+}
+[e :U 159 ]
+[e :U 145 ]
+[e :U 143 ]
+[e :U 141 ]
+[e :U 139 ]
+[e :U 127 ]
 "567
-[; ;main.c: 567:                             } else if ((P_cmd2 & 0x08) == 0x08) {
-}
-[e $U 167  ]
-[e :U 166 ]
-[e $ ! == & -> _P_cmd2 `i -> 8 `i -> 8 `i 168  ]
-{
-"568
-[; ;main.c: 568:                                 tilt_speed = P_dat2;
-[e = _tilt_speed _P_dat2 ]
-"569
-[; ;main.c: 569:                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
-[e = _timer1_tilt_ref ( _SPEED_calc (1 _tilt_speed ]
-"570
-[; ;main.c: 570:                                 tilt_direction = 1;
-[e = _tilt_direction -> -> 1 `i `a ]
-"571
-[; ;main.c: 571:                                 tilt_enabled = 1;
-[e = _tilt_enabled -> -> 1 `i `a ]
-"572
-[; ;main.c: 572:                                 preset_pan_enabled = 0;
-[e = _preset_pan_enabled -> -> 0 `i `a ]
-"573
-[; ;main.c: 573:                                 preset_tilt_enabled = 0;
-[e = _preset_tilt_enabled -> -> 0 `i `a ]
-"574
-[; ;main.c: 574:                                 response_type = 0x01;
-[e = _response_type -> -> 1 `i `uc ]
-"575
-[; ;main.c: 575:                                 is_reboot = 0;
-[e = _is_reboot -> -> 0 `i `a ]
-"576
-[; ;main.c: 576:                                 UART_Write_Text("UP (");
-[e ( _UART_Write_Text (1 :s 31C ]
-"577
-[; ;main.c: 577:                                 print_cnt(pan_counter, tilt_counter);
-[e ( _print_cnt (2 , _pan_counter _tilt_counter ]
-"578
-[; ;main.c: 578:                                 UART_Write_Text(")\r\n");
-[e ( _UART_Write_Text (1 :s 32C ]
-"579
-[; ;main.c: 579:                             }
-}
-[e :U 168 ]
-[e :U 167 ]
-"580
-[; ;main.c: 580:                         }
-}
-[e :U 162 ]
-[e :U 148 ]
-[e :U 146 ]
-[e :U 144 ]
-[e :U 142 ]
-[e :U 128 ]
-"581
-[; ;main.c: 581:                     }
-}
-[e :U 123 ]
-"583
-[; ;main.c: 583:                     if (response_type == 0x01) {
-[e $ ! == -> _response_type `i -> 1 `i 169  ]
-{
-"585
-[; ;main.c: 585:                     }
-}
-[e :U 169 ]
-"586
-[; ;main.c: 586:                 }
+[; ;main.c: 567:                     }
 }
 [e :U 122 ]
-"587
-[; ;main.c: 587:             }
-}
-[e :U 118 ]
-"588
-[; ;main.c: 588:         } else {
-}
-[e $U 170  ]
-[e :U 105 ]
+"569
+[; ;main.c: 569:                     if (response_type == 0x01) {
+[e $ ! == -> _response_type `i -> 1 `i 166  ]
 {
-"589
-[; ;main.c: 589:             if (frame_index < 4) {
-[e $ ! < -> _frame_index `i -> 4 `i 171  ]
-{
-"590
-[; ;main.c: 590:                 frame_index++;
-[e ++ _frame_index -> -> 1 `i `uc ]
-"591
-[; ;main.c: 591:             } else {
+"571
+[; ;main.c: 571:                     }
 }
-[e $U 172  ]
-[e :U 171 ]
-{
-"593
-[; ;main.c: 593:                 frame_index = 0;
-[e = _frame_index -> -> 0 `i `uc ]
-"594
-[; ;main.c: 594:             }
+[e :U 166 ]
+"572
+[; ;main.c: 572:                 }
 }
-[e :U 172 ]
-"597
-[; ;main.c: 597:         }
+[e :U 121 ]
+"573
+[; ;main.c: 573:             }
 }
-[e :U 170 ]
-"598
-[; ;main.c: 598:     }
+[e :U 117 ]
+"574
+[; ;main.c: 574:         } else {
 }
-[e :U 102 ]
-[e $U 103  ]
+[e $U 167  ]
 [e :U 104 ]
-"600
-[; ;main.c: 600:     return;
-[e $UE 101  ]
-"601
-[; ;main.c: 601: }
-[e :UE 101 ]
+{
+"575
+[; ;main.c: 575:             if (frame_index < 4) {
+[e $ ! < -> _frame_index `i -> 4 `i 168  ]
+{
+"576
+[; ;main.c: 576:                 frame_index++;
+[e ++ _frame_index -> -> 1 `i `uc ]
+"577
+[; ;main.c: 577:             } else {
 }
-"603
-[; ;main.c: 603: void UC_Init(void) {
+[e $U 169  ]
+[e :U 168 ]
+{
+"579
+[; ;main.c: 579:                 frame_index = 0;
+[e = _frame_index -> -> 0 `i `uc ]
+"580
+[; ;main.c: 580:             }
+}
+[e :U 169 ]
+"583
+[; ;main.c: 583:         }
+}
+[e :U 167 ]
+"584
+[; ;main.c: 584:     }
+}
+[e :U 101 ]
+[e $U 102  ]
+[e :U 103 ]
+"586
+[; ;main.c: 586:     return;
+[e $UE 100  ]
+"587
+[; ;main.c: 587: }
+[e :UE 100 ]
+}
+"589
+[; ;main.c: 589: void UC_Init(void) {
 [v _UC_Init `(v ~T0 @X0 1 ef ]
 {
 [e :U _UC_Init ]
 [f ]
-"604
-[; ;main.c: 604:     PCONbits.OSCF = 1;
+"590
+[; ;main.c: 590:     PCONbits.OSCF = 1;
 [e = . . _PCONbits 0 3 -> -> 1 `i `uc ]
-"607
-[; ;main.c: 607:     if ((PCONbits.nPOR == 1) && (PCONbits.nBOR == 1)) {
-[e $ ! && == -> . . _PCONbits 0 1 `i -> 1 `i == -> . . _PCONbits 0 0 `i -> 1 `i 174  ]
+"593
+[; ;main.c: 593:     if ((PCONbits.nPOR == 1) && (PCONbits.nBOR == 1)) {
+[e $ ! && == -> . . _PCONbits 0 1 `i -> 1 `i == -> . . _PCONbits 0 0 `i -> 1 `i 171  ]
 {
-"609
-[; ;main.c: 609:         is_reboot = 1;
+"595
+[; ;main.c: 595:         is_reboot = 1;
 [e = _is_reboot -> -> 1 `i `a ]
-"610
-[; ;main.c: 610:     }
+"596
+[; ;main.c: 596:     }
 }
-[e :U 174 ]
-"612
-[; ;main.c: 612:     PORTA = 0;
+[e :U 171 ]
+"598
+[; ;main.c: 598:     PORTA = 0;
 [e = _PORTA -> -> 0 `i `uc ]
-"613
-[; ;main.c: 613:     PORTB = 0;
+"599
+[; ;main.c: 599:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"615
-[; ;main.c: 615:     CMCON = 7;
+"601
+[; ;main.c: 601:     CMCON = 7;
 [e = _CMCON -> -> 7 `i `uc ]
-"617
-[; ;main.c: 617:     OPTION_REGbits.nRBPU = 1;
+"603
+[; ;main.c: 603:     OPTION_REGbits.nRBPU = 1;
 [e = . . _OPTION_REGbits 0 5 -> -> 1 `i `uc ]
-"618
-[; ;main.c: 618:     OPTION_REGbits.PSA = 1;
+"604
+[; ;main.c: 604:     OPTION_REGbits.PSA = 1;
 [e = . . _OPTION_REGbits 0 1 -> -> 1 `i `uc ]
-"619
-[; ;main.c: 619:     OPTION_REGbits.PS = 0b111;
+"605
+[; ;main.c: 605:     OPTION_REGbits.PS = 0b111;
 [e = . . _OPTION_REGbits 0 0 -> -> 7 `i `uc ]
-"624
-[; ;main.c: 624:     INTCONbits.GIE = 1;
+"610
+[; ;main.c: 610:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"625
-[; ;main.c: 625:     INTCONbits.PEIE = 1;
+"611
+[; ;main.c: 611:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"634
-[; ;main.c: 634:     TRISA = 0b00000000;
+"620
+[; ;main.c: 620:     TRISA = 0b00000000;
 [e = _TRISA -> -> 0 `i `uc ]
-"644
-[; ;main.c: 644:     TRISB = 0b00000010;
+"630
+[; ;main.c: 630:     TRISB = 0b00000010;
 [e = _TRISB -> -> 2 `i `uc ]
-"653
-[; ;main.c: 653: }
-[e :UE 173 ]
+"639
+[; ;main.c: 639: }
+[e :UE 170 ]
 }
-"655
-[; ;main.c: 655: void TIMER1_Init(void) {
+"641
+[; ;main.c: 641: void TIMER1_Init(void) {
 [v _TIMER1_Init `(v ~T0 @X0 1 ef ]
 {
 [e :U _TIMER1_Init ]
 [f ]
-"658
-[; ;main.c: 658:     T1CONbits.T1CKPS1 = 1;
+"644
+[; ;main.c: 644:     T1CONbits.T1CKPS1 = 1;
 [e = . . _T1CONbits 1 2 -> -> 1 `i `uc ]
-"659
-[; ;main.c: 659:     T1CONbits.T1CKPS0 = 1;
+"645
+[; ;main.c: 645:     T1CONbits.T1CKPS0 = 1;
 [e = . . _T1CONbits 1 1 -> -> 1 `i `uc ]
-"660
-[; ;main.c: 660:     T1CONbits.T1OSCEN = 0;
+"646
+[; ;main.c: 646:     T1CONbits.T1OSCEN = 0;
 [e = . . _T1CONbits 0 3 -> -> 0 `i `uc ]
-"661
-[; ;main.c: 661:     T1CONbits.nT1SYNC = 1;
+"647
+[; ;main.c: 647:     T1CONbits.nT1SYNC = 1;
 [e = . . _T1CONbits 0 2 -> -> 1 `i `uc ]
-"662
-[; ;main.c: 662:     T1CONbits.TMR1CS = 0;
+"648
+[; ;main.c: 648:     T1CONbits.TMR1CS = 0;
 [e = . . _T1CONbits 0 1 -> -> 0 `i `uc ]
-"663
-[; ;main.c: 663:     T1CONbits.TMR1ON = 1;
+"649
+[; ;main.c: 649:     T1CONbits.TMR1ON = 1;
 [e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-"664
-[; ;main.c: 664:     TMR1H = 255;
+"650
+[; ;main.c: 650:     TMR1H = 255;
 [e = _TMR1H -> -> 255 `i `uc ]
-"665
-[; ;main.c: 665:     TMR1L = 131;
+"651
+[; ;main.c: 651:     TMR1L = 131;
 [e = _TMR1L -> -> 131 `i `uc ]
-"667
-[; ;main.c: 667:     PIR1bits.TMR1IF = 0;
+"653
+[; ;main.c: 653:     PIR1bits.TMR1IF = 0;
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"668
-[; ;main.c: 668:     PIE1bits.TMR1IE = 1;
+"654
+[; ;main.c: 654:     PIE1bits.TMR1IE = 1;
 [e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-"669
-[; ;main.c: 669: }
-[e :UE 175 ]
+"655
+[; ;main.c: 655: }
+[e :UE 172 ]
 }
-"714
-[; ;main.c: 714: void delay_wdt(uint16_t _ms) {
+"700
+[; ;main.c: 700: void delay_wdt(uint16_t _ms) {
 [v _delay_wdt `(v ~T0 @X0 1 ef1`ui ]
 {
 [e :U _delay_wdt ]
 [v __ms `ui ~T0 @X0 1 r1 ]
 [f ]
-"715
-[; ;main.c: 715:     __asm("clrwdt");
+"701
+[; ;main.c: 701:     __asm("clrwdt");
 [; <" clrwdt ;# ">
-"717
-[; ;main.c: 717:     while (_ms--) {
-[e $U 177  ]
-[e :U 178 ]
+"703
+[; ;main.c: 703:     while (_ms--) {
+[e $U 174  ]
+[e :U 175 ]
 {
-"719
-[; ;main.c: 719:         __asm("clrwdt");
+"705
+[; ;main.c: 705:         __asm("clrwdt");
 [; <" clrwdt ;# ">
-"720
-[; ;main.c: 720:         _delay((unsigned long)((1)*(4000000/4000.0)));
+"706
+[; ;main.c: 706:         _delay((unsigned long)((1)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"721
-[; ;main.c: 721:     };
+"707
+[; ;main.c: 707:     };
 }
-[e :U 177 ]
-"717
-[; ;main.c: 717:     while (_ms--) {
-[e $ != -- __ms -> -> 1 `i `ui -> -> 0 `i `ui 178  ]
-[e :U 179 ]
-"722
-[; ;main.c: 722: }
-[e :UE 176 ]
+[e :U 174 ]
+"703
+[; ;main.c: 703:     while (_ms--) {
+[e $ != -- __ms -> -> 1 `i `ui -> -> 0 `i `ui 175  ]
+[e :U 176 ]
+"708
+[; ;main.c: 708: }
+[e :UE 173 ]
 }
-"724
-[; ;main.c: 724: void MOTOR_Init(void) {
+"710
+[; ;main.c: 710: void MOTOR_Init(void) {
 [v _MOTOR_Init `(v ~T0 @X0 1 ef ]
 {
 [e :U _MOTOR_Init ]
 [f ]
-"725
-[; ;main.c: 725:     is_init = 1;
+"711
+[; ;main.c: 711:     is_init = 1;
 [e = _is_init -> -> 1 `i `a ]
-"727
-[; ;main.c: 727:     delay_wdt(50);
-[e ( _delay_wdt (1 -> -> 50 `i `ui ]
-"730
-[; ;main.c: 730:     pan_speed = 0x32;
-[e = _pan_speed -> -> 50 `i `uc ]
-"731
-[; ;main.c: 731:     pan_direction = 1;
-[e = _pan_direction -> -> 1 `i `a ]
-"732
-[; ;main.c: 732:     pan_enabled = 1;
-[e = _pan_enabled -> -> 1 `i `a ]
-"734
-[; ;main.c: 734:     delay_wdt(22500);
-[e ( _delay_wdt (1 -> -> 22500 `i `ui ]
-"736
-[; ;main.c: 736:     pan_enabled = 0;
-[e = _pan_enabled -> -> 0 `i `a ]
-"738
-[; ;main.c: 738:     pan_counter = 0;
-[e = _pan_counter -> -> 0 `i `ui ]
-"740
-[; ;main.c: 740:     delay_wdt(100);
-[e ( _delay_wdt (1 -> -> 100 `i `ui ]
-"743
-[; ;main.c: 743:     pan_speed = 0x32;
-[e = _pan_speed -> -> 50 `i `uc ]
-"744
-[; ;main.c: 744:     pan_direction = 0;
-[e = _pan_direction -> -> 0 `i `a ]
-"745
-[; ;main.c: 745:     pan_enabled = 1;
-[e = _pan_enabled -> -> 1 `i `a ]
-"747
-[; ;main.c: 747:     delay_wdt(500);
-[e ( _delay_wdt (1 -> -> 500 `i `ui ]
-"749
-[; ;main.c: 749:     pan_enabled = 0;
-[e = _pan_enabled -> -> 0 `i `a ]
-"751
-[; ;main.c: 751:     pan_counter = 0;
-[e = _pan_counter -> -> 0 `i `ui ]
-"753
-[; ;main.c: 753:     delay_wdt(50);
-[e ( _delay_wdt (1 -> -> 50 `i `ui ]
-"756
-[; ;main.c: 756:     tilt_speed = 0x32;
-[e = _tilt_speed -> -> 50 `i `uc ]
-"757
-[; ;main.c: 757:     tilt_direction = 1;
-[e = _tilt_direction -> -> 1 `i `a ]
-"758
-[; ;main.c: 758:     tilt_enabled = 1;
-[e = _tilt_enabled -> -> 1 `i `a ]
-"760
-[; ;main.c: 760:     delay_wdt(6000);
-[e ( _delay_wdt (1 -> -> 6000 `i `ui ]
-"762
-[; ;main.c: 762:     tilt_enabled = 0;
-[e = _tilt_enabled -> -> 0 `i `a ]
 "764
-[; ;main.c: 764:     tilt_counter = 0;
-[e = _tilt_counter -> -> 0 `i `ui ]
+[; ;main.c: 764:     pan_speed = 0x32;
+[e = _pan_speed -> -> 50 `i `uc ]
+"765
+[; ;main.c: 765:     pan_direction = 1;
+[e = _pan_direction -> -> 1 `i `a ]
 "766
-[; ;main.c: 766:     delay_wdt(100);
-[e ( _delay_wdt (1 -> -> 100 `i `ui ]
+[; ;main.c: 766:     pan_enabled = 1;
+[e = _pan_enabled -> -> 1 `i `a ]
 "769
 [; ;main.c: 769:     tilt_speed = 0x32;
 [e = _tilt_speed -> -> 50 `i `uc ]
 "770
-[; ;main.c: 770:     tilt_direction = 0;
-[e = _tilt_direction -> -> 0 `i `a ]
+[; ;main.c: 770:     tilt_direction = 1;
+[e = _tilt_direction -> -> 1 `i `a ]
 "771
 [; ;main.c: 771:     tilt_enabled = 1;
 [e = _tilt_enabled -> -> 1 `i `a ]
-"773
-[; ;main.c: 773:     delay_wdt(750);
-[e ( _delay_wdt (1 -> -> 750 `i `ui ]
-"775
-[; ;main.c: 775:     tilt_enabled = 0;
+"774
+[; ;main.c: 774:     delay_wdt(6000);
+[e ( _delay_wdt (1 -> -> 6000 `i `ui ]
+"776
+[; ;main.c: 776:     tilt_enabled = 0;
 [e = _tilt_enabled -> -> 0 `i `a ]
-"777
-[; ;main.c: 777:     tilt_counter = 0;
+"778
+[; ;main.c: 778:     tilt_counter = 0;
 [e = _tilt_counter -> -> 0 `i `ui ]
 "780
-[; ;main.c: 780:     pan_speed = 0x32;
-[e = _pan_speed -> -> 50 `i `uc ]
-"781
-[; ;main.c: 781:     pan_direction = 0;
-[e = _pan_direction -> -> 0 `i `a ]
-"782
-[; ;main.c: 782:     pan_enabled = 1;
-[e = _pan_enabled -> -> 1 `i `a ]
-"784
-[; ;main.c: 784:     delay_wdt(4500);
-[e ( _delay_wdt (1 -> -> 4500 `i `ui ]
-"786
-[; ;main.c: 786:     pan_enabled = 0;
-[e = _pan_enabled -> -> 0 `i `a ]
-"789
-[; ;main.c: 789:     tilt_speed = 0x32;
+[; ;main.c: 780:     delay_wdt(100);
+[e ( _delay_wdt (1 -> -> 100 `i `ui ]
+"783
+[; ;main.c: 783:     tilt_speed = 0x32;
 [e = _tilt_speed -> -> 50 `i `uc ]
-"790
-[; ;main.c: 790:     tilt_direction = 0;
+"784
+[; ;main.c: 784:     tilt_direction = 0;
 [e = _tilt_direction -> -> 0 `i `a ]
-"791
-[; ;main.c: 791:     tilt_enabled = 1;
+"785
+[; ;main.c: 785:     tilt_enabled = 1;
 [e = _tilt_enabled -> -> 1 `i `a ]
-"793
-[; ;main.c: 793:     delay_wdt(1000);
-[e ( _delay_wdt (1 -> -> 1000 `i `ui ]
-"795
-[; ;main.c: 795:     tilt_enabled = 0;
+"787
+[; ;main.c: 787:     delay_wdt(750);
+[e ( _delay_wdt (1 -> -> 750 `i `ui ]
+"789
+[; ;main.c: 789:     tilt_enabled = 0;
 [e = _tilt_enabled -> -> 0 `i `a ]
+"791
+[; ;main.c: 791:     tilt_counter = 0;
+[e = _tilt_counter -> -> 0 `i `ui ]
+"795
+[; ;main.c: 795:     delay_wdt(15650);
+[e ( _delay_wdt (1 -> -> 15650 `i `ui ]
 "797
-[; ;main.c: 797:     is_init = 0;
+[; ;main.c: 797:     pan_enabled = 0;
+[e = _pan_enabled -> -> 0 `i `a ]
+"799
+[; ;main.c: 799:     pan_counter = 0;
+[e = _pan_counter -> -> 0 `i `ui ]
+"801
+[; ;main.c: 801:     delay_wdt(100);
+[e ( _delay_wdt (1 -> -> 100 `i `ui ]
+"804
+[; ;main.c: 804:     pan_speed = 0x32;
+[e = _pan_speed -> -> 50 `i `uc ]
+"805
+[; ;main.c: 805:     pan_direction = 0;
+[e = _pan_direction -> -> 0 `i `a ]
+"806
+[; ;main.c: 806:     pan_enabled = 1;
+[e = _pan_enabled -> -> 1 `i `a ]
+"808
+[; ;main.c: 808:     delay_wdt(500);
+[e ( _delay_wdt (1 -> -> 500 `i `ui ]
+"810
+[; ;main.c: 810:     pan_enabled = 0;
+[e = _pan_enabled -> -> 0 `i `a ]
+"812
+[; ;main.c: 812:     pan_counter = 0;
+[e = _pan_counter -> -> 0 `i `ui ]
+"833
+[; ;main.c: 833:     pan_speed = 0x32;
+[e = _pan_speed -> -> 50 `i `uc ]
+"834
+[; ;main.c: 834:     pan_direction = 0;
+[e = _pan_direction -> -> 0 `i `a ]
+"835
+[; ;main.c: 835:     pan_enabled = 1;
+[e = _pan_enabled -> -> 1 `i `a ]
+"838
+[; ;main.c: 838:     tilt_speed = 0x32;
+[e = _tilt_speed -> -> 50 `i `uc ]
+"839
+[; ;main.c: 839:     tilt_direction = 0;
+[e = _tilt_direction -> -> 0 `i `a ]
+"840
+[; ;main.c: 840:     tilt_enabled = 1;
+[e = _tilt_enabled -> -> 1 `i `a ]
+"843
+[; ;main.c: 843:     delay_wdt(1000);
+[e ( _delay_wdt (1 -> -> 1000 `i `ui ]
+"845
+[; ;main.c: 845:     tilt_enabled = 0;
+[e = _tilt_enabled -> -> 0 `i `a ]
+"849
+[; ;main.c: 849:     delay_wdt(3500);
+[e ( _delay_wdt (1 -> -> 3500 `i `ui ]
+"851
+[; ;main.c: 851:     pan_enabled = 0;
+[e = _pan_enabled -> -> 0 `i `a ]
+"853
+[; ;main.c: 853:     is_init = 0;
 [e = _is_init -> -> 0 `i `a ]
-"798
-[; ;main.c: 798: }
-[e :UE 180 ]
+"854
+[; ;main.c: 854: }
+[e :UE 177 ]
 }
-"800
-[; ;main.c: 800: uint8_t SPEED_calc(uint8_t speed) {
+"856
+[; ;main.c: 856: uint8_t SPEED_calc(uint8_t speed) {
 [v _SPEED_calc `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _SPEED_calc ]
 [v _speed `uc ~T0 @X0 1 r1 ]
 [f ]
-"801
-[; ;main.c: 801:     uint8_t sp_calc = 0;
+"857
+[; ;main.c: 857:     uint8_t sp_calc = 0;
 [v _sp_calc `uc ~T0 @X0 1 a ]
 [e = _sp_calc -> -> 0 `i `uc ]
-"803
-[; ;main.c: 803:     if (speed > 0x32) {
-[e $ ! > -> _speed `i -> 50 `i 182  ]
+"859
+[; ;main.c: 859:     if (speed > 0x32) {
+[e $ ! > -> _speed `i -> 50 `i 179  ]
 {
-"804
-[; ;main.c: 804:         speed = 0x32;
+"860
+[; ;main.c: 860:         speed = 0x32;
 [e = _speed -> -> 50 `i `uc ]
-"805
-[; ;main.c: 805:     }
+"861
+[; ;main.c: 861:     }
+}
+[e :U 179 ]
+"863
+[; ;main.c: 863:     if (speed < 0x06) {
+[e $ ! < -> _speed `i -> 6 `i 180  ]
+{
+"864
+[; ;main.c: 864:         speed = 0x06;
+[e = _speed -> -> 6 `i `uc ]
+"865
+[; ;main.c: 865:     }
+}
+[e :U 180 ]
+"867
+[; ;main.c: 867:     sp_calc = 1 + ((0x32 - speed) / 2);
+[e = _sp_calc -> + -> 1 `i / - -> 50 `i -> _speed `i -> 2 `i `uc ]
+"869
+[; ;main.c: 869:     if (sp_calc < 1) {
+[e $ ! < -> _sp_calc `i -> 1 `i 181  ]
+{
+"870
+[; ;main.c: 870:         sp_calc = 1;
+[e = _sp_calc -> -> 1 `i `uc ]
+"871
+[; ;main.c: 871:     }
+}
+[e :U 181 ]
+"873
+[; ;main.c: 873:     if (sp_calc > 19) {
+[e $ ! > -> _sp_calc `i -> 19 `i 182  ]
+{
+"875
+[; ;main.c: 875:         sp_calc = 19;
+[e = _sp_calc -> -> 19 `i `uc ]
+"876
+[; ;main.c: 876:     }
 }
 [e :U 182 ]
-"807
-[; ;main.c: 807:     if (speed < 0x06) {
-[e $ ! < -> _speed `i -> 6 `i 183  ]
-{
-"808
-[; ;main.c: 808:         speed = 0x06;
-[e = _speed -> -> 6 `i `uc ]
-"809
-[; ;main.c: 809:     }
-}
-[e :U 183 ]
-"811
-[; ;main.c: 811:     sp_calc = 1 + ((0x32 - speed) / 2);
-[e = _sp_calc -> + -> 1 `i / - -> 50 `i -> _speed `i -> 2 `i `uc ]
-"813
-[; ;main.c: 813:     if (sp_calc < 1) {
-[e $ ! < -> _sp_calc `i -> 1 `i 184  ]
-{
-"814
-[; ;main.c: 814:         sp_calc = 1;
-[e = _sp_calc -> -> 1 `i `uc ]
-"815
-[; ;main.c: 815:     }
-}
-[e :U 184 ]
-"817
-[; ;main.c: 817:     if (sp_calc > 19) {
-[e $ ! > -> _sp_calc `i -> 19 `i 185  ]
-{
-"819
-[; ;main.c: 819:         sp_calc = 19;
-[e = _sp_calc -> -> 19 `i `uc ]
-"820
-[; ;main.c: 820:     }
-}
-[e :U 185 ]
-"822
-[; ;main.c: 822:     return sp_calc;
+"878
+[; ;main.c: 878:     return sp_calc;
 [e ) _sp_calc ]
-[e $UE 181  ]
-"823
-[; ;main.c: 823: }
-[e :UE 181 ]
+[e $UE 178  ]
+"879
+[; ;main.c: 879: }
+[e :UE 178 ]
 }
-"825
-[; ;main.c: 825: void eeprom_update(uint8_t addr, uint8_t value) {
+"881
+[; ;main.c: 881: void eeprom_update(uint8_t addr, uint8_t value) {
 [v _eeprom_update `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _eeprom_update ]
 [v _addr `uc ~T0 @X0 1 r1 ]
 [v _value `uc ~T0 @X0 1 r2 ]
 [f ]
-"826
-[; ;main.c: 826:     if (value != eeprom_read(addr)) {
-[e $ ! != -> _value `i -> ( _eeprom_read (1 _addr `i 187  ]
+"882
+[; ;main.c: 882:     if (value != eeprom_read(addr)) {
+[e $ ! != -> _value `i -> ( _eeprom_read (1 _addr `i 184  ]
 {
-"827
-[; ;main.c: 827:         eeprom_write(addr, value);
+"883
+[; ;main.c: 883:         eeprom_write(addr, value);
 [e ( _eeprom_write (2 , _addr _value ]
-"828
-[; ;main.c: 828:     }
+"884
+[; ;main.c: 884:     }
 }
-[e :U 187 ]
-"829
-[; ;main.c: 829: }
-[e :UE 186 ]
+[e :U 184 ]
+"885
+[; ;main.c: 885: }
+[e :UE 183 ]
 }
-"831
-[; ;main.c: 831: void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt) {
+"887
+[; ;main.c: 887: void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt) {
 [v _PRESET_save `(v ~T0 @X0 1 ef3`uc`ui`ui ]
 {
 [e :U _PRESET_save ]
@@ -2409,36 +2325,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pan `ui ~T0 @X0 1 r2 ]
 [v _tilt `ui ~T0 @X0 1 r3 ]
 [f ]
-"832
-[; ;main.c: 832:     uint8_t _addr = id * 4;
+"888
+[; ;main.c: 888:     uint8_t _addr = id * 4;
 [v __addr `uc ~T0 @X0 1 a ]
 [e = __addr -> * -> _id `i -> 4 `i `uc ]
-"834
-[; ;main.c: 834:     if (id < 50) {
-[e $ ! < -> _id `i -> 50 `i 189  ]
+"890
+[; ;main.c: 890:     if (id < 50) {
+[e $ ! < -> _id `i -> 50 `i 186  ]
 {
-"836
-[; ;main.c: 836:         eeprom_update(_addr, pan & 0xFF);
+"892
+[; ;main.c: 892:         eeprom_update(_addr, pan & 0xFF);
 [e ( _eeprom_update (2 , __addr -> & _pan -> -> 255 `i `ui `uc ]
-"837
-[; ;main.c: 837:         eeprom_update(_addr + 1, (pan >> 8) & 0xFF);
+"893
+[; ;main.c: 893:         eeprom_update(_addr + 1, (pan >> 8) & 0xFF);
 [e ( _eeprom_update (2 , -> + -> __addr `i -> 1 `i `uc -> & >> _pan -> 8 `i -> -> 255 `i `ui `uc ]
-"839
-[; ;main.c: 839:         eeprom_update(_addr + 2, tilt & 0xFF);
+"895
+[; ;main.c: 895:         eeprom_update(_addr + 2, tilt & 0xFF);
 [e ( _eeprom_update (2 , -> + -> __addr `i -> 2 `i `uc -> & _tilt -> -> 255 `i `ui `uc ]
-"840
-[; ;main.c: 840:         eeprom_update(_addr + 3, (tilt >> 8) & 0xFF);
+"896
+[; ;main.c: 896:         eeprom_update(_addr + 3, (tilt >> 8) & 0xFF);
 [e ( _eeprom_update (2 , -> + -> __addr `i -> 3 `i `uc -> & >> _tilt -> 8 `i -> -> 255 `i `ui `uc ]
-"841
-[; ;main.c: 841:     }
+"897
+[; ;main.c: 897:     }
 }
-[e :U 189 ]
-"842
-[; ;main.c: 842: }
-[e :UE 188 ]
+[e :U 186 ]
+"898
+[; ;main.c: 898: }
+[e :UE 185 ]
 }
-"844
-[; ;main.c: 844: void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt) {
+"900
+[; ;main.c: 900: void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt) {
 [v _PRESET_load `(v ~T0 @X0 1 ef3`uc`*ui`*ui ]
 {
 [e :U _PRESET_load ]
@@ -2446,305 +2362,295 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pan `*ui ~T0 @X0 1 r2 ]
 [v _tilt `*ui ~T0 @X0 1 r3 ]
 [f ]
-"845
-[; ;main.c: 845:     uint8_t _addr = id * 4;
+"901
+[; ;main.c: 901:     uint8_t _addr = id * 4;
 [v __addr `uc ~T0 @X0 1 a ]
 [e = __addr -> * -> _id `i -> 4 `i `uc ]
-"847
-[; ;main.c: 847:     if (id < 50) {
-[e $ ! < -> _id `i -> 50 `i 191  ]
+"903
+[; ;main.c: 903:     if (id < 50) {
+[e $ ! < -> _id `i -> 50 `i 188  ]
 {
-"849
-[; ;main.c: 849:         *pan = (uint16_t) (eeprom_read(_addr));
+"905
+[; ;main.c: 905:         *pan = (uint16_t) (eeprom_read(_addr));
 [e = *U _pan -> ( _eeprom_read (1 __addr `ui ]
-"850
-[; ;main.c: 850:         *pan |= (uint16_t) (eeprom_read(_addr + 1) << 8);
+"906
+[; ;main.c: 906:         *pan |= (uint16_t) (eeprom_read(_addr + 1) << 8);
 [e =| *U _pan -> << -> ( _eeprom_read (1 -> + -> __addr `i -> 1 `i `uc `i -> 8 `i `ui ]
-"852
-[; ;main.c: 852:         *tilt = (uint16_t) (eeprom_read(_addr + 2));
+"908
+[; ;main.c: 908:         *tilt = (uint16_t) (eeprom_read(_addr + 2));
 [e = *U _tilt -> ( _eeprom_read (1 -> + -> __addr `i -> 2 `i `uc `ui ]
-"853
-[; ;main.c: 853:         *tilt |= (uint16_t) (eeprom_read(_addr + 3) << 8);
+"909
+[; ;main.c: 909:         *tilt |= (uint16_t) (eeprom_read(_addr + 3) << 8);
 [e =| *U _tilt -> << -> ( _eeprom_read (1 -> + -> __addr `i -> 3 `i `uc `i -> 8 `i `ui ]
-"854
-[; ;main.c: 854:     }
+"910
+[; ;main.c: 910:     }
 }
-[e :U 191 ]
-"855
-[; ;main.c: 855: }
-[e :UE 190 ]
+[e :U 188 ]
+"911
+[; ;main.c: 911: }
+[e :UE 187 ]
 }
-"857
-[; ;main.c: 857: void BAUDS_set(uint8_t index) {
+"913
+[; ;main.c: 913: void BAUDS_set(uint8_t index) {
 [v _BAUDS_set `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _BAUDS_set ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
-"859
-[; ;main.c: 859:     eeprom_update(0xFF, index);
+"915
+[; ;main.c: 915:     eeprom_update(0xFF, index);
 [e ( _eeprom_update (2 , -> -> 255 `i `uc _index ]
-"860
-[; ;main.c: 860: }
-[e :UE 192 ]
+"916
+[; ;main.c: 916: }
+[e :UE 189 ]
 }
-"862
-[; ;main.c: 862: uint8_t BAUDS_get(void) {
+"918
+[; ;main.c: 918: uint8_t BAUDS_get(void) {
 [v _BAUDS_get `(uc ~T0 @X0 1 ef ]
 {
 [e :U _BAUDS_get ]
 [f ]
-"864
-[; ;main.c: 864:     return eeprom_read(0xFF);
+"920
+[; ;main.c: 920:     return eeprom_read(0xFF);
 [e ) ( _eeprom_read (1 -> -> 255 `i `uc ]
-[e $UE 193  ]
-"865
-[; ;main.c: 865: }
-[e :UE 193 ]
+[e $UE 190  ]
+"921
+[; ;main.c: 921: }
+[e :UE 190 ]
 }
-"867
-[; ;main.c: 867: void print_cnt(uint16_t _pan, uint16_t _tilt) {
+"923
+[; ;main.c: 923: void print_cnt(uint16_t _pan, uint16_t _tilt) {
 [v _print_cnt `(v ~T0 @X0 1 ef2`ui`ui ]
 {
 [e :U _print_cnt ]
 [v __pan `ui ~T0 @X0 1 r1 ]
 [v __tilt `ui ~T0 @X0 1 r2 ]
 [f ]
-"868
-[; ;main.c: 868:     uint16_t val10000 = 0;
+"924
+[; ;main.c: 924:     print_val(_pan);
+[e ( _print_val (1 __pan ]
+"926
+[; ;main.c: 926:     UART_Write_Text(", ");
+[e ( _UART_Write_Text (1 :s 24C ]
+"928
+[; ;main.c: 928:     print_val(_tilt);
+[e ( _print_val (1 __tilt ]
+"929
+[; ;main.c: 929: }
+[e :UE 191 ]
+}
+"931
+[; ;main.c: 931: void print_val(uint16_t value) {
+[v _print_val `(v ~T0 @X0 1 ef1`ui ]
+{
+[e :U _print_val ]
+[v _value `ui ~T0 @X0 1 r1 ]
+[f ]
+"932
+[; ;main.c: 932:     uint16_t val10000 = 0;
 [v _val10000 `ui ~T0 @X0 1 a ]
 [e = _val10000 -> -> 0 `i `ui ]
-"869
-[; ;main.c: 869:     uint16_t val1000 = 0;
+"933
+[; ;main.c: 933:     uint16_t val1000 = 0;
 [v _val1000 `ui ~T0 @X0 1 a ]
 [e = _val1000 -> -> 0 `i `ui ]
-"870
-[; ;main.c: 870:     uint16_t val100 = 0;
+"934
+[; ;main.c: 934:     uint16_t val100 = 0;
 [v _val100 `ui ~T0 @X0 1 a ]
 [e = _val100 -> -> 0 `i `ui ]
-"871
-[; ;main.c: 871:     uint16_t val10 = 0;
+"935
+[; ;main.c: 935:     uint16_t val10 = 0;
 [v _val10 `ui ~T0 @X0 1 a ]
 [e = _val10 -> -> 0 `i `ui ]
-"872
-[; ;main.c: 872:     uint16_t val1 = 0;
+"936
+[; ;main.c: 936:     uint16_t val1 = 0;
 [v _val1 `ui ~T0 @X0 1 a ]
 [e = _val1 -> -> 0 `i `ui ]
-"874
-[; ;main.c: 874:     val10000 = _pan / 10000;
-[e = _val10000 / __pan -> -> 10000 `i `ui ]
-"875
-[; ;main.c: 875:     _pan -= val10000 * 10000;
-[e =- __pan * _val10000 -> -> 10000 `i `ui ]
-"877
-[; ;main.c: 877:     val1000 = _pan / 1000;
-[e = _val1000 / __pan -> -> 1000 `i `ui ]
-"878
-[; ;main.c: 878:     _pan -= val1000 * 1000;
-[e =- __pan * _val1000 -> -> 1000 `i `ui ]
-"880
-[; ;main.c: 880:     val100 = _pan / 100;
-[e = _val100 / __pan -> -> 100 `i `ui ]
-"881
-[; ;main.c: 881:     _pan -= val100 * 100;
-[e =- __pan * _val100 -> -> 100 `i `ui ]
-"883
-[; ;main.c: 883:     val10 = _pan / 10;
-[e = _val10 / __pan -> -> 10 `i `ui ]
-"884
-[; ;main.c: 884:     _pan -= val10 * 10;
-[e =- __pan * _val10 -> -> 10 `i `ui ]
-"886
-[; ;main.c: 886:     val1 = _pan;
-[e = _val1 __pan ]
-"888
-[; ;main.c: 888:     val10000 += 48;
+"938
+[; ;main.c: 938:     val10000 = value / 10000;
+[e = _val10000 / _value -> -> 10000 `i `ui ]
+"939
+[; ;main.c: 939:     value -= val10000 * 10000;
+[e =- _value * _val10000 -> -> 10000 `i `ui ]
+"941
+[; ;main.c: 941:     val1000 = value / 1000;
+[e = _val1000 / _value -> -> 1000 `i `ui ]
+"942
+[; ;main.c: 942:     value -= val1000 * 1000;
+[e =- _value * _val1000 -> -> 1000 `i `ui ]
+"944
+[; ;main.c: 944:     val100 = value / 100;
+[e = _val100 / _value -> -> 100 `i `ui ]
+"945
+[; ;main.c: 945:     value -= val100 * 100;
+[e =- _value * _val100 -> -> 100 `i `ui ]
+"947
+[; ;main.c: 947:     val10 = value / 10;
+[e = _val10 / _value -> -> 10 `i `ui ]
+"948
+[; ;main.c: 948:     value -= val10 * 10;
+[e =- _value * _val10 -> -> 10 `i `ui ]
+"950
+[; ;main.c: 950:     val1 = value;
+[e = _val1 _value ]
+"952
+[; ;main.c: 952:     val10000 += 48;
 [e =+ _val10000 -> -> 48 `i `ui ]
-"889
-[; ;main.c: 889:     val1000 += 48;
+"953
+[; ;main.c: 953:     val1000 += 48;
 [e =+ _val1000 -> -> 48 `i `ui ]
-"890
-[; ;main.c: 890:     val100 += 48;
+"954
+[; ;main.c: 954:     val100 += 48;
 [e =+ _val100 -> -> 48 `i `ui ]
-"891
-[; ;main.c: 891:     val10 += 48;
+"955
+[; ;main.c: 955:     val10 += 48;
 [e =+ _val10 -> -> 48 `i `ui ]
-"892
-[; ;main.c: 892:     val1 += 48;
+"956
+[; ;main.c: 956:     val1 += 48;
 [e =+ _val1 -> -> 48 `i `ui ]
-"894
-[; ;main.c: 894:     if (val10000 > 0) {
-[e $ ! > _val10000 -> -> 0 `i `ui 195  ]
+"958
+[; ;main.c: 958:     if (val10000 > 0) {
+[e $ ! > _val10000 -> -> 0 `i `ui 193  ]
 {
-"895
-[; ;main.c: 895:         UART_Write((uint8_t) val10000);
+"959
+[; ;main.c: 959:         UART_Write((uint8_t) val10000);
 [e ( _UART_Write (1 -> -> _val10000 `uc `uc ]
-"896
-[; ;main.c: 896:     }
+"960
+[; ;main.c: 960:     }
+}
+[e :U 193 ]
+"962
+[; ;main.c: 962:     if ((val10000 > 0) || (val1000 > 0)) {
+[e $ ! || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui 194  ]
+{
+"963
+[; ;main.c: 963:         UART_Write((uint8_t) val1000);
+[e ( _UART_Write (1 -> -> _val1000 `uc `uc ]
+"964
+[; ;main.c: 964:     }
+}
+[e :U 194 ]
+"966
+[; ;main.c: 966:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
+[e $ ! || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui 195  ]
+{
+"967
+[; ;main.c: 967:         UART_Write((uint8_t) val100);
+[e ( _UART_Write (1 -> -> _val100 `uc `uc ]
+"968
+[; ;main.c: 968:     }
 }
 [e :U 195 ]
-"898
-[; ;main.c: 898:     if ((val10000 > 0) || (val1000 > 0)) {
-[e $ ! || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui 196  ]
+"969
+[; ;main.c: 969:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
+[e $ ! || || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui > _val10 -> -> 0 `i `ui 196  ]
 {
-"899
-[; ;main.c: 899:         UART_Write((uint8_t) val1000);
-[e ( _UART_Write (1 -> -> _val1000 `uc `uc ]
-"900
-[; ;main.c: 900:     }
+"970
+[; ;main.c: 970:         UART_Write((uint8_t) val10);
+[e ( _UART_Write (1 -> -> _val10 `uc `uc ]
+"971
+[; ;main.c: 971:     }
 }
 [e :U 196 ]
-"902
-[; ;main.c: 902:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
-[e $ ! || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui 197  ]
-{
-"903
-[; ;main.c: 903:         UART_Write((uint8_t) val100);
-[e ( _UART_Write (1 -> -> _val100 `uc `uc ]
-"904
-[; ;main.c: 904:     }
-}
-[e :U 197 ]
-"905
-[; ;main.c: 905:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
-[e $ ! || || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui > _val10 -> -> 0 `i `ui 198  ]
-{
-"906
-[; ;main.c: 906:         UART_Write((uint8_t) val10);
-[e ( _UART_Write (1 -> -> _val10 `uc `uc ]
-"907
-[; ;main.c: 907:     }
-}
-[e :U 198 ]
-"909
-[; ;main.c: 909:     UART_Write((uint8_t) val1);
+"973
+[; ;main.c: 973:     UART_Write((uint8_t) val1);
 [e ( _UART_Write (1 -> -> _val1 `uc `uc ]
-"911
-[; ;main.c: 911:     UART_Write_Text(", ");
-[e ( _UART_Write_Text (1 :s 33C ]
-"913
-[; ;main.c: 913:     val10000 = _tilt / 10000;
-[e = _val10000 / __tilt -> -> 10000 `i `ui ]
-"914
-[; ;main.c: 914:     _tilt -= val10000 * 10000;
-[e =- __tilt * _val10000 -> -> 10000 `i `ui ]
-"916
-[; ;main.c: 916:     val1000 = _tilt / 1000;
-[e = _val1000 / __tilt -> -> 1000 `i `ui ]
-"917
-[; ;main.c: 917:     _tilt -= val1000 * 1000;
-[e =- __tilt * _val1000 -> -> 1000 `i `ui ]
-"919
-[; ;main.c: 919:     val100 = _tilt / 100;
-[e = _val100 / __tilt -> -> 100 `i `ui ]
-"920
-[; ;main.c: 920:     _tilt -= val100 * 100;
-[e =- __tilt * _val100 -> -> 100 `i `ui ]
-"922
-[; ;main.c: 922:     val10 = _tilt / 10;
-[e = _val10 / __tilt -> -> 10 `i `ui ]
-"923
-[; ;main.c: 923:     _tilt -= val10 * 10;
-[e =- __tilt * _val10 -> -> 10 `i `ui ]
-"925
-[; ;main.c: 925:     val1 = _tilt;
-[e = _val1 __tilt ]
-"927
-[; ;main.c: 927:     val10000 += 48;
-[e =+ _val10000 -> -> 48 `i `ui ]
-"928
-[; ;main.c: 928:     val1000 += 48;
-[e =+ _val1000 -> -> 48 `i `ui ]
-"929
-[; ;main.c: 929:     val100 += 48;
-[e =+ _val100 -> -> 48 `i `ui ]
-"930
-[; ;main.c: 930:     val10 += 48;
-[e =+ _val10 -> -> 48 `i `ui ]
-"931
-[; ;main.c: 931:     val1 += 48;
-[e =+ _val1 -> -> 48 `i `ui ]
-"933
-[; ;main.c: 933:     if (val10000 > 0) {
-[e $ ! > _val10000 -> -> 0 `i `ui 199  ]
+"974
+[; ;main.c: 974: }
+[e :UE 192 ]
+}
+"976
+[; ;main.c: 976: void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text) {
+[v _print_preset `(v ~T0 @X0 1 ef4`uc`ui`ui`*uc ]
 {
-"934
-[; ;main.c: 934:         UART_Write((uint8_t) val10000);
-[e ( _UART_Write (1 -> -> _val10000 `uc `uc ]
-"935
-[; ;main.c: 935:     }
+[e :U _print_preset ]
+[v _id `uc ~T0 @X0 1 r1 ]
+[v _pan `ui ~T0 @X0 1 r2 ]
+[v _tilt `ui ~T0 @X0 1 r3 ]
+[v _text `*uc ~T0 @X0 1 r4 ]
+[f ]
+"977
+[; ;main.c: 977:     uint8_t preset_id_10 = id / 10;
+[v _preset_id_10 `uc ~T0 @X0 1 a ]
+[e = _preset_id_10 -> / -> _id `i -> 10 `i `uc ]
+"978
+[; ;main.c: 978:     uint8_t preset_id_1 = id - (preset_id_10 * 10);
+[v _preset_id_1 `uc ~T0 @X0 1 a ]
+[e = _preset_id_1 -> - -> _id `i * -> _preset_id_10 `i -> 10 `i `uc ]
+"980
+[; ;main.c: 980:     preset_id_10 += 48;
+[e =+ _preset_id_10 -> -> 48 `i `uc ]
+"981
+[; ;main.c: 981:     preset_id_1 += 48;
+[e =+ _preset_id_1 -> -> 48 `i `uc ]
+"983
+[; ;main.c: 983:     UART_Write_Text(text);
+[e ( _UART_Write_Text (1 _text ]
+"984
+[; ;main.c: 984:     UART_Write(preset_id_10);
+[e ( _UART_Write (1 -> _preset_id_10 `uc ]
+"985
+[; ;main.c: 985:     UART_Write(preset_id_1);
+[e ( _UART_Write (1 -> _preset_id_1 `uc ]
+"986
+[; ;main.c: 986:     UART_Write_Text(" (");
+[e ( _UART_Write_Text (1 :s 25C ]
+"987
+[; ;main.c: 987:     print_cnt(pan, tilt);
+[e ( _print_cnt (2 , _pan _tilt ]
+"988
+[; ;main.c: 988: }
+[e :UE 197 ]
 }
-[e :U 199 ]
-"937
-[; ;main.c: 937:     if ((val10000 > 0) || (val1000 > 0)) {
-[e $ ! || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui 200  ]
+"990
+[; ;main.c: 990: void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt) {
+[v _print_cmd_mov `(v ~T0 @X0 1 ef3`*uc`ui`ui ]
 {
-"938
-[; ;main.c: 938:         UART_Write((uint8_t) val1000);
-[e ( _UART_Write (1 -> -> _val1000 `uc `uc ]
-"939
-[; ;main.c: 939:     }
+[e :U _print_cmd_mov ]
+[v _text `*uc ~T0 @X0 1 r1 ]
+[v _pan `ui ~T0 @X0 1 r2 ]
+[v _tilt `ui ~T0 @X0 1 r3 ]
+[f ]
+"991
+[; ;main.c: 991:     UART_Write_Text(text);
+[e ( _UART_Write_Text (1 _text ]
+"992
+[; ;main.c: 992:     UART_Write_Text(" (");
+[e ( _UART_Write_Text (1 :s 26C ]
+"993
+[; ;main.c: 993:     print_cnt(pan, tilt);
+[e ( _print_cnt (2 , _pan _tilt ]
+"994
+[; ;main.c: 994:     UART_Write_Text_CRLF(")");
+[e ( _UART_Write_Text_CRLF (1 :s 27C ]
+"995
+[; ;main.c: 995: }
+[e :UE 198 ]
 }
-[e :U 200 ]
-"941
-[; ;main.c: 941:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
-[e $ ! || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui 201  ]
-{
-"942
-[; ;main.c: 942:         UART_Write((uint8_t) val100);
-[e ( _UART_Write (1 -> -> _val100 `uc `uc ]
-"943
-[; ;main.c: 943:     }
-}
-[e :U 201 ]
-"944
-[; ;main.c: 944:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
-[e $ ! || || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui > _val10 -> -> 0 `i `ui 202  ]
-{
-"945
-[; ;main.c: 945:         UART_Write((uint8_t) val10);
-[e ( _UART_Write (1 -> -> _val10 `uc `uc ]
-"946
-[; ;main.c: 946:     }
-}
-[e :U 202 ]
-"948
-[; ;main.c: 948:     UART_Write((uint8_t) val1);
-[e ( _UART_Write (1 -> -> _val1 `uc `uc ]
-"949
-[; ;main.c: 949: }
-[e :UE 194 ]
-}
+[a 1C 13 10 13 10 83 116 97 114 116 0 ]
+[a 3C 87 97 105 116 105 110 103 32 102 111 114 32 99 111 109 109 97 110 100 115 0 ]
+[a 2C 71 111 116 111 32 80 65 78 32 97 110 100 32 84 73 76 84 32 72 111 109 101 0 ]
+[a 4C 82 69 66 79 79 84 0 ]
+[a 14C 82 69 66 79 79 84 0 ]
+[a 21C 82 73 71 72 84 0 ]
+[a 20C 76 69 70 84 0 ]
+[a 23C 85 80 0 ]
+[a 22C 68 79 87 78 0 ]
 [a 5C 83 69 84 32 66 65 85 68 32 82 65 84 69 0 ]
-[a 27C 82 73 71 72 84 32 40 0 ]
-[a 25C 76 69 70 84 32 40 0 ]
-[a 31C 85 80 32 40 0 ]
-[a 14C 83 84 79 80 32 40 0 ]
-[a 29C 68 79 87 78 32 40 0 ]
-[a 17C 32 40 0 ]
-[a 20C 32 40 0 ]
-[a 23C 32 40 0 ]
-[a 16C 83 69 84 32 80 82 69 83 69 84 32 0 ]
-[a 19C 67 76 69 65 82 32 80 82 69 83 69 84 32 0 ]
-[a 22C 71 79 84 79 32 80 82 69 83 69 84 32 0 ]
-[a 33C 44 32 0 ]
-[a 1C 13 10 13 10 83 116 97 114 116 13 10 0 ]
-[a 3C 87 97 105 116 105 110 103 32 102 111 114 32 99 111 109 109 97 110 100 115 13 10 0 ]
-[a 2C 71 111 116 111 32 80 65 78 32 97 110 100 32 84 73 76 84 32 72 111 109 101 13 10 0 ]
-[a 12C 13 10 80 76 69 65 83 69 32 82 69 66 79 79 84 13 10 0 ]
-[a 13C 13 10 78 69 69 68 32 82 69 66 79 79 84 13 10 0 ]
-[a 4C 82 69 66 79 79 84 13 10 0 ]
-[a 7C 52 56 48 48 13 10 0 ]
-[a 11C 57 54 48 48 13 10 0 ]
-[a 9C 51 56 52 48 48 13 10 0 ]
-[a 6C 50 52 48 48 13 10 0 ]
-[a 8C 49 57 50 48 48 13 10 0 ]
-[a 10C 49 49 53 50 48 48 13 10 0 ]
-[a 15C 41 13 10 0 ]
-[a 18C 41 13 10 0 ]
-[a 21C 41 13 10 0 ]
-[a 24C 41 13 10 0 ]
-[a 26C 41 13 10 0 ]
-[a 28C 41 13 10 0 ]
-[a 30C 41 13 10 0 ]
-[a 32C 41 13 10 0 ]
+[a 7C 52 56 48 48 0 ]
+[a 11C 57 54 48 48 0 ]
+[a 9C 51 56 52 48 48 0 ]
+[a 6C 50 52 48 48 0 ]
+[a 8C 49 57 50 48 48 0 ]
+[a 10C 49 49 53 50 48 48 0 ]
+[a 16C 41 0 ]
+[a 27C 41 0 ]
+[a 15C 83 84 79 80 32 40 0 ]
+[a 25C 32 40 0 ]
+[a 26C 32 40 0 ]
+[a 17C 83 69 84 32 80 82 69 83 69 84 32 0 ]
+[a 18C 67 76 69 65 82 32 80 82 69 83 69 84 32 0 ]
+[a 19C 71 79 84 79 32 80 82 69 83 69 84 32 0 ]
+[a 12C 13 10 80 76 69 65 83 69 32 0 ]
+[a 13C 13 10 78 69 69 68 32 0 ]
+[a 24C 44 32 0 ]

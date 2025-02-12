@@ -76,6 +76,16 @@ void UART_Write_Text(char *text) {
         UART_Write(text[i]);
 }
 
+void UART_Write_Text_CRLF(char *text) {
+    int i;
+    for (i = 0; text[i] != '\0'; i++) {
+        UART_Write(text[i]);
+    }
+    UART_Write(0x0C);
+    UART_Write(0x0A);
+}
+
+
 //char UART_Data_Ready(void) {
 //    return RCIF;
 //}

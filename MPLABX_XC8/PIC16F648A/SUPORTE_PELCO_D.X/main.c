@@ -29,7 +29,8 @@
 
 #define DEVICE_ADDR 0x01
 
-#define EEPROM_BAUD_ADDR 0xFF // 255
+#define EEPROM_BAUD_ADDR 0xFF // EEPROM BAUD addr: 255; PIC16F648 EEPROM: 256B;
+#define PRESET_MAX 50 // PIC16F648 EEPROM: 256B; Preset size: 4 Bytes; 256 / 4 = 64;
 
 #define PRESET_SET 0x03
 #define PRESET_CLEAR 0x05
@@ -150,6 +151,9 @@ void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt);
 void BAUDS_set(uint8_t index);
 uint8_t BAUDS_get(void);
 void print_cnt(uint16_t _pan, uint16_t _tilt);
+void print_val(uint16_t value);
+void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text);
+void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt);
 
 void __interrupt() myISR() {
     if (PIR1bits.RCIF == 1) {
@@ -166,16 +170,25 @@ void __interrupt() myISR() {
         }
 
         if ((buffer_index2 <= 6) || ((buffer_index2 == 0) && (data_receiv == P_SYNC))) {
-            if (buffer_index1 == 0) {
-                buffer_data0[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 1) {
-                buffer_data1[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 2) {
-                buffer_data2[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 3) {
-                buffer_data3[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 4) {
-                buffer_data4[buffer_index2++] = data_receiv;
+            switch (buffer_index1) {
+                case 0:
+                    buffer_data0[buffer_index2++] = data_receiv;
+                    break;
+                case 1:
+                    buffer_data1[buffer_index2++] = data_receiv;
+                    break;
+                case 2:
+                    buffer_data2[buffer_index2++] = data_receiv;
+                    break;
+                case 3:
+                    buffer_data3[buffer_index2++] = data_receiv;
+                    break;
+                case 4:
+                    buffer_data4[buffer_index2++] = data_receiv;
+                    break;
+                default:
+                    // statements
+                    break;
             }
         }
 
@@ -317,15 +330,15 @@ void main(void) {
 
     delay_wdt(500);
 
-    UART_Write_Text("\r\n\r\nStart\r\n");
+    UART_Write_Text_CRLF("\r\n\r\nStart");
 
-    UART_Write_Text("Goto PAN and TILT Home\r\n");
+    UART_Write_Text_CRLF("Goto PAN and TILT Home");
 
     delay_wdt(50);
 
     MOTOR_Init();
 
-    UART_Write_Text("Waiting for commands\r\n");
+    UART_Write_Text_CRLF("Waiting for commands");
 
     while (1) {
         CLRWDT();
@@ -370,7 +383,7 @@ void main(void) {
                     // decode command
                     if (P_addr == DEVICE_ADDR) {
                         if ((P_cmd1 == 0xF0) && (P_cmd2 == 0x83) && (P_dat1 == 0x00) && (P_dat2 == 0x01)) {
-                            UART_Write_Text("REBOOT\r\n");
+                            UART_Write_Text_CRLF("REBOOT");
 
                             while (1) {
                                 // wait for Watchdog Timer (WDT)
@@ -382,60 +395,51 @@ void main(void) {
 
                                 UART_Write_Text("SET BAUD RATE");
 
-                                if (P_dat2 == 0x00) {
-                                    // 2400
-                                    UART_Write_Text("2400\r\n");
-                                } else if (P_dat2 == 0x01) {
-                                    // 4800
-                                    UART_Write_Text("4800\r\n");
-                                    // } else if (P_dat2 == 0x02) {
-                                    // // 9600 (default)
-                                    // UART_Write_Text("9600\r\n");
-                                } else if (P_dat2 == 0x03) {
-                                    // 19200
-                                    UART_Write_Text("19200\r\n");
-                                } else if (P_dat2 == 0x04) {
-                                    // 38400
-                                    UART_Write_Text("38400\r\n");
-                                } else if (P_dat2 == 0x05) {
-                                    // 115200
-                                    UART_Write_Text("115200\r\n");
-                                } else {
-                                    // 9600 (default)
-                                    UART_Write_Text("9600\r\n");
+                                switch (P_dat2) {
+                                    case 0x00:
+                                        UART_Write_Text_CRLF("2400");
+                                        break;
+                                    case 0x01:
+                                        UART_Write_Text_CRLF("4800");
+                                        break;
+                                    case 0x03:
+                                        UART_Write_Text_CRLF("19200");
+                                        break;
+                                    case 0x04:
+                                        UART_Write_Text_CRLF("38400");
+                                        break;
+                                    case 0x05:
+                                        UART_Write_Text_CRLF("115200");
+                                        break;
+                                    default:
+                                        // 9600 (default)
+                                        UART_Write_Text_CRLF("9600");
+                                        break;
                                 }
 
-                                UART_Write_Text("\r\nPLEASE REBOOT\r\n");
+                                UART_Write_Text("\r\nPLEASE ");
                             } else {
-                                UART_Write_Text("\r\nNEED REBOOT\r\n");
+                                UART_Write_Text("\r\nNEED ");
                             }
+
+                            UART_Write_Text_CRLF("REBOOT");
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x00) && (P_dat1 == 0x00) && (P_dat2 == 0x00)) {
                             pan_enabled = MOTOR_DISABLED;
                             tilt_enabled = MOTOR_DISABLED;
                             preset_pan_enabled = MOTOR_DISABLED;
                             preset_tilt_enabled = MOTOR_DISABLED;
+
                             response_type = RESP_GENERAL;
                             UART_Write_Text("STOP (");
                             print_cnt(pan_counter, tilt_counter);
-                            UART_Write_Text(")\r\n");
+                            UART_Write_Text_CRLF(")");
 
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == PRESET_SET) && (P_dat1 == 0x00)) {
                             preset_id = P_dat2;
                             PRESET_save(preset_id, pan_counter, tilt_counter);
                             response_type = RESP_GENERAL;
 
-                            uint8_t preset_id_10 = preset_id / 10;
-                            uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-
-                            preset_id_10 += 48;
-                            preset_id_1 += 48;
-
-                            UART_Write_Text("SET PRESET ");
-                            UART_Write(preset_id_10);
-                            UART_Write(preset_id_1);
-                            UART_Write_Text(" (");
-                            print_cnt(pan_counter, tilt_counter);
-                            UART_Write_Text(")\r\n");
+                            print_preset(preset_id, pan_counter, tilt_counter, "SET PRESET ");
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == PRESET_CLEAR) && (P_dat1 == 0x00)) {
                             preset_id = P_dat2;
                             PRESET_save(preset_id, 0xFFFF, 0xFFFF);
@@ -448,18 +452,7 @@ void main(void) {
 
                             response_type = RESP_GENERAL;
 
-                            uint8_t preset_id_10 = preset_id / 10;
-                            uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-
-                            preset_id_10 += 48;
-                            preset_id_1 += 48;
-
-                            UART_Write_Text("CLEAR PRESET ");
-                            UART_Write(preset_id_10);
-                            UART_Write(preset_id_1);
-                            UART_Write_Text(" (");
-                            print_cnt(pan_goto, tilt_goto);
-                            UART_Write_Text(")\r\n");
+                            print_preset(preset_id, pan_goto, tilt_goto, "CLEAR PRESET ");
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == PRESET_GOTO) && (P_dat1 == 0x00)) {
                             preset_id = P_dat2;
 
@@ -513,43 +506,34 @@ void main(void) {
 
                             response_type = RESP_GENERAL;
 
-                            uint8_t preset_id_10 = preset_id / 10;
-                            uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-
-                            preset_id_10 += 48;
-                            preset_id_1 += 48;
-
-                            UART_Write_Text("GOTO PRESET ");
-                            UART_Write(preset_id_10);
-                            UART_Write(preset_id_1);
-                            UART_Write_Text(" (");
-                            print_cnt(pan_goto, tilt_goto);
-                            UART_Write_Text(")\r\n");
+                            print_preset(preset_id, pan_goto, tilt_goto, "GOTO PRESET ");
                         } else {
                             if ((P_cmd2 & MOVE_LEFT) == MOVE_LEFT) {
                                 pan_speed = P_dat1;
                                 timer1_pan_ref = SPEED_calc(pan_speed);
                                 pan_direction = MOVE_CC;
                                 pan_enabled = MOTOR_ENABLED;
+
                                 preset_pan_enabled = MOTOR_DISABLED;
                                 preset_tilt_enabled = MOTOR_DISABLED;
+
                                 response_type = RESP_GENERAL;
                                 is_reboot = false;
-                                UART_Write_Text("LEFT (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("LEFT", pan_counter, tilt_counter);
                             } else if ((P_cmd2 & MOVE_RIGHT) == MOVE_RIGHT) {
                                 pan_speed = P_dat1;
                                 timer1_pan_ref = SPEED_calc(pan_speed);
                                 pan_direction = MOVE_CCW;
                                 pan_enabled = MOTOR_ENABLED;
+
                                 preset_pan_enabled = MOTOR_DISABLED;
                                 preset_tilt_enabled = MOTOR_DISABLED;
+
                                 response_type = RESP_GENERAL;
                                 is_reboot = false;
-                                UART_Write_Text("RIGHT (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("RIGHT", pan_counter, tilt_counter);
                             }
 
                             if ((P_cmd2 & MOVE_DOWN) == MOVE_DOWN) {
@@ -557,25 +541,27 @@ void main(void) {
                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
                                 tilt_direction = MOVE_CC;
                                 tilt_enabled = MOTOR_ENABLED;
+
                                 preset_pan_enabled = MOTOR_DISABLED;
                                 preset_tilt_enabled = MOTOR_DISABLED;
+
                                 response_type = RESP_GENERAL;
                                 is_reboot = false;
-                                UART_Write_Text("DOWN (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("DOWN", pan_counter, tilt_counter);
                             } else if ((P_cmd2 & MOVE_UP) == MOVE_UP) {
                                 tilt_speed = P_dat2;
                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
                                 tilt_direction = MOVE_CCW;
                                 tilt_enabled = MOTOR_ENABLED;
+
                                 preset_pan_enabled = MOTOR_DISABLED;
                                 preset_tilt_enabled = MOTOR_DISABLED;
+
                                 response_type = RESP_GENERAL;
                                 is_reboot = false;
-                                UART_Write_Text("UP (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("UP", pan_counter, tilt_counter);
                             }
                         }
                     }
@@ -724,39 +710,67 @@ void delay_wdt(uint16_t _ms) {
 void MOTOR_Init(void) {
     is_init = true;
 
-    delay_wdt(50);
+    //    // Go to mechanical stroke limit
+    //    pan_speed = SPEED_MAX_REF;
+    //    pan_direction = MOVE_CCW;
+    //    pan_enabled = MOTOR_ENABLED;
+    //
+    //    delay_wdt(22500); // Time adjusted according to the mechanism
+    //
+    //    pan_enabled = MOTOR_DISABLED;
+    //
+    //    pan_counter = 0; // New mechanical stroke limit
+    //
+    //    delay_wdt(100);
+    //
+    //    // Relieve mechanical stress
+    //    pan_speed = SPEED_MAX_REF;
+    //    pan_direction = MOVE_CC;
+    //    pan_enabled = MOTOR_ENABLED;
+    //
+    //    delay_wdt(500); // Time adjusted according to the mechanism
+    //
+    //    pan_enabled = MOTOR_DISABLED;
+    //
+    //    pan_counter = 0; // New mechanical stroke limit
+    //
+    //    delay_wdt(50);
+    //
+    //    // Go to mechanical stroke limit
+    //    tilt_speed = SPEED_MAX_REF;
+    //    tilt_direction = MOVE_CCW;
+    //    tilt_enabled = MOTOR_ENABLED;
+    //
+    //    delay_wdt(6000); // Time adjusted according to the mechanism
+    //
+    //    tilt_enabled = MOTOR_DISABLED;
+    //
+    //    tilt_counter = 0; // New mechanical stroke limit
+    //
+    //    delay_wdt(100);
+    //
+    //    // Relieve mechanical stress
+    //    tilt_speed = SPEED_MAX_REF;
+    //    tilt_direction = MOVE_CC;
+    //    tilt_enabled = MOTOR_ENABLED;
+    //
+    //    delay_wdt(750); // Time adjusted according to the mechanism
+    //
+    //    tilt_enabled = MOTOR_DISABLED;
+    //
+    //    tilt_counter = 0; // New mechanical stroke limit
 
     // Go to mechanical stroke limit
     pan_speed = SPEED_MAX_REF;
     pan_direction = MOVE_CCW;
     pan_enabled = MOTOR_ENABLED;
 
-    delay_wdt(22500); // Time adjusted according to the mechanism
-
-    pan_enabled = MOTOR_DISABLED;
-
-    pan_counter = 0; // New mechanical stroke limit
-
-    delay_wdt(100);
-
-    // Relieve mechanical stress
-    pan_speed = SPEED_MAX_REF;
-    pan_direction = MOVE_CC;
-    pan_enabled = MOTOR_ENABLED;
-
-    delay_wdt(500); // Time adjusted according to the mechanism
-
-    pan_enabled = MOTOR_DISABLED;
-
-    pan_counter = 0; // New mechanical stroke limit
-
-    delay_wdt(50);
-
     // Go to mechanical stroke limit
     tilt_speed = SPEED_MAX_REF;
     tilt_direction = MOVE_CCW;
     tilt_enabled = MOTOR_ENABLED;
 
+    // delay_wdt(22500); // Time adjusted according to the mechanism
     delay_wdt(6000); // Time adjusted according to the mechanism
 
     tilt_enabled = MOTOR_DISABLED;
@@ -776,23 +790,65 @@ void MOTOR_Init(void) {
 
     tilt_counter = 0; // New mechanical stroke limit
 
-    // Go to mechanical center
+    // Now complete the time for the PAN movement
+    // 22500ms - 6000ms - 100ms - 750ms = 15650ms
+    delay_wdt(15650); // Time adjusted according to the mechanism
+
+    pan_enabled = MOTOR_DISABLED;
+
+    pan_counter = 0; // New mechanical stroke limit
+
+    delay_wdt(100);
+
+    // Relieve mechanical stress
     pan_speed = SPEED_MAX_REF;
     pan_direction = MOVE_CC;
     pan_enabled = MOTOR_ENABLED;
 
-    delay_wdt(4500); // Time adjusted according to the mechanism
+    delay_wdt(500); // Time adjusted according to the mechanism
 
     pan_enabled = MOTOR_DISABLED;
+
+    pan_counter = 0; // New mechanical stroke limit
+
+    //    // Go to mechanical center
+    //    pan_speed = SPEED_MAX_REF;
+    //    pan_direction = MOVE_CC;
+    //    pan_enabled = MOTOR_ENABLED;
+    //
+    //    delay_wdt(4700); // Time adjusted according to the mechanism
+    //
+    //    pan_enabled = MOTOR_DISABLED;
+    //
+    //    // Go to mechanical center
+    //    tilt_speed = SPEED_MAX_REF;
+    //    tilt_direction = MOVE_CC;
+    //    tilt_enabled = MOTOR_ENABLED;
+    //
+    //    delay_wdt(1000); // Time adjusted according to the mechanism
+    //
+    //    tilt_enabled = MOTOR_DISABLED;
+
+    // Go to mechanical center
+    pan_speed = SPEED_MAX_REF;
+    pan_direction = MOVE_CC;
+    pan_enabled = MOTOR_ENABLED;
 
     // Go to mechanical center
     tilt_speed = SPEED_MAX_REF;
     tilt_direction = MOVE_CC;
     tilt_enabled = MOTOR_ENABLED;
 
+    // delay_wdt(4700); // Time adjusted according to the mechanism
     delay_wdt(1000); // Time adjusted according to the mechanism
 
     tilt_enabled = MOTOR_DISABLED;
+
+    // Now complete the time for the PAN movement
+    // 4700ms - 1000ms = 3700ms
+    delay_wdt(3500); // Time adjusted according to the mechanism (best: 3500ms)
+
+    pan_enabled = MOTOR_DISABLED;
 
     is_init = false;
 }
@@ -831,7 +887,7 @@ void eeprom_update(uint8_t addr, uint8_t value) {
 void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt) {
     uint8_t _addr = id * 4;
 
-    if (id < 50) { // PIC16F648: 256B; 256 / 4 = 64
+    if (id < PRESET_MAX) { // PIC16F648 EEPROM: 256B; 256 / 4 = 64
 
         eeprom_update(_addr, pan & 0xFF);
         eeprom_update(_addr + 1, (pan >> 8) & 0xFF);
@@ -844,7 +900,7 @@ void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt) {
 void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt) {
     uint8_t _addr = id * 4;
 
-    if (id < 50) { // PIC16F648: 256B; 256 / 4 = 64
+    if (id < PRESET_MAX) { // PIC16F648 EEPROM: 256B; 256 / 4 = 64
 
         *pan = (uint16_t) (eeprom_read(_addr));
         *pan |= (uint16_t) (eeprom_read(_addr + 1) << 8);
@@ -865,64 +921,33 @@ uint8_t BAUDS_get(void) {
 }
 
 void print_cnt(uint16_t _pan, uint16_t _tilt) {
+    print_val(_pan);
+
+    UART_Write_Text(", ");
+
+    print_val(_tilt);
+}
+
+void print_val(uint16_t value) {
     uint16_t val10000 = 0;
     uint16_t val1000 = 0;
     uint16_t val100 = 0;
     uint16_t val10 = 0;
     uint16_t val1 = 0;
 
-    val10000 = _pan / 10000;
-    _pan -= val10000 * 10000;
+    val10000 = value / 10000;
+    value -= val10000 * 10000;
 
-    val1000 = _pan / 1000;
-    _pan -= val1000 * 1000;
+    val1000 = value / 1000;
+    value -= val1000 * 1000;
 
-    val100 = _pan / 100;
-    _pan -= val100 * 100;
+    val100 = value / 100;
+    value -= val100 * 100;
 
-    val10 = _pan / 10;
-    _pan -= val10 * 10;
+    val10 = value / 10;
+    value -= val10 * 10;
 
-    val1 = _pan;
-
-    val10000 += 48;
-    val1000 += 48;
-    val100 += 48;
-    val10 += 48;
-    val1 += 48;
-
-    if (val10000 > 0) {
-        UART_Write((uint8_t) val10000);
-    }
-
-    if ((val10000 > 0) || (val1000 > 0)) {
-        UART_Write((uint8_t) val1000);
-    }
-
-    if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
-        UART_Write((uint8_t) val100);
-    }
-    if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
-        UART_Write((uint8_t) val10);
-    }
-
-    UART_Write((uint8_t) val1);
-
-    UART_Write_Text(", ");
-
-    val10000 = _tilt / 10000;
-    _tilt -= val10000 * 10000;
-
-    val1000 = _tilt / 1000;
-    _tilt -= val1000 * 1000;
-
-    val100 = _tilt / 100;
-    _tilt -= val100 * 100;
-
-    val10 = _tilt / 10;
-    _tilt -= val10 * 10;
-
-    val1 = _tilt;
+    val1 = value;
 
     val10000 += 48;
     val1000 += 48;
@@ -946,4 +971,25 @@ void print_cnt(uint16_t _pan, uint16_t _tilt) {
     }
 
     UART_Write((uint8_t) val1);
+}
+
+void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text) {
+    uint8_t preset_id_10 = id / 10;
+    uint8_t preset_id_1 = id - (preset_id_10 * 10);
+
+    preset_id_10 += 48;
+    preset_id_1 += 48;
+
+    UART_Write_Text(text);
+    UART_Write(preset_id_10);
+    UART_Write(preset_id_1);
+    UART_Write_Text(" (");
+    print_cnt(pan, tilt);
+}
+
+void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt) {
+    UART_Write_Text(text);
+    UART_Write_Text(" (");
+    print_cnt(pan, tilt);
+    UART_Write_Text_CRLF(")");
 }

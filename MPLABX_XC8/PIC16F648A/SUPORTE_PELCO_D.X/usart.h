@@ -15,6 +15,7 @@
 void UART_Init(void);
 void UART_Write(char data);
 void UART_Write_Text(char *text);
+void UART_Write_Text_CRLF(char *text); 
 //char UART_Data_Ready(void);
 //char UART_Read(void);
 

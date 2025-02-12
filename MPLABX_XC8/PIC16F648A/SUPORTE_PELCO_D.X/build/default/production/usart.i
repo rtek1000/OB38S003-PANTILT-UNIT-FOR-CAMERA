@@ -1165,6 +1165,7 @@ extern __bank0 __bit __timeout;
 void UART_Init(void);
 void UART_Write(char data);
 void UART_Write_Text(char *text);
+void UART_Write_Text_CRLF(char *text);
 # 9 "usart.c" 2
 
 extern uint8_t BAUDS_get(void);
@@ -1234,4 +1235,13 @@ void UART_Write_Text(char *text) {
     int i;
     for (i = 0; text[i] != '\0'; i++)
         UART_Write(text[i]);
+}
+
+void UART_Write_Text_CRLF(char *text) {
+    int i;
+    for (i = 0; text[i] != '\0'; i++) {
+        UART_Write(text[i]);
+    }
+    UART_Write(0x0C);
+    UART_Write(0x0A);
 }

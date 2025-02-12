@@ -1159,8 +1159,9 @@ extern __bank0 __bit __timeout;
 void UART_Init(void);
 void UART_Write(char data);
 void UART_Write_Text(char *text);
+void UART_Write_Text_CRLF(char *text);
 # 16 "main.c" 2
-# 66 "main.c"
+# 67 "main.c"
 volatile uint8_t data_receiv = 0;
 volatile uint8_t buffer_index1 = 0;
 volatile uint8_t buffer_index2 = 0;
@@ -1248,6 +1249,9 @@ void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt);
 void BAUDS_set(uint8_t index);
 uint8_t BAUDS_get(void);
 void print_cnt(uint16_t _pan, uint16_t _tilt);
+void print_val(uint16_t value);
+void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text);
+void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt);
 
 void __attribute__((picinterrupt(("")))) myISR() {
     if (PIR1bits.RCIF == 1) {
@@ -1264,16 +1268,25 @@ void __attribute__((picinterrupt(("")))) myISR() {
         }
 
         if ((buffer_index2 <= 6) || ((buffer_index2 == 0) && (data_receiv == 0xFF))) {
-            if (buffer_index1 == 0) {
-                buffer_data0[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 1) {
-                buffer_data1[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 2) {
-                buffer_data2[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 3) {
-                buffer_data3[buffer_index2++] = data_receiv;
-            } else if (buffer_index1 == 4) {
-                buffer_data4[buffer_index2++] = data_receiv;
+            switch (buffer_index1) {
+                case 0:
+                    buffer_data0[buffer_index2++] = data_receiv;
+                    break;
+                case 1:
+                    buffer_data1[buffer_index2++] = data_receiv;
+                    break;
+                case 2:
+                    buffer_data2[buffer_index2++] = data_receiv;
+                    break;
+                case 3:
+                    buffer_data3[buffer_index2++] = data_receiv;
+                    break;
+                case 4:
+                    buffer_data4[buffer_index2++] = data_receiv;
+                    break;
+                default:
+
+                    break;
             }
         }
 
@@ -1415,15 +1428,15 @@ void main(void) {
 
     delay_wdt(500);
 
-    UART_Write_Text("\r\n\r\nStart\r\n");
+    UART_Write_Text_CRLF("\r\n\r\nStart");
 
-    UART_Write_Text("Goto PAN and TILT Home\r\n");
+    UART_Write_Text_CRLF("Goto PAN and TILT Home");
 
     delay_wdt(50);
 
     MOTOR_Init();
 
-    UART_Write_Text("Waiting for commands\r\n");
+    UART_Write_Text_CRLF("Waiting for commands");
 
     while (1) {
         __asm("clrwdt");
@@ -1468,7 +1481,7 @@ void main(void) {
 
                     if (P_addr == 0x01) {
                         if ((P_cmd1 == 0xF0) && (P_cmd2 == 0x83) && (P_dat1 == 0x00) && (P_dat2 == 0x01)) {
-                            UART_Write_Text("REBOOT\r\n");
+                            UART_Write_Text_CRLF("REBOOT");
 
                             while (1) {
 
@@ -1480,60 +1493,51 @@ void main(void) {
 
                                 UART_Write_Text("SET BAUD RATE");
 
-                                if (P_dat2 == 0x00) {
+                                switch (P_dat2) {
+                                    case 0x00:
+                                        UART_Write_Text_CRLF("2400");
+                                        break;
+                                    case 0x01:
+                                        UART_Write_Text_CRLF("4800");
+                                        break;
+                                    case 0x03:
+                                        UART_Write_Text_CRLF("19200");
+                                        break;
+                                    case 0x04:
+                                        UART_Write_Text_CRLF("38400");
+                                        break;
+                                    case 0x05:
+                                        UART_Write_Text_CRLF("115200");
+                                        break;
+                                    default:
 
-                                    UART_Write_Text("2400\r\n");
-                                } else if (P_dat2 == 0x01) {
-
-                                    UART_Write_Text("4800\r\n");
-
-
-
-                                } else if (P_dat2 == 0x03) {
-
-                                    UART_Write_Text("19200\r\n");
-                                } else if (P_dat2 == 0x04) {
-
-                                    UART_Write_Text("38400\r\n");
-                                } else if (P_dat2 == 0x05) {
-
-                                    UART_Write_Text("115200\r\n");
-                                } else {
-
-                                    UART_Write_Text("9600\r\n");
+                                        UART_Write_Text_CRLF("9600");
+                                        break;
                                 }
 
-                                UART_Write_Text("\r\nPLEASE REBOOT\r\n");
+                                UART_Write_Text("\r\nPLEASE ");
                             } else {
-                                UART_Write_Text("\r\nNEED REBOOT\r\n");
+                                UART_Write_Text("\r\nNEED ");
                             }
+
+                            UART_Write_Text_CRLF("REBOOT");
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x00) && (P_dat1 == 0x00) && (P_dat2 == 0x00)) {
                             pan_enabled = 0;
                             tilt_enabled = 0;
                             preset_pan_enabled = 0;
                             preset_tilt_enabled = 0;
+
                             response_type = 0x01;
                             UART_Write_Text("STOP (");
                             print_cnt(pan_counter, tilt_counter);
-                            UART_Write_Text(")\r\n");
+                            UART_Write_Text_CRLF(")");
 
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x03) && (P_dat1 == 0x00)) {
                             preset_id = P_dat2;
                             PRESET_save(preset_id, pan_counter, tilt_counter);
                             response_type = 0x01;
 
-                            uint8_t preset_id_10 = preset_id / 10;
-                            uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-
-                            preset_id_10 += 48;
-                            preset_id_1 += 48;
-
-                            UART_Write_Text("SET PRESET ");
-                            UART_Write(preset_id_10);
-                            UART_Write(preset_id_1);
-                            UART_Write_Text(" (");
-                            print_cnt(pan_counter, tilt_counter);
-                            UART_Write_Text(")\r\n");
+                            print_preset(preset_id, pan_counter, tilt_counter, "SET PRESET ");
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x05) && (P_dat1 == 0x00)) {
                             preset_id = P_dat2;
                             PRESET_save(preset_id, 0xFFFF, 0xFFFF);
@@ -1546,18 +1550,7 @@ void main(void) {
 
                             response_type = 0x01;
 
-                            uint8_t preset_id_10 = preset_id / 10;
-                            uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-
-                            preset_id_10 += 48;
-                            preset_id_1 += 48;
-
-                            UART_Write_Text("CLEAR PRESET ");
-                            UART_Write(preset_id_10);
-                            UART_Write(preset_id_1);
-                            UART_Write_Text(" (");
-                            print_cnt(pan_goto, tilt_goto);
-                            UART_Write_Text(")\r\n");
+                            print_preset(preset_id, pan_goto, tilt_goto, "CLEAR PRESET ");
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x07) && (P_dat1 == 0x00)) {
                             preset_id = P_dat2;
 
@@ -1611,43 +1604,34 @@ void main(void) {
 
                             response_type = 0x01;
 
-                            uint8_t preset_id_10 = preset_id / 10;
-                            uint8_t preset_id_1 = preset_id - (preset_id_10 * 10);
-
-                            preset_id_10 += 48;
-                            preset_id_1 += 48;
-
-                            UART_Write_Text("GOTO PRESET ");
-                            UART_Write(preset_id_10);
-                            UART_Write(preset_id_1);
-                            UART_Write_Text(" (");
-                            print_cnt(pan_goto, tilt_goto);
-                            UART_Write_Text(")\r\n");
+                            print_preset(preset_id, pan_goto, tilt_goto, "GOTO PRESET ");
                         } else {
                             if ((P_cmd2 & 0x04) == 0x04) {
                                 pan_speed = P_dat1;
                                 timer1_pan_ref = SPEED_calc(pan_speed);
                                 pan_direction = 0;
                                 pan_enabled = 1;
+
                                 preset_pan_enabled = 0;
                                 preset_tilt_enabled = 0;
+
                                 response_type = 0x01;
                                 is_reboot = 0;
-                                UART_Write_Text("LEFT (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("LEFT", pan_counter, tilt_counter);
                             } else if ((P_cmd2 & 0x02) == 0x02) {
                                 pan_speed = P_dat1;
                                 timer1_pan_ref = SPEED_calc(pan_speed);
                                 pan_direction = 1;
                                 pan_enabled = 1;
+
                                 preset_pan_enabled = 0;
                                 preset_tilt_enabled = 0;
+
                                 response_type = 0x01;
                                 is_reboot = 0;
-                                UART_Write_Text("RIGHT (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("RIGHT", pan_counter, tilt_counter);
                             }
 
                             if ((P_cmd2 & 0x10) == 0x10) {
@@ -1655,25 +1639,27 @@ void main(void) {
                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
                                 tilt_direction = 0;
                                 tilt_enabled = 1;
+
                                 preset_pan_enabled = 0;
                                 preset_tilt_enabled = 0;
+
                                 response_type = 0x01;
                                 is_reboot = 0;
-                                UART_Write_Text("DOWN (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("DOWN", pan_counter, tilt_counter);
                             } else if ((P_cmd2 & 0x08) == 0x08) {
                                 tilt_speed = P_dat2;
                                 timer1_tilt_ref = SPEED_calc(tilt_speed);
                                 tilt_direction = 1;
                                 tilt_enabled = 1;
+
                                 preset_pan_enabled = 0;
                                 preset_tilt_enabled = 0;
+
                                 response_type = 0x01;
                                 is_reboot = 0;
-                                UART_Write_Text("UP (");
-                                print_cnt(pan_counter, tilt_counter);
-                                UART_Write_Text(")\r\n");
+
+                                print_cmd_mov("UP", pan_counter, tilt_counter);
                             }
                         }
                     }
@@ -1721,11 +1707,11 @@ void UC_Init(void) {
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-# 634 "main.c"
+# 620 "main.c"
     TRISA = 0b00000000;
-# 644 "main.c"
+# 630 "main.c"
     TRISB = 0b00000010;
-# 653 "main.c"
+# 639 "main.c"
 }
 
 void TIMER1_Init(void) {
@@ -1743,7 +1729,7 @@ void TIMER1_Init(void) {
     PIR1bits.TMR1IF = 0;
     PIE1bits.TMR1IE = 1;
 }
-# 714 "main.c"
+# 700 "main.c"
 void delay_wdt(uint16_t _ms) {
     __asm("clrwdt");
 
@@ -1756,39 +1742,16 @@ void delay_wdt(uint16_t _ms) {
 
 void MOTOR_Init(void) {
     is_init = 1;
-
-    delay_wdt(50);
-
-
+# 764 "main.c"
     pan_speed = 0x32;
     pan_direction = 1;
     pan_enabled = 1;
-
-    delay_wdt(22500);
-
-    pan_enabled = 0;
-
-    pan_counter = 0;
-
-    delay_wdt(100);
-
-
-    pan_speed = 0x32;
-    pan_direction = 0;
-    pan_enabled = 1;
-
-    delay_wdt(500);
-
-    pan_enabled = 0;
-
-    pan_counter = 0;
-
-    delay_wdt(50);
 
 
     tilt_speed = 0x32;
     tilt_direction = 1;
     tilt_enabled = 1;
+
 
     delay_wdt(6000);
 
@@ -1810,22 +1773,45 @@ void MOTOR_Init(void) {
     tilt_counter = 0;
 
 
+
+    delay_wdt(15650);
+
+    pan_enabled = 0;
+
+    pan_counter = 0;
+
+    delay_wdt(100);
+
+
     pan_speed = 0x32;
     pan_direction = 0;
     pan_enabled = 1;
 
-    delay_wdt(4500);
+    delay_wdt(500);
 
     pan_enabled = 0;
+
+    pan_counter = 0;
+# 833 "main.c"
+    pan_speed = 0x32;
+    pan_direction = 0;
+    pan_enabled = 1;
 
 
     tilt_speed = 0x32;
     tilt_direction = 0;
     tilt_enabled = 1;
 
+
     delay_wdt(1000);
 
     tilt_enabled = 0;
+
+
+
+    delay_wdt(3500);
+
+    pan_enabled = 0;
 
     is_init = 0;
 }
@@ -1898,64 +1884,33 @@ uint8_t BAUDS_get(void) {
 }
 
 void print_cnt(uint16_t _pan, uint16_t _tilt) {
+    print_val(_pan);
+
+    UART_Write_Text(", ");
+
+    print_val(_tilt);
+}
+
+void print_val(uint16_t value) {
     uint16_t val10000 = 0;
     uint16_t val1000 = 0;
     uint16_t val100 = 0;
     uint16_t val10 = 0;
     uint16_t val1 = 0;
 
-    val10000 = _pan / 10000;
-    _pan -= val10000 * 10000;
+    val10000 = value / 10000;
+    value -= val10000 * 10000;
 
-    val1000 = _pan / 1000;
-    _pan -= val1000 * 1000;
+    val1000 = value / 1000;
+    value -= val1000 * 1000;
 
-    val100 = _pan / 100;
-    _pan -= val100 * 100;
+    val100 = value / 100;
+    value -= val100 * 100;
 
-    val10 = _pan / 10;
-    _pan -= val10 * 10;
+    val10 = value / 10;
+    value -= val10 * 10;
 
-    val1 = _pan;
-
-    val10000 += 48;
-    val1000 += 48;
-    val100 += 48;
-    val10 += 48;
-    val1 += 48;
-
-    if (val10000 > 0) {
-        UART_Write((uint8_t) val10000);
-    }
-
-    if ((val10000 > 0) || (val1000 > 0)) {
-        UART_Write((uint8_t) val1000);
-    }
-
-    if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
-        UART_Write((uint8_t) val100);
-    }
-    if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
-        UART_Write((uint8_t) val10);
-    }
-
-    UART_Write((uint8_t) val1);
-
-    UART_Write_Text(", ");
-
-    val10000 = _tilt / 10000;
-    _tilt -= val10000 * 10000;
-
-    val1000 = _tilt / 1000;
-    _tilt -= val1000 * 1000;
-
-    val100 = _tilt / 100;
-    _tilt -= val100 * 100;
-
-    val10 = _tilt / 10;
-    _tilt -= val10 * 10;
-
-    val1 = _tilt;
+    val1 = value;
 
     val10000 += 48;
     val1000 += 48;
@@ -1979,4 +1934,25 @@ void print_cnt(uint16_t _pan, uint16_t _tilt) {
     }
 
     UART_Write((uint8_t) val1);
+}
+
+void print_preset(uint8_t id, uint16_t pan, uint16_t tilt, char *text) {
+    uint8_t preset_id_10 = id / 10;
+    uint8_t preset_id_1 = id - (preset_id_10 * 10);
+
+    preset_id_10 += 48;
+    preset_id_1 += 48;
+
+    UART_Write_Text(text);
+    UART_Write(preset_id_10);
+    UART_Write(preset_id_1);
+    UART_Write_Text(" (");
+    print_cnt(pan, tilt);
+}
+
+void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt) {
+    UART_Write_Text(text);
+    UART_Write_Text(" (");
+    print_cnt(pan, tilt);
+    UART_Write_Text_CRLF(")");
 }
