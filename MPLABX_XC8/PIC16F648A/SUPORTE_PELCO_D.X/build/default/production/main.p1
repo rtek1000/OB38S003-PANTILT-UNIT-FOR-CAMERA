@@ -2165,8 +2165,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 660:     TRISA = 0b00000000;
 [e = _TRISA -> -> 0 `i `uc ]
 "670
-[; ;main.c: 670:     TRISB = 0b11000010;
-[e = _TRISB -> -> 194 `i `uc ]
+[; ;main.c: 670:     TRISB = 0b00000010;
+[e = _TRISB -> -> 2 `i `uc ]
 "679
 [; ;main.c: 679: }
 [e :UE 176 ]
@@ -2384,8 +2384,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 902:     tilt_enabled = 0;
 [e = _tilt_enabled -> -> 0 `i `a ]
 "906
-[; ;main.c: 906:     delay_wdt(3500);
-[e ( _delay_wdt (1 -> -> 3500 `i `ui ]
+[; ;main.c: 906:     delay_wdt(3450);
+[e ( _delay_wdt (1 -> -> 3450 `i `ui ]
 "908
 [; ;main.c: 908:     pan_enabled = 0;
 [e = _pan_enabled -> -> 0 `i `a ]

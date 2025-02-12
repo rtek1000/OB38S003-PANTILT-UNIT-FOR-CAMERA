@@ -1750,7 +1750,7 @@ void UC_Init(void) {
 # 660 "main.c"
     TRISA = 0b00000000;
 # 670 "main.c"
-    TRISB = 0b11000010;
+    TRISB = 0b00000010;
 # 679 "main.c"
 }
 
@@ -1866,7 +1866,7 @@ void MOTOR_Init(void) {
 
 
 
-    delay_wdt(3500);
+    delay_wdt(3450);
 
     pan_enabled = 0;
 

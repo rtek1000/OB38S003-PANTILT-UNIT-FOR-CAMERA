@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.36 build 20220127204148 
-                                                                                               Wed Feb 12 14:28:39 2025
+                                                                                               Wed Feb 12 14:32:24 2025
 
 Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og9 
      1                           	processor	16F648A
@@ -3587,8 +3587,8 @@ Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og9
   3559                           ;main.c: 660:     TRISA = 0b00000000;
   3560  0DB5  0185               	clrf	5	;volatile
   3561                           
-  3562                           ;main.c: 670:     TRISB = 0b11000010;
-  3563  0DB6  30C2               	movlw	194
+  3562                           ;main.c: 670:     TRISB = 0b00000010;
+  3563  0DB6  3002               	movlw	2
   3564  0DB7  0086               	movwf	6	;volatile
   3565  0DB8  0008               	return
   3566  0DB9                     __end_of_UC_Init:
@@ -4706,8 +4706,8 @@ Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og9
   4677                           ;main.c: 902:     tilt_enabled = 0;
   4678  0754  01E7               	clrf	_tilt_enabled	;volatile
   4679                           
-  4680                           ;main.c: 906:     delay_wdt(3500);
-  4681  0755  30AC               	movlw	172
+  4680                           ;main.c: 906:     delay_wdt(3450);
+  4681  0755  307A               	movlw	122
   4682  0756  00A0               	movwf	delay_wdt@_ms
   4683  0757  300D               	movlw	13
   4684  0758  00A1               	movwf	delay_wdt@_ms+1
@@ -6181,7 +6181,7 @@ DATA                 0      0      94      10        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.36 build 20220127204148 
-Symbol Table                                                                                   Wed Feb 12 14:28:39 2025
+Symbol Table                                                                                   Wed Feb 12 14:32:24 2025
 
                            pc 0002                ___bmul@product 0022                  ___awdiv@sign 0026  
                           fsr 0004           ___wmul@multiplicand 0022                           l303 0270  

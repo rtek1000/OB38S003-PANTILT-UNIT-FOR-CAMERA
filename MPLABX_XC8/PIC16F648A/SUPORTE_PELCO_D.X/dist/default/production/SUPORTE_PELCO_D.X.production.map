@@ -5,9 +5,9 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v2.36/pic/dat/en_msgs.txt -cn \
   -h+dist/default/production/SUPORTE_PELCO_D.X.production.sym \
   --cmf=dist/default/production/SUPORTE_PELCO_D.X.production.cmf -z \
-  -Q16F648A -o/tmp/xcXKoCEoF --defsym=__MPLAB_BUILD=1 \
+  -Q16F648A -o/tmp/xcXCMLEOi --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/SUPORTE_PELCO_D.X.production.map \
-  --md=/tmp/xcXPNGHcA.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
+  --md=/tmp/xcXHKIhMO.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
   -ACODE=00h-07FFhx2 -ASTRCODE=00h-0FFFh -ASTRING=00h-0FFhx16 \
   -ACONST=00h-0FFhx16 -AENTRY=00h-0FFhx16 -ACOMMON=070h-07Fh \
   -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0120h-016Fh \
@@ -17,7 +17,7 @@ Linker command line:
   -AIDLOC=02000h-02003h -DIDLOC=2 -AEEDATA=00h-0FFh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
   -DENTRY=2 -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE \
-  -pcinit=CODE -pfunctab=ENTRY -k /tmp/xcXfpABlH.o \
+  -pcinit=CODE -pfunctab=ENTRY -k /tmp/xcXbBDLGg.o \
   dist/default/production/SUPORTE_PELCO_D.X.production.o 
 
 Object code version is 3.11
@@ -27,7 +27,7 @@ Machine type is 16F648A
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXfpABlH.o
+/tmp/xcXbBDLGg.o
                 end_init                              F        F        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             2007     2007        1        0       4

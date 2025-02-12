@@ -667,7 +667,7 @@ void UC_Init(void) {
     //6 - PGC / MOTOR PAN 2A (HORIZONTAL)
     //7 - PGD / MOTOR PAN 1B (HORIZONTAL)
 
-    TRISB = 0b11000010;
+    TRISB = 0b00000010;
     //0 - NC
     //1 - RXD
     //2 - TXD
@@ -903,7 +903,7 @@ void MOTOR_Init(void) {
 
     // Now complete the time for the PAN movement
     // 4700ms - 1000ms = 3700ms
-    delay_wdt(3500); // Time adjusted according to the mechanism (best: 3500ms)
+    delay_wdt(3450); // Time adjusted according to the mechanism (best: 3450ms)
 
     pan_enabled = MOTOR_DISABLED;
 

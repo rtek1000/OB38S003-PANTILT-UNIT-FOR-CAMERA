@@ -50,7 +50,7 @@ strings STRING 0 500 500 F3 2 1
 clrtext CODE 0 D38 D38 8 2 1
 bssCOMMON COMMON 1 70 70 6 1 1
 config CONFIG 4 2007 2007 1 2 1
-$/tmp/xcXfpABlH.o
+$/tmp/xcXbBDLGg.o
 reset_vec CODE 0 0 0 2 2 1
 end_init CODE 0 F F 2 2 1
 config CONFIG 4 2007 2007 1 2 1
@@ -100,24 +100,24 @@ STRING 7FF-D37 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/SUPORTE_PELCO_D.X.production.o
-11 cinit CODE >1002:/tmp/xcXfkiLjM.s
-11 cinit CODE >1005:/tmp/xcXfkiLjM.s
-11 cinit CODE >1184:/tmp/xcXfkiLjM.s
-12 cinit CODE >1185:/tmp/xcXfkiLjM.s
-13 cinit CODE >1186:/tmp/xcXfkiLjM.s
-14 cinit CODE >1187:/tmp/xcXfkiLjM.s
-17 cinit CODE >1190:/tmp/xcXfkiLjM.s
-18 cinit CODE >1191:/tmp/xcXfkiLjM.s
-19 cinit CODE >1192:/tmp/xcXfkiLjM.s
-1A cinit CODE >1193:/tmp/xcXfkiLjM.s
-1B cinit CODE >1194:/tmp/xcXfkiLjM.s
-1E cinit CODE >1197:/tmp/xcXfkiLjM.s
-1F cinit CODE >1198:/tmp/xcXfkiLjM.s
-20 cinit CODE >1199:/tmp/xcXfkiLjM.s
-21 cinit CODE >1200:/tmp/xcXfkiLjM.s
-23 cinit CODE >1206:/tmp/xcXfkiLjM.s
-23 cinit CODE >1208:/tmp/xcXfkiLjM.s
-24 cinit CODE >1209:/tmp/xcXfkiLjM.s
+11 cinit CODE >1002:/tmp/xcXhmbhDo.s
+11 cinit CODE >1005:/tmp/xcXhmbhDo.s
+11 cinit CODE >1184:/tmp/xcXhmbhDo.s
+12 cinit CODE >1185:/tmp/xcXhmbhDo.s
+13 cinit CODE >1186:/tmp/xcXhmbhDo.s
+14 cinit CODE >1187:/tmp/xcXhmbhDo.s
+17 cinit CODE >1190:/tmp/xcXhmbhDo.s
+18 cinit CODE >1191:/tmp/xcXhmbhDo.s
+19 cinit CODE >1192:/tmp/xcXhmbhDo.s
+1A cinit CODE >1193:/tmp/xcXhmbhDo.s
+1B cinit CODE >1194:/tmp/xcXhmbhDo.s
+1E cinit CODE >1197:/tmp/xcXhmbhDo.s
+1F cinit CODE >1198:/tmp/xcXhmbhDo.s
+20 cinit CODE >1199:/tmp/xcXhmbhDo.s
+21 cinit CODE >1200:/tmp/xcXhmbhDo.s
+23 cinit CODE >1206:/tmp/xcXhmbhDo.s
+23 cinit CODE >1208:/tmp/xcXhmbhDo.s
+24 cinit CODE >1209:/tmp/xcXhmbhDo.s
 4 intentry CODE >162:/media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 316 text27 CODE >162:/media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 316 text27 CODE >163:/media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
@@ -830,16 +830,16 @@ FF maintext CODE >446:/media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapo
 310 maintext CODE >615:/media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 312 maintext CODE >615:/media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
 314 maintext CODE >619:/media/rh/SSD_1TB_P2/Pasta_300GB_P2/Igreja Salto de Pirapora/CAM IP HD/IPCAM_30x/Suporte/PIC/SUPORTE_PELCO_D.X/main.c
-D38 clrtext CODE >1171:/tmp/xcXfkiLjM.s
-D38 clrtext CODE >1172:/tmp/xcXfkiLjM.s
-D39 clrtext CODE >1173:/tmp/xcXfkiLjM.s
-D39 clrtext CODE >1174:/tmp/xcXfkiLjM.s
-D3A clrtext CODE >1175:/tmp/xcXfkiLjM.s
-D3B clrtext CODE >1176:/tmp/xcXfkiLjM.s
-D3C clrtext CODE >1177:/tmp/xcXfkiLjM.s
-D3D clrtext CODE >1178:/tmp/xcXfkiLjM.s
-D3E clrtext CODE >1179:/tmp/xcXfkiLjM.s
-D3F clrtext CODE >1180:/tmp/xcXfkiLjM.s
+D38 clrtext CODE >1171:/tmp/xcXhmbhDo.s
+D38 clrtext CODE >1172:/tmp/xcXhmbhDo.s
+D39 clrtext CODE >1173:/tmp/xcXhmbhDo.s
+D39 clrtext CODE >1174:/tmp/xcXhmbhDo.s
+D3A clrtext CODE >1175:/tmp/xcXhmbhDo.s
+D3B clrtext CODE >1176:/tmp/xcXhmbhDo.s
+D3C clrtext CODE >1177:/tmp/xcXhmbhDo.s
+D3D clrtext CODE >1178:/tmp/xcXhmbhDo.s
+D3E clrtext CODE >1179:/tmp/xcXhmbhDo.s
+D3F clrtext CODE >1180:/tmp/xcXhmbhDo.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -875,11 +875,11 @@ _SPEN C7 0 ABS 0 - dist/default/production/SUPORTE_PELCO_D.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production/SUPORTE_PELCO_D.X.production.o
 _TRMT 4C1 0 ABS 0 - dist/default/production/SUPORTE_PELCO_D.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production/SUPORTE_PELCO_D.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcXfpABlH.o
+___sp 0 0 STACK 2 stack /tmp/xcXbBDLGg.o
 _main 4C 0 CODE 0 maintext dist/default/production/SUPORTE_PELCO_D.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production/SUPORTE_PELCO_D.X.production.o
 _preset_pan_enabled 6C 0 BANK0 1 bssBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
-start 1E 0 CODE 0 init /tmp/xcXfpABlH.o
+start 1E 0 CODE 0 init /tmp/xcXbBDLGg.o
 _print_preset 1ED4 0 CODE 0 text1 dist/default/production/SUPORTE_PELCO_D.X.production.o
 _data_receiv 75 0 COMMON 1 bssCOMMON dist/default/production/SUPORTE_PELCO_D.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
@@ -891,12 +891,12 @@ _tilt_step_phase 71 0 COMMON 1 bssCOMMON dist/default/production/SUPORTE_PELCO_D
 __Hpowerup 0 0 CODE 0 powerup -
 UART_Init@bauds_index 24 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
 _pan_speed_old D3 0 BANK1 1 bssBANK1 dist/default/production/SUPORTE_PELCO_D.X.production.o
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXfpABlH.o
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXfpABlH.o
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXfpABlH.o
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXfpABlH.o
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXfpABlH.o
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXfpABlH.o
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXbBDLGg.o
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXbBDLGg.o
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXbBDLGg.o
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXbBDLGg.o
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXbBDLGg.o
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXbBDLGg.o
 _frame_data A0 0 BANK1 1 bssBANK1 dist/default/production/SUPORTE_PELCO_D.X.production.o
 _steps_1A A4C 0 STRING 0 strings dist/default/production/SUPORTE_PELCO_D.X.production.o
 _steps_1B A3C 0 STRING 0 strings dist/default/production/SUPORTE_PELCO_D.X.production.o
@@ -945,8 +945,8 @@ eeprom_write@addr 22 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO
 PRESET_save@_addr 2D 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
 _TIMER1_Init 1A92 0 CODE 0 text16 dist/default/production/SUPORTE_PELCO_D.X.production.o
 print_cnt@_pan 35 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
-___stackhi 0 0 ABS 0 - /tmp/xcXfpABlH.o
-___stacklo 0 0 ABS 0 - /tmp/xcXfpABlH.o
+___stackhi 0 0 ABS 0 - /tmp/xcXbBDLGg.o
+___stacklo 0 0 ABS 0 - /tmp/xcXbBDLGg.o
 _TIMER2_Init 1AD2 0 CODE 0 text15 dist/default/production/SUPORTE_PELCO_D.X.production.o
 PRESET_save@tilt 28 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
 __end_of_UART_Write 1DEC 0 CODE 0 text11 dist/default/production/SUPORTE_PELCO_D.X.production.o
@@ -975,7 +975,7 @@ _preset_tilt_enabled 6B 0 BANK0 1 bssBANK0 dist/default/production/SUPORTE_PELCO
 print_preset@text 3D 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
 print_preset@tilt 3B 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
 ___lbdiv@counter 23 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
-___int_sp 0 0 STACK 2 stack /tmp/xcXfpABlH.o
+___int_sp 0 0 STACK 2 stack /tmp/xcXbBDLGg.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -1043,7 +1043,7 @@ print_preset@id 41 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D
 __Lintentry 8 0 CODE 0 intentry -
 UART_Write_Text@i 29 0 BANK0 1 cstackBANK0 dist/default/production/SUPORTE_PELCO_D.X.production.o
 __stringtab A00 0 STRING 0 strings dist/default/production/SUPORTE_PELCO_D.X.production.o
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXfpABlH.o
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXbBDLGg.o
 _eeprom_write 1C0E 0 CODE 0 text25 dist/default/production/SUPORTE_PELCO_D.X.production.o
 _eeprom_update 1AB0 0 CODE 0 text24 dist/default/production/SUPORTE_PELCO_D.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -

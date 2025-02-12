@@ -380,7 +380,7 @@ text23 1A80 1A91 CODE 1A80 0
 clrtext 1A70 1A7F CODE 1A70 0
 %locals
 dist/default/production/SUPORTE_PELCO_D.X.production.o
-/tmp/xcXfkiLjM.s
+/tmp/xcXhmbhDo.s
 1002 11 0 CODE 0
 1005 11 0 CODE 0
 1184 11 0 CODE 0
