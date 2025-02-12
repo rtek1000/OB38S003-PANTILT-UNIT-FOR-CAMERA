@@ -1174,6 +1174,9 @@ volatile _Bool buffer_ready[5] = {0};
 volatile uint8_t header_cnt = 0;
 
 volatile uint8_t timeout_receiv = 0;
+volatile uint8_t timeout_uart1 = 0;
+volatile uint8_t timeout_uart2 = 0;
+volatile uint8_t timeout_uart3 = 0;
 
 volatile _Bool preset_pan_enabled = 0;
 volatile _Bool preset_pan_enabled_old = 0;
@@ -1238,6 +1241,7 @@ void __attribute__((picinterrupt(("")))) myISR();
 void main(void);
 void UC_Init(void);
 void TIMER1_Init(void);
+void TIMER2_Init(void);
 unsigned char CKSM_calc(uint8_t *in_dat);
 void SEND_resp_general(uint8_t cmd_cksm);
 void delay_wdt(uint16_t _ms);
@@ -1256,6 +1260,9 @@ void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt);
 void __attribute__((picinterrupt(("")))) myISR() {
     if (PIR1bits.RCIF == 1) {
         data_receiv = RCREG;
+
+        timeout_uart1 = 0;
+        timeout_uart2 = 0;
 
         PORTBbits.RB3 = !PORTBbits.RB3;
 
@@ -1305,9 +1312,44 @@ void __attribute__((picinterrupt(("")))) myISR() {
         PIR1bits.RCIF = 0;
     } else if (PIR1bits.TMR1IF == 1) {
 
+        PIR1bits.TMR1IF = 0;
         PIE1bits.TMR1IE = 1;
-        TMR1H = 255;
-        TMR1L = 131;
+        TMR1H = 12;
+        TMR1L = 38;
+
+
+        PIR1bits.TMR1IF = 0;
+
+
+
+        if (timeout_uart1 < 120) {
+            timeout_uart1++;
+        } else {
+            timeout_uart1 = 0;
+
+            if (timeout_uart2 < 2) {
+                timeout_uart2++;
+            } else {
+                timeout_uart2 = 0;
+
+
+
+
+                RCSTAbits.FERR = 0;
+                RCSTAbits.OERR = 0;
+
+                (void) RCREG;
+                (void) RCREG;
+
+                RCSTAbits.CREN = 0;
+                RCSTAbits.SPEN = 0;
+
+                RCSTAbits.CREN = 1;
+                RCSTAbits.SPEN = 1;
+            }
+        }
+    } else if (PIR1bits.TMR2IF == 1) {
+        PIR1bits.TMR2IF = 0;
 
         if (timeout_receiv < 15) {
             timeout_receiv++;
@@ -1412,8 +1454,6 @@ void __attribute__((picinterrupt(("")))) myISR() {
                 PORTBbits.RB7 = 0;
             }
         }
-
-        PIR1bits.TMR1IF = 0;
     }
 }
 
@@ -1423,6 +1463,8 @@ void main(void) {
     UART_Init();
 
     TIMER1_Init();
+
+    TIMER2_Init();
 
     delay_wdt(500);
 
@@ -1705,14 +1747,15 @@ void UC_Init(void) {
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-# 618 "main.c"
+# 660 "main.c"
     TRISA = 0b00000000;
-# 628 "main.c"
-    TRISB = 0b00000010;
-# 637 "main.c"
+# 670 "main.c"
+    TRISB = 0b11000010;
+# 679 "main.c"
 }
 
 void TIMER1_Init(void) {
+
 
 
     T1CONbits.T1CKPS1 = 1;
@@ -1721,13 +1764,29 @@ void TIMER1_Init(void) {
     T1CONbits.nT1SYNC = 1;
     T1CONbits.TMR1CS = 0;
     T1CONbits.TMR1ON = 1;
-    TMR1H = 255;
-    TMR1L = 131;
+
+
+    TMR1H = 12;
+    TMR1L = 38;
 
     PIR1bits.TMR1IF = 0;
     PIE1bits.TMR1IE = 1;
 }
-# 698 "main.c"
+
+void TIMER2_Init(void) {
+
+
+
+    T2CONbits.TOUTPS = 0;
+    T2CONbits.T2CKPS = 1;
+    PR2 = 250;
+
+    PIR1bits.TMR2IF = 0;
+    PIE1bits.TMR2IE = 1;
+
+    T2CONbits.TMR2ON = 1;
+}
+# 757 "main.c"
 void delay_wdt(uint16_t _ms) {
     __asm("clrwdt");
 
@@ -1740,7 +1799,7 @@ void delay_wdt(uint16_t _ms) {
 
 void MOTOR_Init(void) {
     is_init = 1;
-# 762 "main.c"
+# 821 "main.c"
     pan_speed = 0x32;
     pan_direction = 1;
     pan_enabled = 1;
@@ -1790,7 +1849,7 @@ void MOTOR_Init(void) {
     pan_enabled = 0;
 
     pan_counter = 0;
-# 831 "main.c"
+# 890 "main.c"
     pan_speed = 0x32;
     pan_direction = 0;
     pan_enabled = 1;

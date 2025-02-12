@@ -76,6 +76,9 @@ volatile _Bool buffer_ready[BUFFER_ARRAY] = {0};
 volatile uint8_t header_cnt = 0;
 
 volatile uint8_t timeout_receiv = 0;
+volatile uint8_t timeout_uart1 = 0;
+volatile uint8_t timeout_uart2 = 0;
+volatile uint8_t timeout_uart3 = 0;
 
 volatile _Bool preset_pan_enabled = MOTOR_DISABLED;
 volatile _Bool preset_pan_enabled_old = MOTOR_DISABLED;
@@ -140,6 +143,7 @@ void __interrupt() myISR();
 void main(void);
 void UC_Init(void);
 void TIMER1_Init(void);
+void TIMER2_Init(void);
 unsigned char CKSM_calc(uint8_t *in_dat);
 void SEND_resp_general(uint8_t cmd_cksm);
 void delay_wdt(uint16_t _ms);
@@ -158,6 +162,9 @@ void print_cmd_mov(char *text, uint16_t pan, uint16_t tilt);
 void __interrupt() myISR() {
     if (PIR1bits.RCIF == 1) {
         data_receiv = RCREG; //UART1_Read();
+
+        timeout_uart1 = 0;
+        timeout_uart2 = 0;
 
         UC_LED = !UC_LED;
 
@@ -205,11 +212,46 @@ void __interrupt() myISR() {
         }
 
         PIR1bits.RCIF = 0;
-    } else if (PIR1bits.TMR1IF == 1) { // 1ms @ 4MHz
-        // Timer1 Interrupt - Freq = 1000.00 Hz - Period = 0.001000 seconds
+    } else if (PIR1bits.TMR1IF == 1) { // 2Hz @ 4MHz
+        // Timer1 Interrupt - Freq = 2.00 Hz - Period = 0.499408 seconds
+        PIR1bits.TMR1IF = 0; // interrupt must be cleared by software
         PIE1bits.TMR1IE = 1; // reenable the interrupt
-        TMR1H = 255; // preset for timer1 MSB register
-        TMR1L = 131; // preset for timer1 LSB register
+        TMR1H = 12; // preset for timer1 MSB register
+        TMR1L = 38; // preset for timer1 LSB register
+
+
+        PIR1bits.TMR1IF = 0;
+
+        // UC_LED = !UC_LED;
+
+        if (timeout_uart1 < 120) { // 60s: 2Hz * 120; 1 minute
+            timeout_uart1++;
+        } else {
+            timeout_uart1 = 0;
+
+            if (timeout_uart2 < 2) { // UART Timeout 3 minutes: 180s
+                timeout_uart2++;
+            } else {
+                timeout_uart2 = 0;
+                
+                // (Cannot restart uC without losing home position)
+                // Try resetting the UART only:
+
+                RCSTAbits.FERR = 0;
+                RCSTAbits.OERR = 0;
+
+                (void) RCREG; // UART_Read();
+                (void) RCREG; // UART_Read();
+
+                RCSTAbits.CREN = 0;
+                RCSTAbits.SPEN = 0;
+
+                RCSTAbits.CREN = 1;
+                RCSTAbits.SPEN = 1;
+            }
+        }
+    } else if (PIR1bits.TMR2IF == 1) { // 1ms @ 4MHz
+        PIR1bits.TMR2IF = 0; // clears TMR2IF       bit 1 TMR2IF: TMR2 to PR2 Match Interrupt Flag bit
 
         if (timeout_receiv < 15) {
             timeout_receiv++;
@@ -314,8 +356,6 @@ void __interrupt() myISR() {
                 MOT_TILT_2B = 0;
             }
         }
-
-        PIR1bits.TMR1IF = 0;
     }
 }
 
@@ -325,6 +365,8 @@ void main(void) {
     UART_Init();
 
     TIMER1_Init();
+
+    TIMER2_Init();
 
     delay_wdt(500);
 
@@ -596,15 +638,15 @@ void UC_Init(void) {
     PORTA = 0;
     PORTB = 0;
 
-    CMCON = 7; //comparador off
+    CMCON = 7; //Comparador off
 
-    OPTION_REGbits.nRBPU = 1;
-    OPTION_REGbits.PSA = 1;
-    OPTION_REGbits.PS = 0b111;
+    OPTION_REGbits.nRBPU = 1; // PORTB pull-ups are disabled
+    OPTION_REGbits.PSA = 1; // Prescaler is assigned to the WDT
+    OPTION_REGbits.PS = 0b111; // 0b111 WDT Rate 1:128
     //bit 7 RBPU: PORTB Pull-up Enable bit: disabled
     //bit 3 PSA: Prescaler is assigned to the WDT
     //bit 2-0 PS2:PS0: Prescaler Rate Select bits (1:128)
-
+    
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
     //bit 7 Global Interrupt Enable bit
@@ -625,7 +667,7 @@ void UC_Init(void) {
     //6 - PGC / MOTOR PAN 2A (HORIZONTAL)
     //7 - PGD / MOTOR PAN 1B (HORIZONTAL)
 
-    TRISB = 0b00000010;
+    TRISB = 0b11000010;
     //0 - NC
     //1 - RXD
     //2 - TXD
@@ -637,7 +679,8 @@ void UC_Init(void) {
 }
 
 void TIMER1_Init(void) {
-    //Timer1 Registers Prescaler= 8 - TMR1 Preset = 65411 - Freq = 1000.00 Hz - Period = 0.001000 seconds
+    // Timer1 Registers Prescaler= 8 - TMR1 Preset = 3110 - Freq = 2.00 Hz - Period = 0.499408 seconds (Oscillator Frequency 4MHz)
+    // Ref.: http://eng-serve.com/pic/pic_timer.html
 
     T1CONbits.T1CKPS1 = 1; // bits 5-4  Prescaler Rate Select bits
     T1CONbits.T1CKPS0 = 1; // bit 4
@@ -645,11 +688,27 @@ void TIMER1_Init(void) {
     T1CONbits.nT1SYNC = 1; // bit 2 Timer1 External Clock Input Synchronization Control bit...1 = Do not synchronize external clock input
     T1CONbits.TMR1CS = 0; // bit 1 Timer1 Clock Source Select bit...0 = Internal clock (FOSC/4)
     T1CONbits.TMR1ON = 1; // bit 0 enables timer
-    TMR1H = 255; // preset for timer1 MSB register
-    TMR1L = 131; // preset for timer1 LSB register
+    //    TMR1H = 255; // preset for timer1 MSB register
+    //    TMR1L = 131; // preset for timer1 LSB register
+    TMR1H = 12; // preset for timer1 MSB register
+    TMR1L = 38; // preset for timer1 LSB register
 
     PIR1bits.TMR1IF = 0; // clear timer1 interupt flag TMR1IF
     PIE1bits.TMR1IE = 1; // enable Timer1 interrupts
+}
+
+void TIMER2_Init(void) {
+    // Timer2 Registers Prescaler= 4 - TMR2 PostScaler = 1 - PR2 = 250 - Freq = 1000.00 Hz - Period = 0.001000 seconds (Oscillator Frequency 4MHz)
+    // Ref.: http://eng-serve.com/pic/pic_timer.html
+
+    T2CONbits.TOUTPS = 0; // bits 6-3 Post scaler 1:1 thru 1:16; 0000 = 1:1 Postscale Value
+    T2CONbits.T2CKPS = 1; // bits 1-0  Prescaler Rate Select bits; 01 = 1:4 Prescaler Value
+    PR2 = 250; // PR2 (Timer2 Match value)
+
+    PIR1bits.TMR2IF = 0; // clear timer1 interupt flag TMR1IF
+    PIE1bits.TMR2IE = 1; // enable Timer2 interrupts
+
+    T2CONbits.TMR2ON = 1; // bit 2 turn timer2 on;
 }
 
 // cksm: This is the arithmetic sum of all bytes except for the sync byte and itself.
