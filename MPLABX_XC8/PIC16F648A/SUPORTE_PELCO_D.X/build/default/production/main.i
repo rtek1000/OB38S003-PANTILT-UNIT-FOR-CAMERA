@@ -1253,7 +1253,7 @@ void __attribute__((picinterrupt(("")))) myISR() {
     if (PIR1bits.RCIF == 1) {
         data_receiv = RCREG;
 
-         PORTBbits.RB3 = !PORTBbits.RB3;
+        PORTBbits.RB3 = !PORTBbits.RB3;
 
         if (is_init == 1) {
             return;
@@ -1510,9 +1510,9 @@ void main(void) {
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x00) && (P_dat1 == 0x00) && (P_dat2 == 0x00)) {
                             pan_enabled = 0;
                             tilt_enabled = 0;
-                            response_type = 0x01;
                             preset_pan_enabled = 0;
                             preset_tilt_enabled = 0;
+                            response_type = 0x01;
                             UART_Write_Text("STOP (");
                             print_cnt(pan_counter, tilt_counter);
                             UART_Write_Text(")\r\n");
@@ -1808,6 +1808,24 @@ void MOTOR_Init(void) {
     tilt_enabled = 0;
 
     tilt_counter = 0;
+
+
+    pan_speed = 0x32;
+    pan_direction = 0;
+    pan_enabled = 1;
+
+    delay_wdt(4500);
+
+    pan_enabled = 0;
+
+
+    tilt_speed = 0x32;
+    tilt_direction = 0;
+    tilt_enabled = 1;
+
+    delay_wdt(1000);
+
+    tilt_enabled = 0;
 
     is_init = 0;
 }

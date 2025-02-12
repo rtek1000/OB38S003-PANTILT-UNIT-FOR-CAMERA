@@ -412,9 +412,9 @@ void main(void) {
                         } else if ((P_cmd1 == 0x00) && (P_cmd2 == 0x00) && (P_dat1 == 0x00) && (P_dat2 == 0x00)) {
                             pan_enabled = MOTOR_DISABLED;
                             tilt_enabled = MOTOR_DISABLED;
-                            response_type = RESP_GENERAL;
                             preset_pan_enabled = MOTOR_DISABLED;
                             preset_tilt_enabled = MOTOR_DISABLED;
+                            response_type = RESP_GENERAL;
                             UART_Write_Text("STOP (");
                             print_cnt(pan_counter, tilt_counter);
                             UART_Write_Text(")\r\n");
@@ -775,6 +775,24 @@ void MOTOR_Init(void) {
     tilt_enabled = MOTOR_DISABLED;
 
     tilt_counter = 0; // New mechanical stroke limit
+
+    // Go to mechanical center
+    pan_speed = SPEED_MAX_REF;
+    pan_direction = MOVE_CC;
+    pan_enabled = MOTOR_ENABLED;
+
+    delay_wdt(4500); // Time adjusted according to the mechanism
+
+    pan_enabled = MOTOR_DISABLED;
+
+    // Go to mechanical center
+    tilt_speed = SPEED_MAX_REF;
+    tilt_direction = MOVE_CC;
+    tilt_enabled = MOTOR_ENABLED;
+
+    delay_wdt(1000); // Time adjusted according to the mechanism
+
+    tilt_enabled = MOTOR_DISABLED;
 
     is_init = false;
 }

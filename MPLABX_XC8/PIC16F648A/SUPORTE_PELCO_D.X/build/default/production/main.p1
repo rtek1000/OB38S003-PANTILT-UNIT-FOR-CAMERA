@@ -693,7 +693,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 156:         data_receiv = RCREG;
 [e = _data_receiv _RCREG ]
 "158
-[; ;main.c: 158:          PORTBbits.RB3 = !PORTBbits.RB3;
+[; ;main.c: 158:         PORTBbits.RB3 = !PORTBbits.RB3;
 [e = . . _PORTBbits 0 3 -> -> ! != -> . . _PORTBbits 0 3 `i -> 0 `i `i `uc ]
 "160
 [; ;main.c: 160:         if (is_init == 1) {
@@ -1482,14 +1482,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 414:                             tilt_enabled = 0;
 [e = _tilt_enabled -> -> 0 `i `a ]
 "415
-[; ;main.c: 415:                             response_type = 0x01;
-[e = _response_type -> -> 1 `i `uc ]
-"416
-[; ;main.c: 416:                             preset_pan_enabled = 0;
+[; ;main.c: 415:                             preset_pan_enabled = 0;
 [e = _preset_pan_enabled -> -> 0 `i `a ]
-"417
-[; ;main.c: 417:                             preset_tilt_enabled = 0;
+"416
+[; ;main.c: 416:                             preset_tilt_enabled = 0;
 [e = _preset_tilt_enabled -> -> 0 `i `a ]
+"417
+[; ;main.c: 417:                             response_type = 0x01;
+[e = _response_type -> -> 1 `i `uc ]
 "418
 [; ;main.c: 418:                             UART_Write_Text("STOP (");
 [e ( _UART_Write_Text (1 :s 14C ]
@@ -2274,104 +2274,134 @@ Version 4.0 HI-TECH Software Intermediate Code
 "777
 [; ;main.c: 777:     tilt_counter = 0;
 [e = _tilt_counter -> -> 0 `i `ui ]
-"779
-[; ;main.c: 779:     is_init = 0;
-[e = _is_init -> -> 0 `i `a ]
 "780
-[; ;main.c: 780: }
+[; ;main.c: 780:     pan_speed = 0x32;
+[e = _pan_speed -> -> 50 `i `uc ]
+"781
+[; ;main.c: 781:     pan_direction = 0;
+[e = _pan_direction -> -> 0 `i `a ]
+"782
+[; ;main.c: 782:     pan_enabled = 1;
+[e = _pan_enabled -> -> 1 `i `a ]
+"784
+[; ;main.c: 784:     delay_wdt(4500);
+[e ( _delay_wdt (1 -> -> 4500 `i `ui ]
+"786
+[; ;main.c: 786:     pan_enabled = 0;
+[e = _pan_enabled -> -> 0 `i `a ]
+"789
+[; ;main.c: 789:     tilt_speed = 0x32;
+[e = _tilt_speed -> -> 50 `i `uc ]
+"790
+[; ;main.c: 790:     tilt_direction = 0;
+[e = _tilt_direction -> -> 0 `i `a ]
+"791
+[; ;main.c: 791:     tilt_enabled = 1;
+[e = _tilt_enabled -> -> 1 `i `a ]
+"793
+[; ;main.c: 793:     delay_wdt(1000);
+[e ( _delay_wdt (1 -> -> 1000 `i `ui ]
+"795
+[; ;main.c: 795:     tilt_enabled = 0;
+[e = _tilt_enabled -> -> 0 `i `a ]
+"797
+[; ;main.c: 797:     is_init = 0;
+[e = _is_init -> -> 0 `i `a ]
+"798
+[; ;main.c: 798: }
 [e :UE 180 ]
 }
-"782
-[; ;main.c: 782: uint8_t SPEED_calc(uint8_t speed) {
+"800
+[; ;main.c: 800: uint8_t SPEED_calc(uint8_t speed) {
 [v _SPEED_calc `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _SPEED_calc ]
 [v _speed `uc ~T0 @X0 1 r1 ]
 [f ]
-"783
-[; ;main.c: 783:     uint8_t sp_calc = 0;
+"801
+[; ;main.c: 801:     uint8_t sp_calc = 0;
 [v _sp_calc `uc ~T0 @X0 1 a ]
 [e = _sp_calc -> -> 0 `i `uc ]
-"785
-[; ;main.c: 785:     if (speed > 0x32) {
+"803
+[; ;main.c: 803:     if (speed > 0x32) {
 [e $ ! > -> _speed `i -> 50 `i 182  ]
 {
-"786
-[; ;main.c: 786:         speed = 0x32;
+"804
+[; ;main.c: 804:         speed = 0x32;
 [e = _speed -> -> 50 `i `uc ]
-"787
-[; ;main.c: 787:     }
+"805
+[; ;main.c: 805:     }
 }
 [e :U 182 ]
-"789
-[; ;main.c: 789:     if (speed < 0x06) {
+"807
+[; ;main.c: 807:     if (speed < 0x06) {
 [e $ ! < -> _speed `i -> 6 `i 183  ]
 {
-"790
-[; ;main.c: 790:         speed = 0x06;
+"808
+[; ;main.c: 808:         speed = 0x06;
 [e = _speed -> -> 6 `i `uc ]
-"791
-[; ;main.c: 791:     }
+"809
+[; ;main.c: 809:     }
 }
 [e :U 183 ]
-"793
-[; ;main.c: 793:     sp_calc = 1 + ((0x32 - speed) / 2);
+"811
+[; ;main.c: 811:     sp_calc = 1 + ((0x32 - speed) / 2);
 [e = _sp_calc -> + -> 1 `i / - -> 50 `i -> _speed `i -> 2 `i `uc ]
-"795
-[; ;main.c: 795:     if (sp_calc < 1) {
+"813
+[; ;main.c: 813:     if (sp_calc < 1) {
 [e $ ! < -> _sp_calc `i -> 1 `i 184  ]
 {
-"796
-[; ;main.c: 796:         sp_calc = 1;
+"814
+[; ;main.c: 814:         sp_calc = 1;
 [e = _sp_calc -> -> 1 `i `uc ]
-"797
-[; ;main.c: 797:     }
+"815
+[; ;main.c: 815:     }
 }
 [e :U 184 ]
-"799
-[; ;main.c: 799:     if (sp_calc > 19) {
+"817
+[; ;main.c: 817:     if (sp_calc > 19) {
 [e $ ! > -> _sp_calc `i -> 19 `i 185  ]
 {
-"801
-[; ;main.c: 801:         sp_calc = 19;
+"819
+[; ;main.c: 819:         sp_calc = 19;
 [e = _sp_calc -> -> 19 `i `uc ]
-"802
-[; ;main.c: 802:     }
+"820
+[; ;main.c: 820:     }
 }
 [e :U 185 ]
-"804
-[; ;main.c: 804:     return sp_calc;
+"822
+[; ;main.c: 822:     return sp_calc;
 [e ) _sp_calc ]
 [e $UE 181  ]
-"805
-[; ;main.c: 805: }
+"823
+[; ;main.c: 823: }
 [e :UE 181 ]
 }
-"807
-[; ;main.c: 807: void eeprom_update(uint8_t addr, uint8_t value) {
+"825
+[; ;main.c: 825: void eeprom_update(uint8_t addr, uint8_t value) {
 [v _eeprom_update `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _eeprom_update ]
 [v _addr `uc ~T0 @X0 1 r1 ]
 [v _value `uc ~T0 @X0 1 r2 ]
 [f ]
-"808
-[; ;main.c: 808:     if (value != eeprom_read(addr)) {
+"826
+[; ;main.c: 826:     if (value != eeprom_read(addr)) {
 [e $ ! != -> _value `i -> ( _eeprom_read (1 _addr `i 187  ]
 {
-"809
-[; ;main.c: 809:         eeprom_write(addr, value);
+"827
+[; ;main.c: 827:         eeprom_write(addr, value);
 [e ( _eeprom_write (2 , _addr _value ]
-"810
-[; ;main.c: 810:     }
+"828
+[; ;main.c: 828:     }
 }
 [e :U 187 ]
-"811
-[; ;main.c: 811: }
+"829
+[; ;main.c: 829: }
 [e :UE 186 ]
 }
-"813
-[; ;main.c: 813: void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt) {
+"831
+[; ;main.c: 831: void PRESET_save(uint8_t id, uint16_t pan, uint16_t tilt) {
 [v _PRESET_save `(v ~T0 @X0 1 ef3`uc`ui`ui ]
 {
 [e :U _PRESET_save ]
@@ -2379,36 +2409,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pan `ui ~T0 @X0 1 r2 ]
 [v _tilt `ui ~T0 @X0 1 r3 ]
 [f ]
-"814
-[; ;main.c: 814:     uint8_t _addr = id * 4;
+"832
+[; ;main.c: 832:     uint8_t _addr = id * 4;
 [v __addr `uc ~T0 @X0 1 a ]
 [e = __addr -> * -> _id `i -> 4 `i `uc ]
-"816
-[; ;main.c: 816:     if (id < 50) {
+"834
+[; ;main.c: 834:     if (id < 50) {
 [e $ ! < -> _id `i -> 50 `i 189  ]
 {
-"818
-[; ;main.c: 818:         eeprom_update(_addr, pan & 0xFF);
+"836
+[; ;main.c: 836:         eeprom_update(_addr, pan & 0xFF);
 [e ( _eeprom_update (2 , __addr -> & _pan -> -> 255 `i `ui `uc ]
-"819
-[; ;main.c: 819:         eeprom_update(_addr + 1, (pan >> 8) & 0xFF);
+"837
+[; ;main.c: 837:         eeprom_update(_addr + 1, (pan >> 8) & 0xFF);
 [e ( _eeprom_update (2 , -> + -> __addr `i -> 1 `i `uc -> & >> _pan -> 8 `i -> -> 255 `i `ui `uc ]
-"821
-[; ;main.c: 821:         eeprom_update(_addr + 2, tilt & 0xFF);
+"839
+[; ;main.c: 839:         eeprom_update(_addr + 2, tilt & 0xFF);
 [e ( _eeprom_update (2 , -> + -> __addr `i -> 2 `i `uc -> & _tilt -> -> 255 `i `ui `uc ]
-"822
-[; ;main.c: 822:         eeprom_update(_addr + 3, (tilt >> 8) & 0xFF);
+"840
+[; ;main.c: 840:         eeprom_update(_addr + 3, (tilt >> 8) & 0xFF);
 [e ( _eeprom_update (2 , -> + -> __addr `i -> 3 `i `uc -> & >> _tilt -> 8 `i -> -> 255 `i `ui `uc ]
-"823
-[; ;main.c: 823:     }
+"841
+[; ;main.c: 841:     }
 }
 [e :U 189 ]
-"824
-[; ;main.c: 824: }
+"842
+[; ;main.c: 842: }
 [e :UE 188 ]
 }
-"826
-[; ;main.c: 826: void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt) {
+"844
+[; ;main.c: 844: void PRESET_load(uint8_t id, uint16_t *pan, uint16_t *tilt) {
 [v _PRESET_load `(v ~T0 @X0 1 ef3`uc`*ui`*ui ]
 {
 [e :U _PRESET_load ]
@@ -2416,273 +2446,273 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pan `*ui ~T0 @X0 1 r2 ]
 [v _tilt `*ui ~T0 @X0 1 r3 ]
 [f ]
-"827
-[; ;main.c: 827:     uint8_t _addr = id * 4;
+"845
+[; ;main.c: 845:     uint8_t _addr = id * 4;
 [v __addr `uc ~T0 @X0 1 a ]
 [e = __addr -> * -> _id `i -> 4 `i `uc ]
-"829
-[; ;main.c: 829:     if (id < 50) {
+"847
+[; ;main.c: 847:     if (id < 50) {
 [e $ ! < -> _id `i -> 50 `i 191  ]
 {
-"831
-[; ;main.c: 831:         *pan = (uint16_t) (eeprom_read(_addr));
+"849
+[; ;main.c: 849:         *pan = (uint16_t) (eeprom_read(_addr));
 [e = *U _pan -> ( _eeprom_read (1 __addr `ui ]
-"832
-[; ;main.c: 832:         *pan |= (uint16_t) (eeprom_read(_addr + 1) << 8);
+"850
+[; ;main.c: 850:         *pan |= (uint16_t) (eeprom_read(_addr + 1) << 8);
 [e =| *U _pan -> << -> ( _eeprom_read (1 -> + -> __addr `i -> 1 `i `uc `i -> 8 `i `ui ]
-"834
-[; ;main.c: 834:         *tilt = (uint16_t) (eeprom_read(_addr + 2));
+"852
+[; ;main.c: 852:         *tilt = (uint16_t) (eeprom_read(_addr + 2));
 [e = *U _tilt -> ( _eeprom_read (1 -> + -> __addr `i -> 2 `i `uc `ui ]
-"835
-[; ;main.c: 835:         *tilt |= (uint16_t) (eeprom_read(_addr + 3) << 8);
+"853
+[; ;main.c: 853:         *tilt |= (uint16_t) (eeprom_read(_addr + 3) << 8);
 [e =| *U _tilt -> << -> ( _eeprom_read (1 -> + -> __addr `i -> 3 `i `uc `i -> 8 `i `ui ]
-"836
-[; ;main.c: 836:     }
+"854
+[; ;main.c: 854:     }
 }
 [e :U 191 ]
-"837
-[; ;main.c: 837: }
+"855
+[; ;main.c: 855: }
 [e :UE 190 ]
 }
-"839
-[; ;main.c: 839: void BAUDS_set(uint8_t index) {
+"857
+[; ;main.c: 857: void BAUDS_set(uint8_t index) {
 [v _BAUDS_set `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _BAUDS_set ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
-"841
-[; ;main.c: 841:     eeprom_update(0xFF, index);
+"859
+[; ;main.c: 859:     eeprom_update(0xFF, index);
 [e ( _eeprom_update (2 , -> -> 255 `i `uc _index ]
-"842
-[; ;main.c: 842: }
+"860
+[; ;main.c: 860: }
 [e :UE 192 ]
 }
-"844
-[; ;main.c: 844: uint8_t BAUDS_get(void) {
+"862
+[; ;main.c: 862: uint8_t BAUDS_get(void) {
 [v _BAUDS_get `(uc ~T0 @X0 1 ef ]
 {
 [e :U _BAUDS_get ]
 [f ]
-"846
-[; ;main.c: 846:     return eeprom_read(0xFF);
+"864
+[; ;main.c: 864:     return eeprom_read(0xFF);
 [e ) ( _eeprom_read (1 -> -> 255 `i `uc ]
 [e $UE 193  ]
-"847
-[; ;main.c: 847: }
+"865
+[; ;main.c: 865: }
 [e :UE 193 ]
 }
-"849
-[; ;main.c: 849: void print_cnt(uint16_t _pan, uint16_t _tilt) {
+"867
+[; ;main.c: 867: void print_cnt(uint16_t _pan, uint16_t _tilt) {
 [v _print_cnt `(v ~T0 @X0 1 ef2`ui`ui ]
 {
 [e :U _print_cnt ]
 [v __pan `ui ~T0 @X0 1 r1 ]
 [v __tilt `ui ~T0 @X0 1 r2 ]
 [f ]
-"850
-[; ;main.c: 850:     uint16_t val10000 = 0;
+"868
+[; ;main.c: 868:     uint16_t val10000 = 0;
 [v _val10000 `ui ~T0 @X0 1 a ]
 [e = _val10000 -> -> 0 `i `ui ]
-"851
-[; ;main.c: 851:     uint16_t val1000 = 0;
+"869
+[; ;main.c: 869:     uint16_t val1000 = 0;
 [v _val1000 `ui ~T0 @X0 1 a ]
 [e = _val1000 -> -> 0 `i `ui ]
-"852
-[; ;main.c: 852:     uint16_t val100 = 0;
+"870
+[; ;main.c: 870:     uint16_t val100 = 0;
 [v _val100 `ui ~T0 @X0 1 a ]
 [e = _val100 -> -> 0 `i `ui ]
-"853
-[; ;main.c: 853:     uint16_t val10 = 0;
+"871
+[; ;main.c: 871:     uint16_t val10 = 0;
 [v _val10 `ui ~T0 @X0 1 a ]
 [e = _val10 -> -> 0 `i `ui ]
-"854
-[; ;main.c: 854:     uint16_t val1 = 0;
+"872
+[; ;main.c: 872:     uint16_t val1 = 0;
 [v _val1 `ui ~T0 @X0 1 a ]
 [e = _val1 -> -> 0 `i `ui ]
-"856
-[; ;main.c: 856:     val10000 = _pan / 10000;
-[e = _val10000 / __pan -> -> 10000 `i `ui ]
-"857
-[; ;main.c: 857:     _pan -= val10000 * 10000;
-[e =- __pan * _val10000 -> -> 10000 `i `ui ]
-"859
-[; ;main.c: 859:     val1000 = _pan / 1000;
-[e = _val1000 / __pan -> -> 1000 `i `ui ]
-"860
-[; ;main.c: 860:     _pan -= val1000 * 1000;
-[e =- __pan * _val1000 -> -> 1000 `i `ui ]
-"862
-[; ;main.c: 862:     val100 = _pan / 100;
-[e = _val100 / __pan -> -> 100 `i `ui ]
-"863
-[; ;main.c: 863:     _pan -= val100 * 100;
-[e =- __pan * _val100 -> -> 100 `i `ui ]
-"865
-[; ;main.c: 865:     val10 = _pan / 10;
-[e = _val10 / __pan -> -> 10 `i `ui ]
-"866
-[; ;main.c: 866:     _pan -= val10 * 10;
-[e =- __pan * _val10 -> -> 10 `i `ui ]
-"868
-[; ;main.c: 868:     val1 = _pan;
-[e = _val1 __pan ]
-"870
-[; ;main.c: 870:     val10000 += 48;
-[e =+ _val10000 -> -> 48 `i `ui ]
-"871
-[; ;main.c: 871:     val1000 += 48;
-[e =+ _val1000 -> -> 48 `i `ui ]
-"872
-[; ;main.c: 872:     val100 += 48;
-[e =+ _val100 -> -> 48 `i `ui ]
-"873
-[; ;main.c: 873:     val10 += 48;
-[e =+ _val10 -> -> 48 `i `ui ]
 "874
-[; ;main.c: 874:     val1 += 48;
+[; ;main.c: 874:     val10000 = _pan / 10000;
+[e = _val10000 / __pan -> -> 10000 `i `ui ]
+"875
+[; ;main.c: 875:     _pan -= val10000 * 10000;
+[e =- __pan * _val10000 -> -> 10000 `i `ui ]
+"877
+[; ;main.c: 877:     val1000 = _pan / 1000;
+[e = _val1000 / __pan -> -> 1000 `i `ui ]
+"878
+[; ;main.c: 878:     _pan -= val1000 * 1000;
+[e =- __pan * _val1000 -> -> 1000 `i `ui ]
+"880
+[; ;main.c: 880:     val100 = _pan / 100;
+[e = _val100 / __pan -> -> 100 `i `ui ]
+"881
+[; ;main.c: 881:     _pan -= val100 * 100;
+[e =- __pan * _val100 -> -> 100 `i `ui ]
+"883
+[; ;main.c: 883:     val10 = _pan / 10;
+[e = _val10 / __pan -> -> 10 `i `ui ]
+"884
+[; ;main.c: 884:     _pan -= val10 * 10;
+[e =- __pan * _val10 -> -> 10 `i `ui ]
+"886
+[; ;main.c: 886:     val1 = _pan;
+[e = _val1 __pan ]
+"888
+[; ;main.c: 888:     val10000 += 48;
+[e =+ _val10000 -> -> 48 `i `ui ]
+"889
+[; ;main.c: 889:     val1000 += 48;
+[e =+ _val1000 -> -> 48 `i `ui ]
+"890
+[; ;main.c: 890:     val100 += 48;
+[e =+ _val100 -> -> 48 `i `ui ]
+"891
+[; ;main.c: 891:     val10 += 48;
+[e =+ _val10 -> -> 48 `i `ui ]
+"892
+[; ;main.c: 892:     val1 += 48;
 [e =+ _val1 -> -> 48 `i `ui ]
-"876
-[; ;main.c: 876:     if (val10000 > 0) {
+"894
+[; ;main.c: 894:     if (val10000 > 0) {
 [e $ ! > _val10000 -> -> 0 `i `ui 195  ]
 {
-"877
-[; ;main.c: 877:         UART_Write((uint8_t) val10000);
+"895
+[; ;main.c: 895:         UART_Write((uint8_t) val10000);
 [e ( _UART_Write (1 -> -> _val10000 `uc `uc ]
-"878
-[; ;main.c: 878:     }
+"896
+[; ;main.c: 896:     }
 }
 [e :U 195 ]
-"880
-[; ;main.c: 880:     if ((val10000 > 0) || (val1000 > 0)) {
+"898
+[; ;main.c: 898:     if ((val10000 > 0) || (val1000 > 0)) {
 [e $ ! || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui 196  ]
 {
-"881
-[; ;main.c: 881:         UART_Write((uint8_t) val1000);
+"899
+[; ;main.c: 899:         UART_Write((uint8_t) val1000);
 [e ( _UART_Write (1 -> -> _val1000 `uc `uc ]
-"882
-[; ;main.c: 882:     }
+"900
+[; ;main.c: 900:     }
 }
 [e :U 196 ]
-"884
-[; ;main.c: 884:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
+"902
+[; ;main.c: 902:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
 [e $ ! || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui 197  ]
 {
-"885
-[; ;main.c: 885:         UART_Write((uint8_t) val100);
+"903
+[; ;main.c: 903:         UART_Write((uint8_t) val100);
 [e ( _UART_Write (1 -> -> _val100 `uc `uc ]
-"886
-[; ;main.c: 886:     }
+"904
+[; ;main.c: 904:     }
 }
 [e :U 197 ]
-"887
-[; ;main.c: 887:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
+"905
+[; ;main.c: 905:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
 [e $ ! || || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui > _val10 -> -> 0 `i `ui 198  ]
 {
-"888
-[; ;main.c: 888:         UART_Write((uint8_t) val10);
+"906
+[; ;main.c: 906:         UART_Write((uint8_t) val10);
 [e ( _UART_Write (1 -> -> _val10 `uc `uc ]
-"889
-[; ;main.c: 889:     }
+"907
+[; ;main.c: 907:     }
 }
 [e :U 198 ]
-"891
-[; ;main.c: 891:     UART_Write((uint8_t) val1);
-[e ( _UART_Write (1 -> -> _val1 `uc `uc ]
-"893
-[; ;main.c: 893:     UART_Write_Text(", ");
-[e ( _UART_Write_Text (1 :s 33C ]
-"895
-[; ;main.c: 895:     val10000 = _tilt / 10000;
-[e = _val10000 / __tilt -> -> 10000 `i `ui ]
-"896
-[; ;main.c: 896:     _tilt -= val10000 * 10000;
-[e =- __tilt * _val10000 -> -> 10000 `i `ui ]
-"898
-[; ;main.c: 898:     val1000 = _tilt / 1000;
-[e = _val1000 / __tilt -> -> 1000 `i `ui ]
-"899
-[; ;main.c: 899:     _tilt -= val1000 * 1000;
-[e =- __tilt * _val1000 -> -> 1000 `i `ui ]
-"901
-[; ;main.c: 901:     val100 = _tilt / 100;
-[e = _val100 / __tilt -> -> 100 `i `ui ]
-"902
-[; ;main.c: 902:     _tilt -= val100 * 100;
-[e =- __tilt * _val100 -> -> 100 `i `ui ]
-"904
-[; ;main.c: 904:     val10 = _tilt / 10;
-[e = _val10 / __tilt -> -> 10 `i `ui ]
-"905
-[; ;main.c: 905:     _tilt -= val10 * 10;
-[e =- __tilt * _val10 -> -> 10 `i `ui ]
-"907
-[; ;main.c: 907:     val1 = _tilt;
-[e = _val1 __tilt ]
 "909
-[; ;main.c: 909:     val10000 += 48;
-[e =+ _val10000 -> -> 48 `i `ui ]
-"910
-[; ;main.c: 910:     val1000 += 48;
-[e =+ _val1000 -> -> 48 `i `ui ]
+[; ;main.c: 909:     UART_Write((uint8_t) val1);
+[e ( _UART_Write (1 -> -> _val1 `uc `uc ]
 "911
-[; ;main.c: 911:     val100 += 48;
-[e =+ _val100 -> -> 48 `i `ui ]
-"912
-[; ;main.c: 912:     val10 += 48;
-[e =+ _val10 -> -> 48 `i `ui ]
+[; ;main.c: 911:     UART_Write_Text(", ");
+[e ( _UART_Write_Text (1 :s 33C ]
 "913
-[; ;main.c: 913:     val1 += 48;
+[; ;main.c: 913:     val10000 = _tilt / 10000;
+[e = _val10000 / __tilt -> -> 10000 `i `ui ]
+"914
+[; ;main.c: 914:     _tilt -= val10000 * 10000;
+[e =- __tilt * _val10000 -> -> 10000 `i `ui ]
+"916
+[; ;main.c: 916:     val1000 = _tilt / 1000;
+[e = _val1000 / __tilt -> -> 1000 `i `ui ]
+"917
+[; ;main.c: 917:     _tilt -= val1000 * 1000;
+[e =- __tilt * _val1000 -> -> 1000 `i `ui ]
+"919
+[; ;main.c: 919:     val100 = _tilt / 100;
+[e = _val100 / __tilt -> -> 100 `i `ui ]
+"920
+[; ;main.c: 920:     _tilt -= val100 * 100;
+[e =- __tilt * _val100 -> -> 100 `i `ui ]
+"922
+[; ;main.c: 922:     val10 = _tilt / 10;
+[e = _val10 / __tilt -> -> 10 `i `ui ]
+"923
+[; ;main.c: 923:     _tilt -= val10 * 10;
+[e =- __tilt * _val10 -> -> 10 `i `ui ]
+"925
+[; ;main.c: 925:     val1 = _tilt;
+[e = _val1 __tilt ]
+"927
+[; ;main.c: 927:     val10000 += 48;
+[e =+ _val10000 -> -> 48 `i `ui ]
+"928
+[; ;main.c: 928:     val1000 += 48;
+[e =+ _val1000 -> -> 48 `i `ui ]
+"929
+[; ;main.c: 929:     val100 += 48;
+[e =+ _val100 -> -> 48 `i `ui ]
+"930
+[; ;main.c: 930:     val10 += 48;
+[e =+ _val10 -> -> 48 `i `ui ]
+"931
+[; ;main.c: 931:     val1 += 48;
 [e =+ _val1 -> -> 48 `i `ui ]
-"915
-[; ;main.c: 915:     if (val10000 > 0) {
+"933
+[; ;main.c: 933:     if (val10000 > 0) {
 [e $ ! > _val10000 -> -> 0 `i `ui 199  ]
 {
-"916
-[; ;main.c: 916:         UART_Write((uint8_t) val10000);
+"934
+[; ;main.c: 934:         UART_Write((uint8_t) val10000);
 [e ( _UART_Write (1 -> -> _val10000 `uc `uc ]
-"917
-[; ;main.c: 917:     }
+"935
+[; ;main.c: 935:     }
 }
 [e :U 199 ]
-"919
-[; ;main.c: 919:     if ((val10000 > 0) || (val1000 > 0)) {
+"937
+[; ;main.c: 937:     if ((val10000 > 0) || (val1000 > 0)) {
 [e $ ! || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui 200  ]
 {
-"920
-[; ;main.c: 920:         UART_Write((uint8_t) val1000);
+"938
+[; ;main.c: 938:         UART_Write((uint8_t) val1000);
 [e ( _UART_Write (1 -> -> _val1000 `uc `uc ]
-"921
-[; ;main.c: 921:     }
+"939
+[; ;main.c: 939:     }
 }
 [e :U 200 ]
-"923
-[; ;main.c: 923:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
+"941
+[; ;main.c: 941:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0)) {
 [e $ ! || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui 201  ]
 {
-"924
-[; ;main.c: 924:         UART_Write((uint8_t) val100);
+"942
+[; ;main.c: 942:         UART_Write((uint8_t) val100);
 [e ( _UART_Write (1 -> -> _val100 `uc `uc ]
-"925
-[; ;main.c: 925:     }
+"943
+[; ;main.c: 943:     }
 }
 [e :U 201 ]
-"926
-[; ;main.c: 926:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
+"944
+[; ;main.c: 944:     if ((val10000 > 0) || (val1000 > 0) || (val100 > 0) || (val10 > 0)) {
 [e $ ! || || || > _val10000 -> -> 0 `i `ui > _val1000 -> -> 0 `i `ui > _val100 -> -> 0 `i `ui > _val10 -> -> 0 `i `ui 202  ]
 {
-"927
-[; ;main.c: 927:         UART_Write((uint8_t) val10);
+"945
+[; ;main.c: 945:         UART_Write((uint8_t) val10);
 [e ( _UART_Write (1 -> -> _val10 `uc `uc ]
-"928
-[; ;main.c: 928:     }
+"946
+[; ;main.c: 946:     }
 }
 [e :U 202 ]
-"930
-[; ;main.c: 930:     UART_Write((uint8_t) val1);
+"948
+[; ;main.c: 948:     UART_Write((uint8_t) val1);
 [e ( _UART_Write (1 -> -> _val1 `uc `uc ]
-"931
-[; ;main.c: 931: }
+"949
+[; ;main.c: 949: }
 [e :UE 194 ]
 }
 [a 5C 83 69 84 32 66 65 85 68 32 82 65 84 69 0 ]
