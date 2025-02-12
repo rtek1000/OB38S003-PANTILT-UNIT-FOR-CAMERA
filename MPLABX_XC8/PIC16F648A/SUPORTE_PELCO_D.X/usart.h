@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-char UART_Init(const uint32_t baudrate);
+void UART_Init(void);
 void UART_Write(char data);
 void UART_Write_Text(char *text);
 //char UART_Data_Ready(void);

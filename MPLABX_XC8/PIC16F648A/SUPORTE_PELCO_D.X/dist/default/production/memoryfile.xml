@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\SUPORTE_PELCO_D.X.production.hex">
+  <executable name="dist/default/production/SUPORTE_PELCO_D.X.production.hex">
     <memory name="program">
       <units>words</units>
       <length>4096</length>
-      <used>1550</used>
-      <free>2546</free>
+      <used>3016</used>
+      <free>1080</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>256</length>
-      <used>118</used>
-      <free>138</free>
+      <used>158</used>
+      <free>98</free>
     </memory>
   </executable>
 </project>
